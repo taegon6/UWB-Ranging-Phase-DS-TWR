@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Local UWB experiment outputs
+logs/
+*.raw.txt
+*.position.csv
+*.meta.json
+*.map.png
+*.distance_wave.png
+*.summary.md
+
+# Firmware build outputs
+*.hex
+*.elf
+*.map
+*.obj
+*.o
+*.d
+
+# OS / IDE
+.DS_Store
+.vscode/
+.idea/
