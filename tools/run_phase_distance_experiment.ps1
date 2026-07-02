@@ -4,6 +4,11 @@ param(
     [double]$BaselineM = 2.5,
     [int]$DurationS = 60,
     [int]$MedianWindow = 1,
+    [double]$EkfRangeStdM = 0.15,
+    [double]$EkfAccelStdMps2 = 0.02,
+    [double]$BiasAM = 0.0,
+    [double]$BiasBM = 0.0,
+    [double]$HeightDiffM = 0.0,
     [string]$Tag = "",
     [string]$OutDir = "logs\phase_distance_run",
     [Nullable[double]]$TargetACm = $null,
@@ -22,6 +27,9 @@ Write-Host "Anchor A1: (0, 0)"
 Write-Host "Anchor B2: ($BaselineM, 0)"
 Write-Host "Duration: $DurationS s"
 Write-Host "Median window: $MedianWindow"
+Write-Host "Range EKF: range std $EkfRangeStdM m, accel std $EkfAccelStdMps2 m/s^2"
+Write-Host "Range bias correction: A1 $BiasAM m, B2 $BiasBM m"
+Write-Host "Height correction: $HeightDiffM m"
 Write-Host "Run tag: $Tag"
 Write-Host "Output dir: $OutDir"
 Write-Host ""
@@ -41,6 +49,11 @@ python tools\collect_tag_two_anchor_position.py `
     --duration $DurationS `
     --baseline-m $BaselineM `
     --position-median-window $MedianWindow `
+    --ekf-range-std-m $EkfRangeStdM `
+    --ekf-accel-std-mps2 $EkfAccelStdMps2 `
+    --bias-a-m $BiasAM `
+    --bias-b-m $BiasBM `
+    --height-diff-m $HeightDiffM `
     --tag $Tag `
     --out-dir $OutDir
 
@@ -114,6 +127,9 @@ $summary += "- Tag UART: $TagPort @ $Baud"
 $summary += "- Baseline: $BaselineM m"
 $summary += "- Duration: $DurationS s"
 $summary += "- Median window: $MedianWindow"
+$summary += "- Range EKF: range std $EkfRangeStdM m, accel std $EkfAccelStdMps2 m/s^2"
+$summary += "- Range bias correction: A1 $BiasAM m, B2 $BiasBM m"
+$summary += "- Height correction: $HeightDiffM m"
 $summary += "- Total paired samples: $($rows.Count)"
 $summary += "- Valid positive-y samples: $($validRows.Count)"
 $summary += "- A1 distance mean/std: $($aMeanCm.ToString('F2')) cm / $($aStdCm.ToString('F2')) cm"
