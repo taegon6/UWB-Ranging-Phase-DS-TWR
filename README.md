@@ -60,6 +60,7 @@ Collect UWB first, then fuse the saved position CSV with a TurtleBot
 python tools\apply_cmd_vel_range_ekf.py `
   logs\phase_distance_run\run.position.csv `
   logs\cmd_vel\straight_01_cmd_vel.csv `
+  --time-align auto `
   --auto-calibrate-endpoints `
   --known-start-x-m 0 `
   --known-start-y-m 4 `

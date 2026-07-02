@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import datetime as dt
 import math
 from pathlib import Path
 
@@ -45,6 +46,16 @@ def parse_args() -> argparse.Namespace:
         help="Use known start/end to set initial pose and cmd_v scale for this post-processing run.",
     )
     parser.add_argument("--cmd-time-offset-s", type=float, default=0.0)
+    parser.add_argument(
+        "--time-align",
+        choices=["auto", "elapsed", "absolute"],
+        default="auto",
+        help=(
+            "How to align cmd_vel to UWB time. auto/absolute use cmd Unix "
+            "timestamp and UWB ISO timestamp when available; elapsed uses only "
+            "cmd elapsed_s plus --cmd-time-offset-s."
+        ),
+    )
     parser.add_argument(
         "--after-last-cmd",
         choices=["zero", "hold"],
@@ -87,6 +98,46 @@ def read_cmd(path: Path, offset_s: float) -> list[tuple[float, float, float]]:
             rows.append((elapsed, linear, angular))
     rows.sort(key=lambda item: item[0])
     return rows
+
+
+def parse_local_timestamp(value: str) -> dt.datetime | None:
+    if not value:
+        return None
+    text = value.strip()
+    try:
+        # UWB collector writes local ISO timestamps, for example
+        # 2026-07-02T16:10:37.697.
+        return dt.datetime.fromisoformat(text)
+    except ValueError:
+        pass
+    try:
+        # TurtleBot cmd_vel logs may write Unix epoch seconds.
+        return dt.datetime.fromtimestamp(float(text))
+    except ValueError:
+        return None
+
+
+def infer_cmd_time_offset(uwb_rows: list[dict[str, float | str]], cmd_path: Path) -> float | None:
+    if not uwb_rows:
+        return None
+    uwb_first = uwb_rows[0]
+    uwb_abs = parse_local_timestamp(str(uwb_first.get("timestamp", "")))
+    if uwb_abs is None:
+        return None
+    uwb_origin = uwb_abs - dt.timedelta(seconds=float(uwb_first["elapsed_s"]))
+    with cmd_path.open(newline="", encoding="utf-8-sig") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            cmd_abs = parse_local_timestamp(row.get("timestamp", ""))
+            if cmd_abs is None:
+                continue
+            try:
+                cmd_elapsed = float(row["elapsed_s"])
+            except (KeyError, ValueError):
+                continue
+            cmd_origin = cmd_abs - dt.timedelta(seconds=cmd_elapsed)
+            return (cmd_origin - uwb_origin).total_seconds()
+    return None
 
 
 def command_at(commands: list[tuple[float, float, float]], t: float, after_last: str) -> tuple[float, float]:
@@ -331,9 +382,22 @@ def main() -> int:
     uwb_path = Path(args.uwb_csv)
     cmd_path = Path(args.cmd_vel_csv)
     rows = read_uwb(uwb_path)
-    commands = read_cmd(cmd_path, args.cmd_time_offset_s)
     if not rows:
         raise SystemExit("No valid UWB rows found")
+    offset_s = args.cmd_time_offset_s
+    inferred_offset_s = None
+    if args.time_align in {"auto", "absolute"}:
+        inferred_offset_s = infer_cmd_time_offset(rows, cmd_path)
+        if inferred_offset_s is None:
+            if args.time_align == "absolute":
+                raise SystemExit("Could not infer absolute timestamp alignment from UWB/cmd_vel timestamps")
+            print("timestamp alignment: elapsed_s only; absolute timestamps not available")
+        else:
+            offset_s += inferred_offset_s
+            print(f"timestamp alignment: cmd_vel offset {offset_s:+.3f} s")
+    else:
+        print(f"timestamp alignment: elapsed_s, cmd_vel offset {offset_s:+.3f} s")
+    commands = read_cmd(cmd_path, offset_s)
     baseline = args.baseline_m if args.baseline_m is not None else float(rows[0]["baseline_m"])
     out_path = Path(args.out) if args.out else uwb_path.with_suffix("").with_name(uwb_path.stem + ".cmd_ekf.csv")
     plot_path = Path(args.plot) if args.plot else uwb_path.with_suffix("").with_name(uwb_path.stem + ".cmd_ekf.png")
