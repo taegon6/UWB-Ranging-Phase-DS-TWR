@@ -34,6 +34,7 @@ python tools\collect_tag_two_anchor_position.py `
   --tag-port COM8 `
   --baseline-m 2.5 `
   --duration 60 `
+  --height-diff-m 0.37 `
   --tag phase_ds_twr_run `
   --out-dir logs\phase_distance_run
 ```
@@ -45,9 +46,30 @@ powershell -ExecutionPolicy Bypass -File tools\run_phase_distance_experiment.ps1
   -TagPort COM8 `
   -BaselineM 2.5 `
   -DurationS 60 `
+  -HeightDiffM 0.37 `
   -MedianWindow 1 `
   -Tag phase_ds_twr_run
 ```
+
+## TurtleBot UWB + cmd_vel Postprocess
+
+Collect UWB first, then fuse the saved position CSV with a TurtleBot
+`cmd_vel` CSV after the run:
+
+```powershell
+python tools\apply_cmd_vel_range_ekf.py `
+  logs\phase_distance_run\run.position.csv `
+  logs\cmd_vel\straight_01_cmd_vel.csv `
+  --time-align auto `
+  --auto-calibrate-endpoints `
+  --known-start-x-m 0 `
+  --known-start-y-m 4 `
+  --known-end-x-m 1.03 `
+  --known-end-y-m 2.06
+```
+
+The postprocess writes `*.cmd_ekf.csv` and `*.cmd_ekf.png` next to the UWB
+CSV. Real logs, plots, and CSV outputs stay ignored by git.
 
 ## Notes
 

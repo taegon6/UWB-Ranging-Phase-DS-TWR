@@ -35,6 +35,151 @@ class Sample:
     raw_line: str
 
 
+class RangeEKF:
+    """Online EKF using two raw anchor ranges as measurements.
+
+    State is [x, y, vx, vy]. The motion model is constant velocity and the
+    measurement model is direct range to A1=(0,0), B2=(baseline,0).
+    """
+
+    def __init__(
+        self,
+        baseline_m: float,
+        range_std_m: float,
+        accel_std_mps2: float,
+        initial_position_std_m: float,
+        initial_velocity_std_mps: float,
+    ) -> None:
+        self.baseline_m = baseline_m
+        self.range_var = range_std_m * range_std_m
+        self.accel_var = accel_std_mps2 * accel_std_mps2
+        self.position_var = initial_position_std_m * initial_position_std_m
+        self.velocity_var = initial_velocity_std_mps * initial_velocity_std_mps
+        self.state: list[float] | None = None
+        self.p: list[list[float]] | None = None
+        self.last_time_s: float | None = None
+
+    @staticmethod
+    def _matmul(a: list[list[float]], b: list[list[float]]) -> list[list[float]]:
+        return [[sum(a[i][k] * b[k][j] for k in range(len(b))) for j in range(len(b[0]))] for i in range(len(a))]
+
+    @staticmethod
+    def _transpose(a: list[list[float]]) -> list[list[float]]:
+        return [list(row) for row in zip(*a)]
+
+    @staticmethod
+    def _matadd(a: list[list[float]], b: list[list[float]]) -> list[list[float]]:
+        return [[a[i][j] + b[i][j] for j in range(len(a[0]))] for i in range(len(a))]
+
+    def _initialize(self, d_a: float, d_b: float, now_s: float) -> None:
+        x, y, status = solve_positive_y(d_a, d_b, self.baseline_m)
+        if status != "ok":
+            x = self.baseline_m / 2.0
+            y = max(d_a, d_b, 0.0)
+        self.state = [x, y, 0.0, 0.0]
+        self.p = [
+            [self.position_var, 0.0, 0.0, 0.0],
+            [0.0, self.position_var, 0.0, 0.0],
+            [0.0, 0.0, self.velocity_var, 0.0],
+            [0.0, 0.0, 0.0, self.velocity_var],
+        ]
+        self.last_time_s = now_s
+
+    def update(self, d_a: float, d_b: float, now_s: float) -> dict[str, float | str]:
+        if self.state is None or self.p is None or self.last_time_s is None:
+            self._initialize(d_a, d_b, now_s)
+
+        assert self.state is not None
+        assert self.p is not None
+        assert self.last_time_s is not None
+
+        dt = max(1e-3, now_s - self.last_time_s)
+        self.last_time_s = now_s
+
+        f = [
+            [1.0, 0.0, dt, 0.0],
+            [0.0, 1.0, 0.0, dt],
+            [0.0, 0.0, 1.0, 0.0],
+            [0.0, 0.0, 0.0, 1.0],
+        ]
+        q = self.accel_var
+        q11 = 0.25 * dt**4 * q
+        q13 = 0.5 * dt**3 * q
+        q33 = dt**2 * q
+        process_q = [
+            [q11, 0.0, q13, 0.0],
+            [0.0, q11, 0.0, q13],
+            [q13, 0.0, q33, 0.0],
+            [0.0, q13, 0.0, q33],
+        ]
+
+        self.state = [
+            self.state[0] + self.state[2] * dt,
+            self.state[1] + self.state[3] * dt,
+            self.state[2],
+            self.state[3],
+        ]
+        self.p = self._matadd(self._matmul(self._matmul(f, self.p), self._transpose(f)), process_q)
+
+        px, py, _, _ = self.state
+        anchors = [(0.0, 0.0), (self.baseline_m, 0.0)]
+        z = [d_a, d_b]
+        z_hat: list[float] = []
+        h: list[list[float]] = []
+        for ax, ay in anchors:
+            dx = px - ax
+            dy = py - ay
+            dist = max(1e-6, math.hypot(dx, dy))
+            z_hat.append(dist)
+            h.append([dx / dist, dy / dist, 0.0, 0.0])
+
+        hp = self._matmul(h, self.p)
+        s = self._matadd(self._matmul(hp, self._transpose(h)), [[self.range_var, 0.0], [0.0, self.range_var]])
+        det = s[0][0] * s[1][1] - s[0][1] * s[1][0]
+        if abs(det) < 1e-12:
+            return self.as_row("singular")
+        s_inv = [[s[1][1] / det, -s[0][1] / det], [-s[1][0] / det, s[0][0] / det]]
+        k_gain = self._matmul(self._matmul(self.p, self._transpose(h)), s_inv)
+        residual = [z[0] - z_hat[0], z[1] - z_hat[1]]
+        self.state = [
+            self.state[i] + sum(k_gain[i][j] * residual[j] for j in range(2))
+            for i in range(4)
+        ]
+        kh = self._matmul(k_gain, h)
+        identity_minus_kh = [[(1.0 if i == j else 0.0) - kh[i][j] for j in range(4)] for i in range(4)]
+        self.p = self._matmul(identity_minus_kh, self.p)
+
+        if self.state[1] < 0.0:
+            self.state[1] = 0.0
+            self.state[3] = max(0.0, self.state[3])
+
+        return self.as_row("ok")
+
+    def as_row(self, status: str) -> dict[str, float | str]:
+        if self.state is None:
+            return {
+                "x_ekf_m": math.nan,
+                "y_ekf_m": math.nan,
+                "vx_ekf_mps": math.nan,
+                "vy_ekf_mps": math.nan,
+                "heading_ekf_deg": math.nan,
+                "speed_ekf_mps": math.nan,
+                "ekf_status": "not_initialized",
+            }
+        x, y, vx, vy = self.state
+        speed = math.hypot(vx, vy)
+        heading = math.degrees(math.atan2(vy, vx)) if speed > 1e-6 else math.nan
+        return {
+            "x_ekf_m": x,
+            "y_ekf_m": y,
+            "vx_ekf_mps": vx,
+            "vy_ekf_mps": vy,
+            "heading_ekf_deg": heading,
+            "speed_ekf_mps": speed,
+            "ekf_status": status,
+        }
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--tag-port", required=True, help="Tag serial port, for example COM8")
@@ -43,6 +188,19 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--baseline-m", type=float, default=2.5)
     parser.add_argument("--max-age-s", type=float, default=1.0)
     parser.add_argument("--position-median-window", type=int, default=30)
+    parser.add_argument("--no-ekf", action="store_true", help="Disable range-level EKF output columns.")
+    parser.add_argument("--ekf-range-std-m", type=float, default=0.15, help="EKF range measurement standard deviation.")
+    parser.add_argument("--ekf-accel-std-mps2", type=float, default=0.02, help="EKF process acceleration standard deviation.")
+    parser.add_argument("--ekf-init-position-std-m", type=float, default=0.5)
+    parser.add_argument("--ekf-init-velocity-std-mps", type=float, default=1.0)
+    parser.add_argument("--bias-a-m", type=float, default=0.0, help="Subtract this bias from A1 raw range before position/EKF.")
+    parser.add_argument("--bias-b-m", type=float, default=0.0, help="Subtract this bias from B2 raw range before position/EKF.")
+    parser.add_argument(
+        "--height-diff-m",
+        type=float,
+        default=0.0,
+        help="Known vertical height difference between anchors and tag. Projects UWB 3D range to 2D range.",
+    )
     parser.add_argument("--tag", default="tag_two_anchor")
     parser.add_argument("--out-dir", default="logs/tag_two_anchor")
     parser.add_argument("--no-plot", action="store_true")
@@ -96,6 +254,19 @@ def solve_positive_y(d_a: float, d_b: float, baseline: float) -> tuple[float, fl
     return x, math.sqrt(max(0.0, y_sq)), "ok"
 
 
+def project_range_to_2d(distance_m: float, height_diff_m: float) -> tuple[float, str]:
+    """Project 3D UWB range onto the horizontal 2D plane."""
+    if distance_m < 0:
+        return math.nan, "negative_distance"
+    height = abs(height_diff_m)
+    if height <= 0.0:
+        return distance_m, "ok"
+    projected_sq = distance_m * distance_m - height * height
+    if projected_sq < -1e-9:
+        return math.nan, "height_larger_than_range"
+    return math.sqrt(max(0.0, projected_sq)), "ok"
+
+
 def median(values: deque[float]) -> float:
     ordered = sorted(values)
     if not ordered:
@@ -124,6 +295,15 @@ def write_map_png(path: Path, rows: list[dict[str, float | str]], baseline: floa
     ax.text(baseline, -0.08, f"B2 ({baseline:.2f},0)", ha="center", va="top")
     ax.plot(xs, ys, color="#1f77b4", linewidth=1, alpha=0.55)
     ax.scatter(xs, ys, s=18, color="#1f77b4", label="tag")
+    ekf_rows = [
+        row
+        for row in rows
+        if math.isfinite(float(row.get("x_ekf_m", math.nan))) and math.isfinite(float(row.get("y_ekf_m", math.nan)))
+    ]
+    if ekf_rows:
+        ekf_xs = [float(row["x_ekf_m"]) for row in ekf_rows]
+        ekf_ys = [float(row["y_ekf_m"]) for row in ekf_rows]
+        ax.plot(ekf_xs, ekf_ys, color="#ff7f0e", linewidth=2.0, label="range EKF")
     ax.scatter([xs[-1]], [ys[-1]], s=80, color="#2ca02c", label="latest")
     ax.set_title("Tag-side two-anchor UWB position")
     ax.set_xlabel("x [m]")
@@ -203,6 +383,15 @@ def main() -> int:
     x_window: deque[float] = deque(maxlen=max(1, args.position_median_window))
     y_window: deque[float] = deque(maxlen=max(1, args.position_median_window))
     rows: list[dict[str, float | str]] = []
+    ekf = None
+    if not args.no_ekf:
+        ekf = RangeEKF(
+            baseline_m=args.baseline_m,
+            range_std_m=args.ekf_range_std_m,
+            accel_std_mps2=args.ekf_accel_std_mps2,
+            initial_position_std_m=args.ekf_init_position_std_m,
+            initial_velocity_std_mps=args.ekf_init_velocity_std_mps,
+        )
 
     print(f"Tag UART: {args.tag_port} @ {args.baud}")
     print("Anchor A1 -> (0, 0)")
@@ -220,10 +409,20 @@ def main() -> int:
                 "baseline_m",
                 "d_anchor_a_m",
                 "d_anchor_b_m",
+                "d_anchor_a_raw_m",
+                "d_anchor_b_raw_m",
+                "height_diff_m",
                 "x_m",
                 "y_m",
                 "x_filtered_m",
                 "y_filtered_m",
+                "x_ekf_m",
+                "y_ekf_m",
+                "vx_ekf_mps",
+                "vy_ekf_mps",
+                "heading_ekf_deg",
+                "speed_ekf_mps",
+                "ekf_status",
                 "status",
                 "age_gap_s",
                 "raw_anchor_a",
@@ -260,7 +459,16 @@ def main() -> int:
                 continue
             last_pair = pair
 
-            x, y, status = solve_positive_y(a.distance_m, b.distance_m, args.baseline_m)
+            d_a_bias_corrected = a.distance_m - args.bias_a_m
+            d_b_bias_corrected = b.distance_m - args.bias_b_m
+            d_a_corrected, height_status_a = project_range_to_2d(d_a_bias_corrected, args.height_diff_m)
+            d_b_corrected, height_status_b = project_range_to_2d(d_b_bias_corrected, args.height_diff_m)
+            if height_status_a != "ok":
+                x, y, status = math.nan, math.nan, f"A1_{height_status_a}"
+            elif height_status_b != "ok":
+                x, y, status = math.nan, math.nan, f"B2_{height_status_b}"
+            else:
+                x, y, status = solve_positive_y(d_a_corrected, d_b_corrected, args.baseline_m)
             if status == "ok":
                 x_window.append(x)
                 y_window.append(y)
@@ -269,17 +477,33 @@ def main() -> int:
             else:
                 x_filtered = math.nan
                 y_filtered = math.nan
+            if ekf is not None and math.isfinite(d_a_corrected) and math.isfinite(d_b_corrected):
+                ekf_row = ekf.update(d_a_corrected, d_b_corrected, elapsed)
+            else:
+                ekf_row = {
+                    "x_ekf_m": math.nan,
+                    "y_ekf_m": math.nan,
+                    "vx_ekf_mps": math.nan,
+                    "vy_ekf_mps": math.nan,
+                    "heading_ekf_deg": math.nan,
+                    "speed_ekf_mps": math.nan,
+                    "ekf_status": "disabled",
+                }
 
             row = {
                 "elapsed_s": elapsed,
                 "timestamp": now_iso,
                 "baseline_m": args.baseline_m,
-                "d_anchor_a_m": a.distance_m,
-                "d_anchor_b_m": b.distance_m,
+                "d_anchor_a_m": d_a_corrected,
+                "d_anchor_b_m": d_b_corrected,
+                "d_anchor_a_raw_m": a.distance_m,
+                "d_anchor_b_raw_m": b.distance_m,
+                "height_diff_m": args.height_diff_m,
                 "x_m": x,
                 "y_m": y,
                 "x_filtered_m": x_filtered,
                 "y_filtered_m": y_filtered,
+                **ekf_row,
                 "status": status,
                 "age_gap_s": age_gap,
                 "raw_anchor_a": a.raw_line,
@@ -291,12 +515,22 @@ def main() -> int:
                     f"{elapsed:.3f}",
                     now_iso,
                     f"{args.baseline_m:.3f}",
+                    f"{d_a_corrected:.3f}",
+                    f"{d_b_corrected:.3f}",
                     f"{a.distance_m:.3f}",
                     f"{b.distance_m:.3f}",
+                    f"{args.height_diff_m:.3f}",
                     f"{x:.3f}" if math.isfinite(x) else "",
                     f"{y:.3f}" if math.isfinite(y) else "",
                     f"{x_filtered:.3f}" if math.isfinite(x_filtered) else "",
                     f"{y_filtered:.3f}" if math.isfinite(y_filtered) else "",
+                    f"{float(ekf_row['x_ekf_m']):.3f}" if math.isfinite(float(ekf_row["x_ekf_m"])) else "",
+                    f"{float(ekf_row['y_ekf_m']):.3f}" if math.isfinite(float(ekf_row["y_ekf_m"])) else "",
+                    f"{float(ekf_row['vx_ekf_mps']):.4f}" if math.isfinite(float(ekf_row["vx_ekf_mps"])) else "",
+                    f"{float(ekf_row['vy_ekf_mps']):.4f}" if math.isfinite(float(ekf_row["vy_ekf_mps"])) else "",
+                    f"{float(ekf_row['heading_ekf_deg']):.2f}" if math.isfinite(float(ekf_row["heading_ekf_deg"])) else "",
+                    f"{float(ekf_row['speed_ekf_mps']):.4f}" if math.isfinite(float(ekf_row["speed_ekf_mps"])) else "",
+                    ekf_row["ekf_status"],
                     status,
                     f"{age_gap:.3f}",
                     a.raw_line,
@@ -311,6 +545,12 @@ def main() -> int:
         "baud": args.baud,
         "baseline_m": args.baseline_m,
         "duration_s": args.duration,
+        "bias_a_m": args.bias_a_m,
+        "bias_b_m": args.bias_b_m,
+        "height_diff_m": args.height_diff_m,
+        "ekf_enabled": ekf is not None,
+        "ekf_range_std_m": args.ekf_range_std_m,
+        "ekf_accel_std_mps2": args.ekf_accel_std_mps2,
         "samples_total": len(rows),
         "samples_valid": valid,
         "outputs": {key: str(value) for key, value in paths.items()},
