@@ -1,0 +1,106 @@
+schema_version: 1
+config_kind: hardware_experiment
+backend:
+  flash: jlink
+  serial: pyserial
+  logic: sigrok
+
+boards:
+  A1:
+    role: ANCHOR
+    jlink_serial: TODO_USER_INPUT
+    serial_port: TODO_USER_INPUT
+    firmware_target: anchor_a1
+  A2:
+    role: ANCHOR
+    jlink_serial: TODO_USER_INPUT
+    serial_port: TODO_USER_INPUT
+    firmware_target: anchor_a2
+  T1:
+    role: TAG
+    jlink_serial: TODO_USER_INPUT
+    serial_port: TODO_USER_INPUT
+    firmware_target: tag_t1
+  T2:
+    role: TAG
+    jlink_serial: TODO_USER_INPUT
+    serial_port: TODO_USER_INPUT
+    firmware_target: tag_t2
+
+jlink:
+  executable: JLinkExe
+  device: TODO_CODE_OR_HW_VERIFY
+  interface: SWD
+  speed_khz: 4000
+  allow_execute: false
+
+logic_analyzer:
+  device_id: TODO_USER_INPUT
+  # sigrok connection selector, for example usb/1-2.3; do not use UART framing here.
+  connection: TODO_USER_INPUT
+  driver: TODO_USER_INPUT
+  sample_rate_hz: TODO_HW_VERIFY
+  capture_duration_s: 60
+  channels:
+    IRQ_PIN: TODO_USER_INPUT
+    ISR_ACTIVE: TODO_USER_INPUT
+    SPI_ACTIVE: TODO_USER_INPUT
+    # Optional dedicated routes when enough trace pins/channels are available.
+    SPI_STATUS: TODO_USER_INPUT
+    SPI_FRAME: TODO_USER_INPUT
+    UART_ENQUEUE: TODO_USER_INPUT
+    UART_TX: TODO_USER_INPUT
+    CIR_READ: TODO_USER_INPUT
+    PHASE_PROCESS: TODO_USER_INPUT
+
+sigrok:
+  executable: sigrok-cli
+  driver: TODO_USER_INPUT
+  sample_rate_hz: TODO_HW_VERIFY
+
+serial:
+  baud_rate: TODO_CODE_OR_HW_VERIFY
+  timeout_s: 1.0
+
+experiments:
+  timing_characterization:
+    experiment_id: timing_characterization
+    protocol_mode: INDEPENDENT
+    ranging_mode: DS_ONLY
+    operation_mode: APPROACH
+    repetitions: 1000
+    warmup_frames: 50
+    capture_duration_s: 60
+    metrics:
+      - irq_latency
+      - isr_duration
+      - spi_status_duration
+      - spi_frame_duration
+      - cir_read_duration
+      - phase_processing_duration
+      - uart_enqueue_duration
+      - uart_physical_tx_duration
+      - frame_period
+  connection_smoke_test:
+    experiment_id: connection_smoke_test
+    protocol_mode: INDEPENDENT
+    ranging_mode: DS_ONLY
+    operation_mode: APPROACH
+    repetitions: 8
+    warmup_frames: 0
+    capture_duration_s: 2
+    metrics:
+      - frame_period
+
+build:
+  repository: .
+  stop_on_failure: true
+  reset_order: [A1, A2, T1, T2]
+  targets:
+    A1: anchor_a1
+    A2: anchor_a2
+    T1: tag_t1
+    T2: tag_t2
+
+outputs:
+  results_root: results

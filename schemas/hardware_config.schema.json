@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://uwb.local/schemas/hardware_config.schema.json",
+  "title": "2A2T UWB hardware experiment configuration",
+  "type": "object",
+  "required": ["schema_version", "backend", "boards", "logic_analyzer", "serial"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "config_kind": {"type": "string"},
+    "backend": {
+      "oneOf": [
+        {"type": "string", "enum": ["mock", "real"]},
+        {
+          "type": "object",
+          "required": ["flash", "serial", "logic"],
+          "properties": {
+            "flash": {"type": "string", "enum": ["mock", "jlink"]},
+            "serial": {"type": "string", "enum": ["mock", "pyserial", "serial"]},
+            "logic": {"type": "string", "enum": ["mock", "saleae", "sigrok"]}
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "boards": {
+      "type": "object",
+      "required": ["A1", "A2", "T1", "T2"],
+      "properties": {
+        "A1": {"$ref": "#/$defs/anchorBoard"},
+        "A2": {"$ref": "#/$defs/anchorBoard"},
+        "T1": {"$ref": "#/$defs/tagBoard"},
+        "T2": {"$ref": "#/$defs/tagBoard"}
+      },
+      "additionalProperties": false
+    },
+    "logic_analyzer": {
+      "type": "object",
+      "required": ["device_id", "sample_rate_hz", "channels"],
+      "properties": {
+        "device_id": {"$ref": "#/$defs/stringOrTodo"},
+        "connection": {"$ref": "#/$defs/stringOrTodo"},
+        "sample_rate_hz": {"$ref": "#/$defs/positiveIntegerOrTodo"},
+        "driver": {"type": "string"},
+        "capture_duration_s": {"type": "number", "exclusiveMinimum": 0},
+        "channels": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {"$ref": "#/$defs/channelOrTodo"}
+        }
+      },
+      "additionalProperties": true
+    },
+    "serial": {
+      "type": "object",
+      "required": ["baud_rate", "timeout_s"],
+      "properties": {
+        "baud_rate": {"$ref": "#/$defs/positiveIntegerOrTodo"},
+        "timeout_s": {"type": "number", "exclusiveMinimum": 0}
+      },
+      "additionalProperties": true
+    },
+    "mock": {
+      "type": "object",
+      "properties": {
+        "random_seed": {"type": "integer"},
+        "timing_profile": {
+          "oneOf": [{"type": "string"}, {"type": "object", "additionalProperties": {"type": "number"}}]
+        },
+        "faults": {"$ref": "#/$defs/faults"}
+      },
+      "additionalProperties": true
+    },
+    "experiments": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/experiment"}
+    },
+    "build": {"type": "object"},
+    "jlink": {
+      "type": "object",
+      "properties": {
+        "executable": {"type": "string", "minLength": 1},
+        "device": {"type": "string", "minLength": 1},
+        "interface": {"type": "string", "minLength": 1},
+        "speed_khz": {"type": "integer", "exclusiveMinimum": 0},
+        "load_address": {"oneOf": [{"type": "string"}, {"type": "integer"}]},
+        "allow_execute": {"type": "boolean"}
+      },
+      "additionalProperties": true
+    },
+    "sigrok": {"type": "object"},
+    "outputs": {"type": "object"}
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "todo": {"type": "string", "pattern": "^TODO(?:_|\\()"},
+    "stringOrTodo": {"type": "string", "minLength": 1},
+    "positiveIntegerOrTodo": {
+      "oneOf": [
+        {"type": "integer", "exclusiveMinimum": 0},
+        {"$ref": "#/$defs/todo"}
+      ]
+    },
+    "channelOrTodo": {
+      "oneOf": [
+        {"type": "integer", "minimum": 0},
+        {"type": "string", "minLength": 1}
+      ]
+    },
+    "boardBase": {
+      "type": "object",
+      "required": ["role", "jlink_serial", "serial_port", "firmware_target"],
+      "properties": {
+        "role": {"type": "string"},
+        "jlink_serial": {"oneOf": [{"type": "string"}, {"type": "integer"}]},
+        "serial_port": {"type": "string", "minLength": 1},
+        "firmware_target": {"type": "string", "minLength": 1},
+        "device": {"type": "string"},
+        "interface": {"type": "string"},
+        "speed_khz": {"type": "integer", "exclusiveMinimum": 0},
+        "load_address": {"oneOf": [{"type": "string"}, {"type": "integer"}]}
+      },
+      "additionalProperties": true
+    },
+    "anchorBoard": {
+      "allOf": [
+        {"$ref": "#/$defs/boardBase"},
+        {"properties": {"role": {"const": "ANCHOR"}}}
+      ]
+    },
+    "tagBoard": {
+      "allOf": [
+        {"$ref": "#/$defs/boardBase"},
+        {"properties": {"role": {"const": "TAG"}}}
+      ]
+    },
+    "faults": {
+      "type": "object",
+      "properties": {
+        "flash_failure_probability": {"type": "number", "minimum": 0, "maximum": 1},
+        "uart_corruption_probability": {"type": "number", "minimum": 0, "maximum": 1},
+        "uart_overflow_probability": {"type": "number", "minimum": 0, "maximum": 1},
+        "packet_timeout_probability": {"type": "number", "minimum": 0, "maximum": 1},
+        "retry_probability": {"type": "number", "minimum": 0, "maximum": 1},
+        "missing_link_probability": {"type": "number", "minimum": 0, "maximum": 1},
+        "irq_outlier_probability": {"type": "number", "minimum": 0, "maximum": 1},
+        "flash_fail_nodes": {"type": "array", "items": {"enum": ["A1", "A2", "T1", "T2"]}},
+        "flash_failure_nodes": {"type": "array", "items": {"enum": ["A1", "A2", "T1", "T2"]}},
+        "missing_com_nodes": {"type": "array", "items": {"enum": ["A1", "A2", "T1", "T2"]}},
+        "missing_com_ports": {"type": "array", "items": {"type": "string"}},
+        "missing_com_port": {"oneOf": [{"type": "boolean"}, {"type": "string"}]},
+        "missing_logic_channels": {"type": "array", "items": {"type": "string"}},
+        "missing_logic_channel": {"type": "string"},
+        "missing_logic_device": {"type": "boolean"},
+        "missing_logic": {"type": "boolean"},
+        "missing_logic_capture_file": {"type": "boolean"},
+        "missing_logic_file": {"type": "boolean"},
+        "uart_buffer_overflow": {"type": "boolean"},
+        "uart_overflow": {"type": "boolean"},
+        "timeout_probability": {"type": "number", "minimum": 0, "maximum": 1},
+        "pulse_jitter_us": {"type": "number", "minimum": 0},
+        "irq_outlier_us": {"type": "number", "minimum": 0},
+        "spi_duration_scale": {"type": "number", "exclusiveMinimum": 0},
+        "cir_duration_scale": {"type": "number", "exclusiveMinimum": 0},
+        "increased_spi_duration_us": {"type": "number", "minimum": 0},
+        "spi_duration_increase_us": {"type": "number", "minimum": 0},
+        "increased_cir_duration_us": {"type": "number", "minimum": 0},
+        "cir_duration_increase_us": {"type": "number", "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "experiment": {
+      "type": "object",
+      "required": ["experiment_id", "protocol_mode", "ranging_mode", "operation_mode", "repetitions", "warmup_frames", "capture_duration_s", "metrics"],
+      "properties": {
+        "experiment_id": {"type": "string", "minLength": 1},
+        "protocol_mode": {"enum": ["INDEPENDENT", "ONE_TO_MANY", "INTERLEAVED", "ALTERNATING", "HYBRID"]},
+        "ranging_mode": {"enum": ["DS_ONLY", "DS_CIR_CAPTURE", "DS_PHASE_CORRECT"]},
+        "operation_mode": {"enum": ["APPROACH", "FINE_ALIGNMENT", "FINAL_CONFIRMATION"]},
+        "repetitions": {"type": "integer", "minimum": 1},
+        "warmup_frames": {"type": "integer", "minimum": 0},
+        "capture_duration_s": {"type": "number", "exclusiveMinimum": 0},
+        "metrics": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}}
+      },
+      "additionalProperties": true
+    }
+  }
+}

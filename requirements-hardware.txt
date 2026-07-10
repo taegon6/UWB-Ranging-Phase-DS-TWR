@@ -1,0 +1,6 @@
+-r requirements-core.txt
+
+# Optional real-device adapters. Import is lazy, so core/mock operation does not
+# require these packages. sigrok-cli and J-Link Commander are system tools.
+pyserial==3.5
+logic2-automation==1.0.11

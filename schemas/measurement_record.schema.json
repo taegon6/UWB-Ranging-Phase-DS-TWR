@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://uwb.local/schemas/measurement_record.schema.json",
+  "title": "2A2T UWB measurement record",
+  "type": "object",
+  "required": ["source_type", "hardware_verified", "superframe_id", "link"],
+  "properties": {
+    "source_type": {"enum": ["SYNTHETIC", "MEASURED"]},
+    "hardware_verified": {"type": "boolean"},
+    "superframe_id": {"type": "integer", "minimum": 0},
+    "frame_id": {"type": "integer", "minimum": 0},
+    "slot_id": {"type": "integer", "minimum": 0},
+    "link": {"enum": ["A1T1", "A2T1", "A1T2", "A2T2"]},
+    "range_m": {"type": ["number", "null"]},
+    "retry_count": {"type": "integer", "minimum": 0},
+    "quality_flags": {"type": "array", "items": {"type": "string"}}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"source_type": {"const": "SYNTHETIC"}}},
+      "then": {"properties": {"hardware_verified": {"const": false}}}
+    }
+  ],
+  "additionalProperties": true
+}

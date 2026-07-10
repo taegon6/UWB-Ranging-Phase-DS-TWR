@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://uwb.local/schemas/antenna_calibration.schema.json",
+  "title": "Antenna-delay calibration runner configuration",
+  "type": "object",
+  "required": ["schema_version", "backend", "calibration"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "config_kind": {"const": "antenna_calibration"},
+    "backend": {"type": "string", "enum": ["mock", "real"]},
+    "calibration": {
+      "type": "object",
+      "required": ["mode", "measurement_metadata", "reference_distances_m", "samples_per_point", "warmup_samples", "search", "objective"],
+      "properties": {
+        "mode": {"enum": ["COMBINED_SINGLE_LINK", "REFERENCE_NODE_SEQUENTIAL", "OFFLINE_2A2T_LEAST_SQUARES"]},
+        "reference_node": {"oneOf": [{"enum": ["A1", "A2", "T1", "T2"]}, {"$ref": "#/$defs/todo"}]},
+        "measurement_metadata": {
+          "type": "object",
+          "required": ["target_nodes", "target_links", "distance_reference_description", "distance_uncertainty_m", "antenna_reference_point", "antenna_height_m", "antenna_orientation", "environment_description"],
+          "properties": {
+            "target_nodes": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"oneOf": [{"enum": ["A1", "A2", "T1", "T2"]}, {"$ref": "#/$defs/todo"}]}},
+            "target_links": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"oneOf": [{"type": "string", "pattern": "^(A1|A2)-(T1|T2)$"}, {"$ref": "#/$defs/todo"}]}},
+            "distance_reference_description": {"type": "string", "minLength": 1},
+            "distance_uncertainty_m": {"$ref": "#/$defs/numberOrTodo"},
+            "antenna_reference_point": {"type": "string", "minLength": 1},
+            "antenna_height_m": {"$ref": "#/$defs/numberOrTodo"},
+            "antenna_orientation": {"type": "string", "minLength": 1},
+            "environment_description": {"type": "string", "minLength": 1}
+          },
+          "additionalProperties": true
+        },
+        "reference_distances_m": {"type": "array", "minItems": 2, "uniqueItems": true, "items": {"type": "number", "exclusiveMinimum": 0}},
+        "samples_per_point": {"type": "integer", "minimum": 1},
+        "warmup_samples": {"type": "integer", "minimum": 0},
+        "search": {
+          "type": "object",
+          "required": ["method", "hardware", "synthetic_mock"],
+          "properties": {
+            "method": {"const": "coarse_to_fine"},
+            "hardware": {"$ref": "#/$defs/searchProfile"},
+            "synthetic_mock": {"$ref": "#/$defs/numericSearchProfile"}
+          },
+          "additionalProperties": false
+        },
+        "objective": {
+          "type": "object",
+          "required": ["metric", "include_repeatability_penalty"],
+          "properties": {
+            "metric": {"enum": ["weighted_absolute_bias", "weighted_squared_bias"]},
+            "include_repeatability_penalty": {"type": "boolean"},
+            "repeatability_weight": {"type": "number", "minimum": 0}
+          },
+          "additionalProperties": true
+        },
+        "synthetic_truth": {
+          "type": "object",
+          "properties": {
+            "combined_delay_dtu": {"type": "integer"},
+            "noise_std_m": {"type": "number", "minimum": 0},
+            "random_seed": {"type": "integer"}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": true
+    },
+    "hardware_config": {"type": "string"},
+    "outputs": {"type": "object"}
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "todo": {"type": "string", "pattern": "^TODO(?:_|\\()"},
+    "numberOrTodo": {"oneOf": [{"type": "number"}, {"$ref": "#/$defs/todo"}]},
+    "searchProfile": {
+      "type": "object",
+      "required": ["initial_min", "initial_max", "coarse_step", "fine_step"],
+      "properties": {
+        "initial_min": {"$ref": "#/$defs/numberOrTodo"},
+        "initial_max": {"$ref": "#/$defs/numberOrTodo"},
+        "coarse_step": {"$ref": "#/$defs/numberOrTodo"},
+        "fine_step": {"$ref": "#/$defs/numberOrTodo"}
+      },
+      "additionalProperties": false
+    },
+    "numericSearchProfile": {
+      "type": "object",
+      "required": ["initial_min", "initial_max", "coarse_step", "fine_step"],
+      "properties": {
+        "initial_min": {"type": "integer", "minimum": 0},
+        "initial_max": {"type": "integer", "minimum": 0},
+        "coarse_step": {"type": "integer", "minimum": 1},
+        "fine_step": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": false
+    }
+  }
+}

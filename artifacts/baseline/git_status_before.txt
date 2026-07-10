@@ -1,0 +1,8 @@
+captured_at=2026-07-10T13:13:44.2507838+09:00
+repository=C:/Users/User/Documents/학부연구생/UWB-Ranging-Phase-DS-TWR
+remote_origin=https://github.com/taegon6/UWB-Ranging-Phase-DS-TWR.git
+branch=ekf
+commit=b8b911f6d437af9cb70c09f1b4f4562feb0239ac
+git_status_short=<empty>
+git_diff_stat=<empty>
+working_tree_clean=true

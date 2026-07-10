@@ -1,0 +1,90 @@
+{
+  "source_type": "ENVIRONMENT_INSPECTION",
+  "hardware_verified": false,
+  "checks": [
+    {
+      "status": "PASS",
+      "name": "Python",
+      "detail": "3.14.4",
+      "next_command": ""
+    },
+    {
+      "status": "PASS",
+      "name": "core dependencies",
+      "detail": "PyYAML 6.0.3, jsonschema 4.26.0, numpy 2.4.4, matplotlib 3.10.8",
+      "next_command": ""
+    },
+    {
+      "status": "PASS",
+      "name": "repository structure",
+      "detail": "overlay and baseline snapshot found",
+      "next_command": ""
+    },
+    {
+      "status": "PASS",
+      "name": "firmware compiler/build tool",
+      "detail": "emBuild.exe=C:\\Program Files\\SEGGER\\SEGGER Embedded Studio 8.28\\bin\\emBuild.exe",
+      "next_command": "Configure the approved SES/toolchain path after obtaining a clean full SDK."
+    },
+    {
+      "status": "PASS",
+      "name": "J-Link executable",
+      "detail": "C:\\Program Files\\SEGGER\\JLink_V818\\JLink.exe",
+      "next_command": ""
+    },
+    {
+      "status": "SKIP",
+      "name": "J-Link devices",
+      "detail": "not probed because boards are disconnected",
+      "next_command": "python tools/discover_hardware.py --config configs/local_hardware.yaml"
+    },
+    {
+      "status": "PASS",
+      "name": "serial library",
+      "detail": "pyserial 3.5",
+      "next_command": ""
+    },
+    {
+      "status": "SKIP",
+      "name": "serial devices",
+      "detail": "not probed because boards are disconnected",
+      "next_command": "python tools/discover_hardware.py --config configs/local_hardware.yaml"
+    },
+    {
+      "status": "SKIP",
+      "name": "logic analyzer backend",
+      "detail": "no CLI/package; hardware stage only",
+      "next_command": "Install a selected optional logic backend, then rerun this checker."
+    },
+    {
+      "status": "SKIP",
+      "name": "logic analyzer device",
+      "detail": "not probed because no analyzer is connected",
+      "next_command": "python tools/discover_hardware.py --config configs/local_hardware.yaml"
+    },
+    {
+      "status": "PASS",
+      "name": "config schema",
+      "detail": "configs\\mock_hardware.yaml",
+      "next_command": ""
+    },
+    {
+      "status": "PASS",
+      "name": "output directory write",
+      "detail": "C:\\Users\\User\\Documents\\\ud559\ubd80\uc5f0\uad6c\uc0dd\\UWB-Ranging-Phase-DS-TWR\\results",
+      "next_command": ""
+    },
+    {
+      "status": "PASS",
+      "name": "mock backend",
+      "detail": "4-board inventory and synthetic capture provenance",
+      "next_command": ""
+    },
+    {
+      "status": "PASS",
+      "name": "dry-run experiment",
+      "detail": "temporary mock logic/UART path completed",
+      "next_command": ""
+    }
+  ]
+}

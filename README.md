@@ -1,5 +1,28 @@
 # UWB Ranging Optimization Follow-up
 
+## Pre-hardware 2A2T environment
+
+The repository now includes a hardware-free experiment foundation for future
+A1/A2/T1/T2 work. It preserves the existing A1/B2/TG firmware overlay and does
+not claim real 2A2T operation.
+
+```text
+source_type = SYNTHETIC
+hardware_verified = false
+```
+
+Run from this repository root:
+
+```powershell
+python tools\check_environment.py
+python tools\run_hardware_experiment.py --config configs\mock_hardware.yaml --experiment timing_characterization --backend mock --dry-run --analyze --report
+python tools\calibrate_antenna_delay.py --config configs\antenna_calibration.example.yaml --backend mock --dry-run
+```
+
+Start with [docs/PRE_HARDWARE_SETUP.md](docs/PRE_HARDWARE_SETUP.md) and
+[HANDOFF.md](HANDOFF.md). Real wiring and input fields are listed in
+[docs/HARDWARE_CONNECTION_CHECKLIST.md](docs/HARDWARE_CONNECTION_CHECKLIST.md).
+
 This folder preserves the local two-anchor DS-TWR ranging work prepared from
 `FastTurtle7892/UWB-Ranging-Optimization`.
 
@@ -74,8 +97,9 @@ CSV. Real logs, plots, and CSV outputs stay ignored by git.
 ## Notes
 
 - Real experiment logs are intentionally not committed.
-- The responder overlay uses `RNG_DELAY_MS = 5`, which improved the observed
-  two-anchor tag UART rate from about 18 Hz to about 90 Hz in the local lab
-  test.
+- A pre-existing project note says the responder overlay's `RNG_DELAY_MS = 5`
+  changed a past local two-anchor UART observation from about 18 Hz to about
+  90 Hz. That log is not present here, was not reproduced in this task, and is
+  not a verified timing result for the current environment.
 - If the 2D map has no valid positive-y points, check that the physical anchor
   spacing matches `--baseline-m`.

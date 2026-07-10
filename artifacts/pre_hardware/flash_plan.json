@@ -1,0 +1,77 @@
+{
+  "operations": [
+    {
+      "node": "A1",
+      "firmware_target": "anchor_a1",
+      "image": "DRY_RUN_IMAGE_FOR_A1",
+      "jlink_serial": "MOCK-JLINK-A1",
+      "command": [
+        "JLink.exe",
+        "-SelectEmuBySN",
+        "MOCK-JLINK-A1",
+        "-CommandFile",
+        "TODO_USER_INPUT"
+      ],
+      "status": "DRY_RUN_PLANNED",
+      "source_type": "SYNTHETIC",
+      "hardware_verified": false
+    },
+    {
+      "node": "A2",
+      "firmware_target": "anchor_a2",
+      "image": "DRY_RUN_IMAGE_FOR_A2",
+      "jlink_serial": "MOCK-JLINK-A2",
+      "command": [
+        "JLink.exe",
+        "-SelectEmuBySN",
+        "MOCK-JLINK-A2",
+        "-CommandFile",
+        "TODO_USER_INPUT"
+      ],
+      "status": "DRY_RUN_PLANNED",
+      "source_type": "SYNTHETIC",
+      "hardware_verified": false
+    },
+    {
+      "node": "T1",
+      "firmware_target": "tag_t1",
+      "image": "DRY_RUN_IMAGE_FOR_T1",
+      "jlink_serial": "MOCK-JLINK-T1",
+      "command": [
+        "JLink.exe",
+        "-SelectEmuBySN",
+        "MOCK-JLINK-T1",
+        "-CommandFile",
+        "TODO_USER_INPUT"
+      ],
+      "status": "DRY_RUN_PLANNED",
+      "source_type": "SYNTHETIC",
+      "hardware_verified": false
+    },
+    {
+      "node": "T2",
+      "firmware_target": "tag_t2",
+      "image": "DRY_RUN_IMAGE_FOR_T2",
+      "jlink_serial": "MOCK-JLINK-T2",
+      "command": [
+        "JLink.exe",
+        "-SelectEmuBySN",
+        "MOCK-JLINK-T2",
+        "-CommandFile",
+        "TODO_USER_INPUT"
+      ],
+      "status": "DRY_RUN_PLANNED",
+      "source_type": "SYNTHETIC",
+      "hardware_verified": false
+    }
+  ],
+  "reset_order": [
+    "A1",
+    "A2",
+    "T1",
+    "T2"
+  ],
+  "failure_policy": "stop_on_first_failure; do not roll back already flashed boards automatically",
+  "source_type": "SYNTHETIC",
+  "hardware_verified": false
+}
