@@ -1,0 +1,10 @@
+{
+  "source_type": "CODE_INSPECTION_AND_BUILD",
+  "hardware_verified": false,
+  "flash_executed": false,
+  "note": "First-reproduction paths; authoritative direct-build path record is ../phase6_build_recovery_attempt03/resolved_paths.json.",
+  "sdk_root": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline",
+  "project_relative": "API/nRF52840-DK/dw3000_api.emProject",
+  "output_relative": "API/nRF52840-DK/Output/Debug",
+  "junction_or_symlink_detected": false
+}

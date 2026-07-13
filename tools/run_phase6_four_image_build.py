@@ -77,7 +77,7 @@ def build_one(role: str, sandbox_root: Path, output_dir: Path, overlay_dir: Path
     log_path = output_dir / "build_logs" / f"{role}.log"
     # Clean is constrained to this disposable SDK worktree.  It prevents a
     # pre-existing HEX/object tree from ever entering a Phase 6 manifest.
-    clean_command = [str(embuild), "-batch", "-clean", "-config", "Debug", str(project)]
+    clean_command = [str(embuild), "-clean", "-config", "Debug", str(project)]
     clean = subprocess.run(clean_command, cwd=project.parent, capture_output=True, text=True, check=False)
     clean_log = clean.stdout + clean.stderr
     if clean.returncode != 0 or (output_root.exists() and any(path.is_file() for path in output_root.rglob("*"))):
@@ -88,7 +88,7 @@ def build_one(role: str, sandbox_root: Path, output_dir: Path, overlay_dir: Path
             "build_status": "BUILD_FAILED", "reason": reason, "build_log": str(log_path),
             "source_type": "CODE_INSPECTION_AND_BUILD", "hardware_verified": False, "flash_executed": False,
         }
-    command = [str(embuild), "-batch", "-rebuild", "-config", "Debug", str(project)]
+    command = [str(embuild), "-rebuild", "-echo", "-config", "Debug", str(project)]
     started = datetime.now(timezone.utc).isoformat()
     completed = subprocess.run(command, cwd=project.parent, capture_output=True, text=True, check=False)
     log = clean_log + completed.stdout + completed.stderr
@@ -179,7 +179,7 @@ def main() -> int:
         except (FileNotFoundError, ValueError, json.JSONDecodeError) as exc:
             spec = ROLE_SPECS[role]
             rows.append({"image_id": role, "node_id": spec["node"], "role": spec["role"], "build_status": "BUILD_FAILED", "reason": str(exc), "source_type": "CODE_INSPECTION_AND_BUILD", "hardware_verified": False, "flash_executed": False})
-        commands.append(f'"{args.embuild}" -batch -rebuild -config Debug "{args.sandbox_root.resolve() / role / PROJECT}"')
+        commands.append(f'"{args.embuild}" -rebuild -echo -config Debug "{args.sandbox_root.resolve() / role / PROJECT}"')
     manifest = write_manifests(output_dir, rows, commands)
     print(json.dumps(manifest, ensure_ascii=False, indent=2))
     return 0 if manifest["status"] == "BUILD_PASS_UNVERIFIED_HW" else 1

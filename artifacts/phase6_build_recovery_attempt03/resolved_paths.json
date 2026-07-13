@@ -1,0 +1,20 @@
+{
+  "sdk_root": {
+    "path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline_attempt03",
+    "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline_attempt03",
+    "exists": true,
+    "is_symlink": false
+  },
+  "project": {
+    "path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline_attempt03\\API\\nRF52840-DK\\dw3000_api.emProject",
+    "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline_attempt03\\API\\nRF52840-DK\\dw3000_api.emProject",
+    "exists": true,
+    "is_symlink": false
+  },
+  "output_root": {
+    "path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline_attempt03\\API\\nRF52840-DK\\Output\\Debug",
+    "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline_attempt03\\API\\nRF52840-DK\\Output\\Debug",
+    "exists": false,
+    "is_symlink": false
+  }
+}

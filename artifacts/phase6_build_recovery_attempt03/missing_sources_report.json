@@ -1,0 +1,76 @@
+{
+  "removed_optional_references": [
+    {
+      "reference": "../Src/urop_2/custom_ds_twr_initiator.c",
+      "selection_macro": "CUSTOM_DS_TWR_INITIATOR"
+    },
+    {
+      "reference": "../Src/urop_2/custom_ds_twr_responder.c",
+      "selection_macro": "CUSTOM_DS_TWR_RESPONDER"
+    },
+    {
+      "reference": "../Src/custom_code/switching.c",
+      "selection_macro": "UNRESOLVED_NO_SELECTION_MACRO"
+    },
+    {
+      "reference": "../Src/custom_code/localization_ds_twr_initiatior.c",
+      "selection_macro": "LOCALIZATION_DS_TWR_INIT"
+    },
+    {
+      "reference": "../Src/custom_code/localization_ds_twr_responder.c",
+      "selection_macro": "LOCALIZATION_DS_TWR_RESP"
+    }
+  ],
+  "remaining_missing_references": [
+    {
+      "reference": "../Src/custom_code/AoA_rtls_tx.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline_attempt03\\API\\Src\\custom_code\\AoA_rtls_tx.c",
+      "state": "MISSING"
+    },
+    {
+      "reference": "../Src/custom_code/AoA_rtls_rx.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline_attempt03\\API\\Src\\custom_code\\AoA_rtls_rx.c",
+      "state": "MISSING"
+    },
+    {
+      "reference": "../Src/custom_code/AoA_rtls_tx_AI.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline_attempt03\\API\\Src\\custom_code\\AoA_rtls_tx_AI.c",
+      "state": "MISSING"
+    },
+    {
+      "reference": "../Src/custom_code/AoA_rtls_rx_AI.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline_attempt03\\API\\Src\\custom_code\\AoA_rtls_rx_AI.c",
+      "state": "MISSING"
+    },
+    {
+      "reference": "../Src/custom_code/UART_test.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline_attempt03\\API\\Src\\custom_code\\UART_test.c",
+      "state": "MISSING"
+    },
+    {
+      "reference": "../Src/custom_code/rx_diagnostics_cp.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline_attempt03\\API\\Src\\custom_code\\rx_diagnostics_cp.c",
+      "state": "MISSING"
+    },
+    {
+      "reference": "../Src/custom_code/AoA_rtls_tx_txt.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline_attempt03\\API\\Src\\custom_code\\AoA_rtls_tx_txt.c",
+      "state": "MISSING"
+    },
+    {
+      "reference": "../Src/custom_code/AoA_rtls_rx_txt.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline_attempt03\\API\\Src\\custom_code\\AoA_rtls_rx_txt.c",
+      "state": "MISSING"
+    },
+    {
+      "reference": "../Src/custom_code/AoA_rtls_rx_two.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline_attempt03\\API\\Src\\custom_code\\AoA_rtls_rx_two.c",
+      "state": "MISSING"
+    },
+    {
+      "reference": "../Src/custom_code/AoA_rtls_tx_two.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline_attempt03\\API\\Src\\custom_code\\AoA_rtls_tx_two.c",
+      "state": "MISSING"
+    }
+  ]
+}

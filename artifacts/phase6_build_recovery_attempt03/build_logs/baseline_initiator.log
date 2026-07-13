@@ -1,0 +1,355 @@
+3>Compiling 'SEGGER_RTT.c'
+3>C:/Program Files/SEGGER/SEGGER Embedded Studio 8.28/gcc/arm-none-eabi/bin/cc1.exe -fmessage-length=0 -fdiagnostics-color=never -fdiagnostics-show-caret -std=c11 -mcpu=cortex-m4 -mlittle-endian -mfloat-abi=hard -mabi=aapcs -mfpu=fpv4-sp-d16 -mthumb -munaligned-access -mtp=soft -mfp16-format=ieee -nostdinc -isystemC:/Program Files/SEGGER/SEGGER Embedded Studio 8.28/include -IC:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/config -IC:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/platform_nRF52840-DK -Isdk/components -Isdk/components/boards -Isdk/components/drivers_nrf/nrf_soc_nosd -Isdk/components/toolchain/cmsis/include -Isdk/components/libraries/balloc -Isdk/components/libraries/ringbuf -Isdk/components/libraries/log -Isdk/components/libraries/log/src -Isdk/components/libraries/memobj -Isdk/components/libraries/util -Isdk/components/libraries/atomic -Isdk/components/libraries/delay -Isdk/components/libraries/experimental_section_vars -Isdk/components/libraries/strerror -Isdk/components/libraries/fifo -Isdk/components/libraries/uart -Isdk/components/libraries/bsp -Isdk/components/libraries/button -Isdk/components/toolchain/cmsis/include -Isdk/modules/nrfx -Isdk/modules/nrfx/hal -Isdk/modules/nrfx/mdk -Isdk/modules/nrfx/drivers/include -Isdk/integration/nrfx -Isdk/integration/nrfx/legacy -Isdk/external/fprintf -I../Src -I../Src/examples/examples_info -I../Src/examples/shared_data -I../Src/decadriver -I../Src/MAC_802_15_4 -I../Src/MAC_802_15_8 -I../Src/Shared_jang -I../Src/urop_2 -D__ARM_ARCH_7EM__ -D__SES_ARM -D__ARM_ARCH_FPV4_SP_D16__ -D__HEAP_SIZE__=8192 -D__GNU_LINKER -D__SES_VERSION=82800 -DDEBUG -DBOARD_PCA10056  -DCONFIG_GPIO_AS_PINRESET -DFLOAT_ABI_HARD -DINITIALIZE_USER_SECTIONS -DNO_VTOR_CONFIG -DNRF52840_XXAA -DDEBUG -MD C:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Output/Debug/Obj/dw3000_api/SEGGER_RTT.d -MQ Output/Debug/Obj/dw3000_api/SEGGER_RTT.o -v -gdwarf-4 -g3 -gpubnames -O0 -fomit-frame-pointer -ffunction-sections -fdata-sections -fshort-enums -fno-common C:\Users\User\Documents\?????\research\uwb_followup\build_sandboxes\phase6_ses_recovery_baseline_attempt03\API\nRF52840-DK\SEGGER\SEGGER_RTT.c -o C:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Output/Debug/Obj/dw3000_api/SEGGER_RTT.asm
+4>Compiling 'SEGGER_RTT_Syscalls_SES.c'
+4>C:/Program Files/SEGGER/SEGGER Embedded Studio 8.28/gcc/arm-none-eabi/bin/cc1.exe -fmessage-length=0 -fdiagnostics-color=never -fdiagnostics-show-caret -std=c11 -mcpu=cortex-m4 -mlittle-endian -mfloat-abi=hard -mabi=aapcs -mfpu=fpv4-sp-d16 -mthumb -munaligned-access -mtp=soft -mfp16-format=ieee -nostdinc -isystemC:/Program Files/SEGGER/SEGGER Embedded Studio 8.28/include -IC:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/config -IC:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/platform_nRF52840-DK -Isdk/components -Isdk/components/boards -Isdk/components/drivers_nrf/nrf_soc_nosd -Isdk/components/toolchain/cmsis/include -Isdk/components/libraries/balloc -Isdk/components/libraries/ringbuf -Isdk/components/libraries/log -Isdk/components/libraries/log/src -Isdk/components/libraries/memobj -Isdk/components/libraries/util -Isdk/components/libraries/atomic -Isdk/components/libraries/delay -Isdk/components/libraries/experimental_section_vars -Isdk/components/libraries/strerror -Isdk/components/libraries/fifo -Isdk/components/libraries/uart -Isdk/components/libraries/bsp -Isdk/components/libraries/button -Isdk/components/toolchain/cmsis/include -Isdk/modules/nrfx -Isdk/modules/nrfx/hal -Isdk/modules/nrfx/mdk -Isdk/modules/nrfx/drivers/include -Isdk/integration/nrfx -Isdk/integration/nrfx/legacy -Isdk/external/fprintf -I../Src -I../Src/examples/examples_info -I../Src/examples/shared_data -I../Src/decadriver -I../Src/MAC_802_15_4 -I../Src/MAC_802_15_8 -I../Src/Shared_jang -I../Src/urop_2 -D__ARM_ARCH_7EM__ -D__SES_ARM -D__ARM_ARCH_FPV4_SP_D16__ -D__HEAP_SIZE__=8192 -D__GNU_LINKER -D__SES_VERSION=82800 -DDEBUG -DBOARD_PCA10056  -DCONFIG_GPIO_AS_PINRESET -DFLOAT_ABI_HARD -DINITIALIZE_USER_SECTIONS -DNO_VTOR_CONFIG -DNRF52840_XXAA -DDEBUG -MD C:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Output/Debug/Obj/dw3000_api/SEGGER_RTT_Syscalls_SES.d -MQ Output/Debug/Obj/dw3000_api/SEGGER_RTT_Syscalls_SES.o -v -gdwarf-4 -g3 -gpubnames -O0 -fomit-frame-pointer -ffunction-sections -fdata-sections -fshort-enums -fno-common C:\Users\User\Documents\?????\research\uwb_followup\build_sandboxes\phase6_ses_recovery_baseline_attempt03\API\nRF52840-DK\SEGGER\SEGGER_RTT_Syscalls_SES.c -o C:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Output/Debug/Obj/dw3000_api/SEGGER_RTT_Syscalls_SES.asm
+5>Compiling 'deca_mutex.c'
+5>C:/Program Files/SEGGER/SEGGER Embedded Studio 8.28/gcc/arm-none-eabi/bin/cc1.exe -fmessage-length=0 -fdiagnostics-color=never -fdiagnostics-show-caret -std=c11 -mcpu=cortex-m4 -mlittle-endian -mfloat-abi=hard -mabi=aapcs -mfpu=fpv4-sp-d16 -mthumb -munaligned-access -mtp=soft -mfp16-format=ieee -nostdinc -isystemC:/Program Files/SEGGER/SEGGER Embedded Studio 8.28/include -IC:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/config -IC:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/platform_nRF52840-DK -Isdk/components -Isdk/components/boards -Isdk/components/drivers_nrf/nrf_soc_nosd -Isdk/components/toolchain/cmsis/include -Isdk/components/libraries/balloc -Isdk/components/libraries/ringbuf -Isdk/components/libraries/log -Isdk/components/libraries/log/src -Isdk/components/libraries/memobj -Isdk/components/libraries/util -Isdk/components/libraries/atomic -Isdk/components/libraries/delay -Isdk/components/libraries/experimental_section_vars -Isdk/components/libraries/strerror -Isdk/components/libraries/fifo -Isdk/components/libraries/uart -Isdk/components/libraries/bsp -Isdk/components/libraries/button -Isdk/components/toolchain/cmsis/include -Isdk/modules/nrfx -Isdk/modules/nrfx/hal -Isdk/modules/nrfx/mdk -Isdk/modules/nrfx/drivers/include -Isdk/integration/nrfx -Isdk/integration/nrfx/legacy -Isdk/external/fprintf -I../Src -I../Src/examples/examples_info -I../Src/examples/shared_data -I../Src/decadriver -I../Src/MAC_802_15_4 -I../Src/MAC_802_15_8 -I../Src/Shared_jang -I../Src/urop_2 -I. -I..\platform_nRF52840-DK -D__ARM_ARCH_7EM__ -D__SES_ARM -D__ARM_ARCH_FPV4_SP_D16__ -D__HEAP_SIZE__=8192 -D__GNU_LINKER -D__SES_VERSION=82800 -DDEBUG -DBOARD_PCA10056  -DCONFIG_GPIO_AS_PINRESET -DFLOAT_ABI_HARD -DINITIALIZE_USER_SECTIONS -DNO_VTOR_CONFIG -DNRF52840_XXAA -DDEBUG -MD C:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Output/Debug/Obj/dw3000_api/deca_mutex.d -MQ Output/Debug/Obj/dw3000_api/deca_mutex.o -v -gdwarf-4 -g3 -gpubnames -O0 -fomit-frame-pointer -ffunction-sections -fdata-sections -fshort-enums -fno-common C:\Users\User\Documents\?????\research\uwb_followup\build_sandboxes\phase6_ses_recovery_baseline_attempt03\API\nRF52840-DK\Source\platform_nRF52840-DK\deca_mutex.c -o C:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Output/Debug/Obj/dw3000_api/deca_mutex.asm
+6>Compiling 'deca_sleep.c'
+6>C:/Program Files/SEGGER/SEGGER Embedded Studio 8.28/gcc/arm-none-eabi/bin/cc1.exe -fmessage-length=0 -fdiagnostics-color=never -fdiagnostics-show-caret -std=c11 -mcpu=cortex-m4 -mlittle-endian -mfloat-abi=hard -mabi=aapcs -mfpu=fpv4-sp-d16 -mthumb -munaligned-access -mtp=soft -mfp16-format=ieee -nostdinc -isystemC:/Program Files/SEGGER/SEGGER Embedded Studio 8.28/include -IC:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/config -IC:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/platform_nRF52840-DK -Isdk/components -Isdk/components/boards -Isdk/components/drivers_nrf/nrf_soc_nosd -Isdk/components/toolchain/cmsis/include -Isdk/components/libraries/balloc -Isdk/components/libraries/ringbuf -Isdk/components/libraries/log -Isdk/components/libraries/log/src -Isdk/components/libraries/memobj -Isdk/components/libraries/util -Isdk/components/libraries/atomic -Isdk/components/libraries/delay -Isdk/components/libraries/experimental_section_vars -Isdk/components/libraries/strerror -Isdk/components/libraries/fifo -Isdk/components/libraries/uart -Isdk/components/libraries/bsp -Isdk/components/libraries/button -Isdk/components/toolchain/cmsis/include -Isdk/modules/nrfx -Isdk/modules/nrfx/hal -Isdk/modules/nrfx/mdk -Isdk/modules/nrfx/drivers/include -Isdk/integration/nrfx -Isdk/integration/nrfx/legacy -Isdk/external/fprintf -I../Src -I../Src/examples/examples_info -I../Src/examples/shared_data -I../Src/decadriver -I../Src/MAC_802_15_4 -I../Src/MAC_802_15_8 -I../Src/Shared_jang -I../Src/urop_2 -I. -I..\platform_nRF52840-DK -D__ARM_ARCH_7EM__ -D__SES_ARM -D__ARM_ARCH_FPV4_SP_D16__ -D__HEAP_SIZE__=8192 -D__GNU_LINKER -D__SES_VERSION=82800 -DDEBUG -DBOARD_PCA10056  -DCONFIG_GPIO_AS_PINRESET -DFLOAT_ABI_HARD -DINITIALIZE_USER_SECTIONS -DNO_VTOR_CONFIG -DNRF52840_XXAA -DDEBUG -MD C:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Output/Debug/Obj/dw3000_api/deca_sleep.d -MQ Output/Debug/Obj/dw3000_api/deca_sleep.o -v -gdwarf-4 -g3 -gpubnames -O0 -fomit-frame-pointer -ffunction-sections -fdata-sections -fshort-enums -fno-common C:\Users\User\Documents\?????\research\uwb_followup\build_sandboxes\phase6_ses_recovery_baseline_attempt03\API\nRF52840-DK\Source\platform_nRF52840-DK\deca_sleep.c -o C:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Output/Debug/Obj/dw3000_api/deca_sleep.asm
+7>Compiling 'deca_spi.c'
+7>C:/Program Files/SEGGER/SEGGER Embedded Studio 8.28/gcc/arm-none-eabi/bin/cc1.exe -fmessage-length=0 -fdiagnostics-color=never -fdiagnostics-show-caret -std=c11 -mcpu=cortex-m4 -mlittle-endian -mfloat-abi=hard -mabi=aapcs -mfpu=fpv4-sp-d16 -mthumb -munaligned-access -mtp=soft -mfp16-format=ieee -nostdinc -isystemC:/Program Files/SEGGER/SEGGER Embedded Studio 8.28/include -IC:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/config -IC:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/platform_nRF52840-DK -Isdk/components -Isdk/components/boards -Isdk/components/drivers_nrf/nrf_soc_nosd -Isdk/components/toolchain/cmsis/include -Isdk/components/libraries/balloc -Isdk/components/libraries/ringbuf -Isdk/components/libraries/log -Isdk/components/libraries/log/src -Isdk/components/libraries/memobj -Isdk/components/libraries/util -Isdk/components/libraries/atomic -Isdk/components/libraries/delay -Isdk/components/libraries/experimental_section_vars -Isdk/components/libraries/strerror -Isdk/components/libraries/fifo -Isdk/components/libraries/uart -Isdk/components/libraries/bsp -Isdk/components/libraries/button -Isdk/components/toolchain/cmsis/include -Isdk/modules/nrfx -Isdk/modules/nrfx/hal -Isdk/modules/nrfx/mdk -Isdk/modules/nrfx/drivers/include -Isdk/integration/nrfx -Isdk/integration/nrfx/legacy -Isdk/external/fprintf -I../Src -I../Src/examples/examples_info -I../Src/examples/shared_data -I../Src/decadriver -I../Src/MAC_802_15_4 -I../Src/MAC_802_15_8 -I../Src/Shared_jang -I../Src/urop_2 -I. -I..\platform_nRF52840-DK -D__ARM_ARCH_7EM__ -D__SES_ARM -D__ARM_ARCH_FPV4_SP_D16__ -D__HEAP_SIZE__=8192 -D__GNU_LINKER -D__SES_VERSION=82800 -DDEBUG -DBOARD_PCA10056  -DCONFIG_GPIO_AS_PINRESET -DFLOAT_ABI_HARD -DINITIALIZE_USER_SECTIONS -DNO_VTOR_CONFIG -DNRF52840_XXAA -DDEBUG -MD C:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Output/Debug/Obj/dw3000_api/deca_spi.d -MQ Output/Debug/Obj/dw3000_api/deca_spi.o -v -gdwarf-4 -g3 -gpubnames -O0 -fomit-frame-pointer -ffunction-sections -fdata-sections -fshort-enums -fno-common C:\Users\User\Documents\?????\research\uwb_followup\build_sandboxes\phase6_ses_recovery_baseline_attempt03\API\nRF52840-DK\Source\platform_nRF52840-DK\deca_spi.c -o C:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Output/Debug/Obj/dw3000_api/deca_spi.asm
+8>Compiling 'port.c'
+8>C:/Program Files/SEGGER/SEGGER Embedded Studio 8.28/gcc/arm-none-eabi/bin/cc1.exe -fmessage-length=0 -fdiagnostics-color=never -fdiagnostics-show-caret -std=c11 -mcpu=cortex-m4 -mlittle-endian -mfloat-abi=hard -mabi=aapcs -mfpu=fpv4-sp-d16 -mthumb -munaligned-access -mtp=soft -mfp16-format=ieee -nostdinc -isystemC:/Program Files/SEGGER/SEGGER Embedded Studio 8.28/include -IC:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/config -IC:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/platform_nRF52840-DK -Isdk/components -Isdk/components/boards -Isdk/components/drivers_nrf/nrf_soc_nosd -Isdk/components/toolchain/cmsis/include -Isdk/components/libraries/balloc -Isdk/components/libraries/ringbuf -Isdk/components/libraries/log -Isdk/components/libraries/log/src -Isdk/components/libraries/memobj -Isdk/components/libraries/util -Isdk/components/libraries/atomic -Isdk/components/libraries/delay -Isdk/components/libraries/experimental_section_vars -Isdk/components/libraries/strerror -Isdk/components/libraries/fifo -Isdk/components/libraries/uart -Isdk/components/libraries/bsp -Isdk/components/libraries/button -Isdk/components/toolchain/cmsis/include -Isdk/modules/nrfx -Isdk/modules/nrfx/hal -Isdk/modules/nrfx/mdk -Isdk/modules/nrfx/drivers/include -Isdk/integration/nrfx -Isdk/integration/nrfx/legacy -Isdk/external/fprintf -I../Src -I../Src/examples/examples_info -I../Src/examples/shared_data -I../Src/decadriver -I../Src/MAC_802_15_4 -I../Src/MAC_802_15_8 -I../Src/Shared_jang -I../Src/urop_2 -I. -I..\platform_nRF52840-DK -D__ARM_ARCH_7EM__ -D__SES_ARM -D__ARM_ARCH_FPV4_SP_D16__ -D__HEAP_SIZE__=8192 -D__GNU_LINKER -D__SES_VERSION=82800 -DDEBUG -DBOARD_PCA10056  -DCONFIG_GPIO_AS_PINRESET -DFLOAT_ABI_HARD -DINITIALIZE_USER_SECTIONS -DNO_VTOR_CONFIG -DNRF52840_XXAA -DDEBUG -MD C:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Output/Debug/Obj/dw3000_api/port.d -MQ Output/Debug/Obj/dw3000_api/port.o -v -gdwarf-4 -g3 -gpubnames -O0 -fomit-frame-pointer -ffunction-sections -fdata-sections -fshort-enums -fno-common C:\Users\User\Documents\?????\research\uwb_followup\build_sandboxes\phase6_ses_recovery_baseline_attempt03\API\nRF52840-DK\Source\platform_nRF52840-DK\port.c -o C:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Output/Debug/Obj/dw3000_api/port.asm
+1>Compiling 'main.c'
+1>C:/Program Files/SEGGER/SEGGER Embedded Studio 8.28/gcc/arm-none-eabi/bin/cc1.exe -fmessage-length=0 -fdiagnostics-color=never -fdiagnostics-show-caret -std=c11 -mcpu=cortex-m4 -mlittle-endian -mfloat-abi=hard -mabi=aapcs -mfpu=fpv4-sp-d16 -mthumb -munaligned-access -mtp=soft -mfp16-format=ieee -nostdinc -isystemC:/Program Files/SEGGER/SEGGER Embedded Studio 8.28/include -IC:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/config -IC:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/platform_nRF52840-DK -Isdk/components -Isdk/components/boards -Isdk/components/drivers_nrf/nrf_soc_nosd -Isdk/components/toolchain/cmsis/include -Isdk/components/libraries/balloc -Isdk/components/libraries/ringbuf -Isdk/components/libraries/log -Isdk/components/libraries/log/src -Isdk/components/libraries/memobj -Isdk/components/libraries/util -Isdk/components/libraries/atomic -Isdk/components/libraries/delay -Isdk/components/libraries/experimental_section_vars -Isdk/components/libraries/strerror -Isdk/components/libraries/fifo -Isdk/components/libraries/uart -Isdk/components/libraries/bsp -Isdk/components/libraries/button -Isdk/components/toolchain/cmsis/include -Isdk/modules/nrfx -Isdk/modules/nrfx/hal -Isdk/modules/nrfx/mdk -Isdk/modules/nrfx/drivers/include -Isdk/integration/nrfx -Isdk/integration/nrfx/legacy -Isdk/external/fprintf -I../Src -I../Src/examples/examples_info -I../Src/examples/shared_data -I../Src/decadriver -I../Src/MAC_802_15_4 -I../Src/MAC_802_15_8 -I../Src/Shared_jang -I../Src/urop_2 -I. -I..\platform_nRF52840-DK -D__ARM_ARCH_7EM__ -D__SES_ARM -D__ARM_ARCH_FPV4_SP_D16__ -D__HEAP_SIZE__=8192 -D__GNU_LINKER -D__SES_VERSION=82800 -DDEBUG -DBOARD_PCA10056  -DCONFIG_GPIO_AS_PINRESET -DFLOAT_ABI_HARD -DINITIALIZE_USER_SECTIONS -DNO_VTOR_CONFIG -DNRF52840_XXAA -DDEBUG -MD C:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Output/Debug/Obj/dw3000_api/main.d -MQ Output/Debug/Obj/dw3000_api/main.o -v -gdwarf-4 -g3 -gpubnames -O0 -fomit-frame-pointer -ffunction-sections -fdata-sections -fshort-enums -fno-common C:\Users\User\Documents\?????\research\uwb_followup\build_sandboxes\phase6_ses_recovery_baseline_attempt03\API\nRF52840-DK\Source\main.c -o C:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Output/Debug/Obj/dw3000_api/main.asm
+2>Compiling 'shared_function_jang.c'
+2>C:/Program Files/SEGGER/SEGGER Embedded Studio 8.28/gcc/arm-none-eabi/bin/cc1.exe -fmessage-length=0 -fdiagnostics-color=never -fdiagnostics-show-caret -std=c11 -mcpu=cortex-m4 -mlittle-endian -mfloat-abi=hard -mabi=aapcs -mfpu=fpv4-sp-d16 -mthumb -munaligned-access -mtp=soft -mfp16-format=ieee -nostdinc -isystemC:/Program Files/SEGGER/SEGGER Embedded Studio 8.28/include -IC:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/config -IC:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/platform_nRF52840-DK -Isdk/components -Isdk/components/boards -Isdk/components/drivers_nrf/nrf_soc_nosd -Isdk/components/toolchain/cmsis/include -Isdk/components/libraries/balloc -Isdk/components/libraries/ringbuf -Isdk/components/libraries/log -Isdk/components/libraries/log/src -Isdk/components/libraries/memobj -Isdk/components/libraries/util -Isdk/components/libraries/atomic -Isdk/components/libraries/delay -Isdk/components/libraries/experimental_section_vars -Isdk/components/libraries/strerror -Isdk/components/libraries/fifo -Isdk/components/libraries/uart -Isdk/components/libraries/bsp -Isdk/components/libraries/button -Isdk/components/toolchain/cmsis/include -Isdk/modules/nrfx -Isdk/modules/nrfx/hal -Isdk/modules/nrfx/mdk -Isdk/modules/nrfx/drivers/include -Isdk/integration/nrfx -Isdk/integration/nrfx/legacy -Isdk/external/fprintf -I../Src -I../Src/examples/examples_info -I../Src/examples/shared_data -I../Src/decadriver -I../Src/MAC_802_15_4 -I../Src/MAC_802_15_8 -I../Src/Shared_jang -I../Src/urop_2 -I. -I..\platform_nRF52840-DK -D__ARM_ARCH_7EM__ -D__SES_ARM -D__ARM_ARCH_FPV4_SP_D16__ -D__HEAP_SIZE__=8192 -D__GNU_LINKER -D__SES_VERSION=82800 -DDEBUG -DBOARD_PCA10056  -DCONFIG_GPIO_AS_PINRESET -DFLOAT_ABI_HARD -DINITIALIZE_USER_SECTIONS -DNO_VTOR_CONFIG -DNRF52840_XXAA -DDEBUG -MD C:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Output/Debug/Obj/dw3000_api/shared_function_jang.d -MQ Output/Debug/Obj/dw3000_api/shared_function_jang.o -v -gdwarf-4 -g3 -gpubnames -O0 -fomit-frame-pointer -ffunction-sections -fdata-sections -fshort-enums -fno-common C:\Users\User\Documents\?????\research\uwb_followup\build_sandboxes\phase6_ses_recovery_baseline_attempt03\API\Src\Shared_jang\shared_function_jang.c -o C:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Output/Debug/Obj/dw3000_api/shared_function_jang.asm
+4>Error executing C:/Program Files/SEGGER/SEGGER Embedded Studio 8.28/gcc/arm-none-eabi/bin/cc1.exe -fmessage-length=0 -fdiagnostics-color=never -fdiagnostics-show-caret -std=c11 -mcpu=cortex-m4 -mlittle-endian -mfloat-abi=hard -mabi=aapcs -mfpu=fpv4-sp-d16 -mthumb -munaligned-access -mtp=soft -mfp16-format=ieee -nostdinc -isystemC:/Program Files/SEGGER/SEGGER Embedded Studio 8.28/include -IC:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/config -IC:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/platform_nRF52840-DK -Isdk/components -Isdk/components/boards -Isdk/components/drivers_nrf/nrf_soc_nosd -Isdk/components/toolchain/cmsis/include -Isdk/components/libraries/balloc -Isdk/components/libraries/ringbuf -Isdk/components/libraries/log -Isdk/components/libraries/log/src -Isdk/components/libraries/memobj -Isdk/components/libraries/util -Isdk/components/libraries/atomic -Isdk/components/libraries/delay -Isdk/components/libraries/experimental_section_vars -Isdk/components/libraries/strerror -Isdk/components/libraries/fifo -Isdk/components/libraries/uart -Isdk/components/libraries/bsp -Isdk/components/libraries/button -Isdk/components/toolchain/cmsis/include -Isdk/modules/nrfx -Isdk/modules/nrfx/hal -Isdk/modules/nrfx/mdk -Isdk/modules/nrfx/drivers/include -Isdk/integration/nrfx -Isdk/integration/nrfx/legacy -Isdk/external/fprintf -I../Src -I../Src/examples/examples_info -I../Src/examples/shared_data -I../Src/decadriver -I../Src/MAC_802_15_4 -I../Src/MAC_802_15_8 -I../Src/Shared_jang -I../Src/urop_2 -D__ARM_ARCH_7EM__ -D__SES_ARM -D__ARM_ARCH_FPV4_SP_D16__ -D__HEAP_SIZE__=8192 -D__GNU_LINKER -D__SES_VERSION=82800 -DDEBUG -DBOARD_PCA10056  -DCONFIG_GPIO_AS_PINRESET -DFLOAT_ABI_HARD -DINITIALIZE_USER_SECTIONS -DNO_VTOR_CONFIG -DNRF52840_XXAA -DDEBUG -MD C:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Output/Debug/Obj/dw3000_api/SEGGER_RTT_Syscalls_SES.d -MQ Output/Debug/Obj/dw3000_api/SEGGER_RTT_Syscalls_SES.o -v -gdwarf-4 -g3 -gpubnames -O0 -fomit-frame-pointer -ffunction-sections -fdata-sections -fshort-enums -fno-common C:\Users\User\Documents\?????\research\uwb_followup\build_sandboxes\phase6_ses_recovery_baseline_attempt03\API\nRF52840-DK\SEGGER\SEGGER_RTT_Syscalls_SES.c -o C:/Users/User/Documents/?????/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Output/Debug/Obj/dw3000_api/SEGGER_RTT_Syscalls_SES.asm
+5>ignoring duplicate directory "sdk/components/toolchain/cmsis/include"
+5>ignoring nonexistent directory "../Src/urop_2"
+5>ignoring nonexistent directory "..\platform_nRF52840-DK"
+5>#include "..." search starts here:
+5>#include <...> search starts here:
+5> C:/Users/User/Documents/학부연구생/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/config
+5> C:/Users/User/Documents/학부연구생/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/platform_nRF52840-DK
+5> sdk/components
+5> sdk/components/boards
+5> sdk/components/drivers_nrf/nrf_soc_nosd
+5> sdk/components/toolchain/cmsis/include
+5> sdk/components/libraries/balloc
+5> sdk/components/libraries/ringbuf
+5> sdk/components/libraries/log
+5> sdk/components/libraries/log/src
+5> sdk/components/libraries/memobj
+5> sdk/components/libraries/util
+5> sdk/components/libraries/atomic
+5> sdk/components/libraries/delay
+5> sdk/components/libraries/experimental_section_vars
+5> sdk/components/libraries/strerror
+5> sdk/components/libraries/fifo
+5> sdk/components/libraries/uart
+5> sdk/components/libraries/bsp
+5> sdk/components/libraries/button
+5> sdk/modules/nrfx
+5> sdk/modules/nrfx/hal
+5> sdk/modules/nrfx/mdk
+5> sdk/modules/nrfx/drivers/include
+5> sdk/integration/nrfx
+5> sdk/integration/nrfx/legacy
+5> sdk/external/fprintf
+5> ../Src
+5> ../Src/examples/examples_info
+5> ../Src/examples/shared_data
+5> ../Src/decadriver
+5> ../Src/MAC_802_15_4
+5> ../Src/MAC_802_15_8
+5> ../Src/Shared_jang
+5> .
+5> C:/Program Files/SEGGER/SEGGER Embedded Studio 8.28/include
+5>End of search list.
+4>ignoring duplicate directory "sdk/components/toolchain/cmsis/include"
+4>ignoring nonexistent directory "../Src/urop_2"
+4>#include "..." search starts here:
+4>#include <...> search starts here:
+4> C:/Users/User/Documents/학부연구생/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/config
+4> C:/Users/User/Documents/학부연구생/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/platform_nRF52840-DK
+4> sdk/components
+4> sdk/components/boards
+4> sdk/components/drivers_nrf/nrf_soc_nosd
+4> sdk/components/toolchain/cmsis/include
+4> sdk/components/libraries/balloc
+4> sdk/components/libraries/ringbuf
+4> sdk/components/libraries/log
+4> sdk/components/libraries/log/src
+4> sdk/components/libraries/memobj
+4> sdk/components/libraries/util
+4> sdk/components/libraries/atomic
+4> sdk/components/libraries/delay
+4> sdk/components/libraries/experimental_section_vars
+4> sdk/components/libraries/strerror
+4> sdk/components/libraries/fifo
+4> sdk/components/libraries/uart
+4> sdk/components/libraries/bsp
+4> sdk/components/libraries/button
+4> sdk/modules/nrfx
+4> sdk/modules/nrfx/hal
+4> sdk/modules/nrfx/mdk
+4> sdk/modules/nrfx/drivers/include
+4> sdk/integration/nrfx
+4> sdk/integration/nrfx/legacy
+4> sdk/external/fprintf
+4> ../Src
+4> ../Src/examples/examples_info
+4> ../Src/examples/shared_data
+4> ../Src/decadriver
+4> ../Src/MAC_802_15_4
+4> ../Src/MAC_802_15_8
+4> ../Src/Shared_jang
+4> C:/Program Files/SEGGER/SEGGER Embedded Studio 8.28/include
+4>End of search list.
+3>ignoring duplicate directory "sdk/components/toolchain/cmsis/include"
+3>ignoring nonexistent directory "../Src/urop_2"
+3>#include "..." search starts here:
+3>#include <...> search starts here:
+3> C:/Users/User/Documents/학부연구생/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/config
+3> C:/Users/User/Documents/학부연구생/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/platform_nRF52840-DK
+3> sdk/components
+3> sdk/components/boards
+3> sdk/components/drivers_nrf/nrf_soc_nosd
+3> sdk/components/toolchain/cmsis/include
+3> sdk/components/libraries/balloc
+3> sdk/components/libraries/ringbuf
+3> sdk/components/libraries/log
+3> sdk/components/libraries/log/src
+3> sdk/components/libraries/memobj
+3> sdk/components/libraries/util
+3> sdk/components/libraries/atomic
+3> sdk/components/libraries/delay
+3> sdk/components/libraries/experimental_section_vars
+3> sdk/components/libraries/strerror
+3> sdk/components/libraries/fifo
+3> sdk/components/libraries/uart
+3> sdk/components/libraries/bsp
+3> sdk/components/libraries/button
+3> sdk/modules/nrfx
+3> sdk/modules/nrfx/hal
+3> sdk/modules/nrfx/mdk
+3> sdk/modules/nrfx/drivers/include
+3> sdk/integration/nrfx
+3> sdk/integration/nrfx/legacy
+3> sdk/external/fprintf
+3> ../Src
+3> ../Src/examples/examples_info
+3> ../Src/examples/shared_data
+3> ../Src/decadriver
+3> ../Src/MAC_802_15_4
+3> ../Src/MAC_802_15_8
+3> ../Src/Shared_jang
+3> C:/Program Files/SEGGER/SEGGER Embedded Studio 8.28/include
+3>End of search list.
+6>ignoring duplicate directory "sdk/components/toolchain/cmsis/include"
+6>ignoring nonexistent directory "../Src/urop_2"
+6>ignoring nonexistent directory "..\platform_nRF52840-DK"
+6>#include "..." search starts here:
+6>#include <...> search starts here:
+6> C:/Users/User/Documents/학부연구생/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/config
+6> C:/Users/User/Documents/학부연구생/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/platform_nRF52840-DK
+6> sdk/components
+6> sdk/components/boards
+6> sdk/components/drivers_nrf/nrf_soc_nosd
+6> sdk/components/toolchain/cmsis/include
+6> sdk/components/libraries/balloc
+6> sdk/components/libraries/ringbuf
+6> sdk/components/libraries/log
+6> sdk/components/libraries/log/src
+6> sdk/components/libraries/memobj
+6> sdk/components/libraries/util
+6> sdk/components/libraries/atomic
+6> sdk/components/libraries/delay
+6> sdk/components/libraries/experimental_section_vars
+6> sdk/components/libraries/strerror
+6> sdk/components/libraries/fifo
+6> sdk/components/libraries/uart
+6> sdk/components/libraries/bsp
+6> sdk/components/libraries/button
+6> sdk/modules/nrfx
+6> sdk/modules/nrfx/hal
+6> sdk/modules/nrfx/mdk
+6> sdk/modules/nrfx/drivers/include
+6> sdk/integration/nrfx
+6> sdk/integration/nrfx/legacy
+6> sdk/external/fprintf
+6> ../Src
+6> ../Src/examples/examples_info
+6> ../Src/examples/shared_data
+6> ../Src/decadriver
+6> ../Src/MAC_802_15_4
+6> ../Src/MAC_802_15_8
+6> ../Src/Shared_jang
+6> .
+6> C:/Program Files/SEGGER/SEGGER Embedded Studio 8.28/include
+6>End of search list.
+4> __SEGGER_RTL_CLZ_U32_safe_inline __SEGGER_RTL_WR_PARTIAL_WORD_func __SEGGER_RTL_WR_WORD_func __SEGGER_RTL_RD_WORD_func __SEGGER_RTL_BYTE_PATTERN_func __SEGGER_RTL_FILL_HEAD_func __SEGGER_RTL_FILL_TAIL_func __SEGGER_RTL_ZBYTE_CHECK_func __SEGGER_RTL_DIFF_INDEX_func __SEGGER_RTL_DIFF_BYTE_func __SEGGER_RTL_ZBYTE_INDEX_func __SEGGER_RTL_atomic_is_lock_freeC:\Users\User\Documents\학부연구생\research\uwb_followup\build_sandboxes\phase6_ses_recovery_baseline_attempt03\API\nRF52840-DK\SEGGER\SEGGER_RTT_Syscalls_SES.c:58:10: fatal error: __vfprintf.h: No such file or directory
+4>   58 | #include "__vfprintf.h"
+4>      |          ^~~~~~~~~~~~~~
+4>compilation terminated.
+7>ignoring duplicate directory "sdk/components/toolchain/cmsis/include"
+7>ignoring nonexistent directory "../Src/urop_2"
+7>ignoring nonexistent directory "..\platform_nRF52840-DK"
+7>#include "..." search starts here:
+7>#include <...> search starts here:
+7> C:/Users/User/Documents/학부연구생/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/config
+7> C:/Users/User/Documents/학부연구생/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/platform_nRF52840-DK
+7> sdk/components
+7> sdk/components/boards
+7> sdk/components/drivers_nrf/nrf_soc_nosd
+7> sdk/components/toolchain/cmsis/include
+7> sdk/components/libraries/balloc
+7> sdk/components/libraries/ringbuf
+7> sdk/components/libraries/log
+7> sdk/components/libraries/log/src
+7> sdk/components/libraries/memobj
+7> sdk/components/libraries/util
+7> sdk/components/libraries/atomic
+7> sdk/components/libraries/delay
+7> sdk/components/libraries/experimental_section_vars
+7> sdk/components/libraries/strerror
+7> sdk/components/libraries/fifo
+7> sdk/components/libraries/uart
+7> sdk/components/libraries/bsp
+7> sdk/components/libraries/button
+7> sdk/modules/nrfx
+7> sdk/modules/nrfx/hal
+7> sdk/modules/nrfx/mdk
+7> sdk/modules/nrfx/drivers/include
+7> sdk/integration/nrfx
+7> sdk/integration/nrfx/legacy
+7> sdk/external/fprintf
+7> ../Src
+7> ../Src/examples/examples_info
+7> ../Src/examples/shared_data
+7> ../Src/decadriver
+7> ../Src/MAC_802_15_4
+7> ../Src/MAC_802_15_8
+7> ../Src/Shared_jang
+7> .
+7> C:/Program Files/SEGGER/SEGGER Embedded Studio 8.28/include
+7>End of search list.
+1>ignoring duplicate directory "sdk/components/toolchain/cmsis/include"
+1>ignoring nonexistent directory "../Src/urop_2"
+1>ignoring nonexistent directory "..\platform_nRF52840-DK"
+1>#include "..." search starts here:
+1>#include <...> search starts here:
+1> C:/Users/User/Documents/학부연구생/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/config
+1> C:/Users/User/Documents/학부연구생/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/platform_nRF52840-DK
+1> sdk/components
+1> sdk/components/boards
+1> sdk/components/drivers_nrf/nrf_soc_nosd
+1> sdk/components/toolchain/cmsis/include
+1> sdk/components/libraries/balloc
+1> sdk/components/libraries/ringbuf
+1> sdk/components/libraries/log
+1> sdk/components/libraries/log/src
+1> sdk/components/libraries/memobj
+1> sdk/components/libraries/util
+1> sdk/components/libraries/atomic
+1> sdk/components/libraries/delay
+1> sdk/components/libraries/experimental_section_vars
+1> sdk/components/libraries/strerror
+1> sdk/components/libraries/fifo
+1> sdk/components/libraries/uart
+1> sdk/components/libraries/bsp
+1> sdk/components/libraries/button
+1> sdk/modules/nrfx
+1> sdk/modules/nrfx/hal
+1> sdk/modules/nrfx/mdk
+1> sdk/modules/nrfx/drivers/include
+1> sdk/integration/nrfx
+1> sdk/integration/nrfx/legacy
+1> sdk/external/fprintf
+1> ../Src
+1> ../Src/examples/examples_info
+1> ../Src/examples/shared_data
+1> ../Src/decadriver
+1> ../Src/MAC_802_15_4
+1> ../Src/MAC_802_15_8
+1> ../Src/Shared_jang
+1> .
+1> C:/Program Files/SEGGER/SEGGER Embedded Studio 8.28/include
+1>End of search list.
+2>ignoring duplicate directory "sdk/components/toolchain/cmsis/include"
+2>ignoring nonexistent directory "../Src/urop_2"
+2>ignoring nonexistent directory "..\platform_nRF52840-DK"
+2>#include "..." search starts here:
+2>#include <...> search starts here:
+2> C:/Users/User/Documents/학부연구생/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/config
+2> C:/Users/User/Documents/학부연구생/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/platform_nRF52840-DK
+2> sdk/components
+2> sdk/components/boards
+2> sdk/components/drivers_nrf/nrf_soc_nosd
+2> sdk/components/toolchain/cmsis/include
+2> sdk/components/libraries/balloc
+2> sdk/components/libraries/ringbuf
+2> sdk/components/libraries/log
+2> sdk/components/libraries/log/src
+2> sdk/components/libraries/memobj
+2> sdk/components/libraries/util
+2> sdk/components/libraries/atomic
+2> sdk/components/libraries/delay
+2> sdk/components/libraries/experimental_section_vars
+2> sdk/components/libraries/strerror
+2> sdk/components/libraries/fifo
+2> sdk/components/libraries/uart
+2> sdk/components/libraries/bsp
+2> sdk/components/libraries/button
+2> sdk/modules/nrfx
+2> sdk/modules/nrfx/hal
+2> sdk/modules/nrfx/mdk
+2> sdk/modules/nrfx/drivers/include
+2> sdk/integration/nrfx
+2> sdk/integration/nrfx/legacy
+2> sdk/external/fprintf
+2> ../Src
+2> ../Src/examples/examples_info
+2> ../Src/examples/shared_data
+2> ../Src/decadriver
+2> ../Src/MAC_802_15_4
+2> ../Src/MAC_802_15_8
+2> ../Src/Shared_jang
+2> .
+2> C:/Program Files/SEGGER/SEGGER Embedded Studio 8.28/include
+2>End of search list.
+8>ignoring duplicate directory "sdk/components/toolchain/cmsis/include"
+8>ignoring nonexistent directory "../Src/urop_2"
+8>ignoring nonexistent directory "..\platform_nRF52840-DK"
+8>#include "..." search starts here:
+8>#include <...> search starts here:
+8> C:/Users/User/Documents/학부연구생/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/config
+8> C:/Users/User/Documents/학부연구생/research/uwb_followup/build_sandboxes/phase6_ses_recovery_baseline_attempt03/API/nRF52840-DK/Source/platform_nRF52840-DK
+8> sdk/components
+8> sdk/components/boards
+8> sdk/components/drivers_nrf/nrf_soc_nosd
+8> sdk/components/toolchain/cmsis/include
+8> sdk/components/libraries/balloc
+8> sdk/components/libraries/ringbuf
+8> sdk/components/libraries/log
+8> sdk/components/libraries/log/src
+8> sdk/components/libraries/memobj
+8> sdk/components/libraries/util
+8> sdk/components/libraries/atomic
+8> sdk/components/libraries/delay
+8> sdk/components/libraries/experimental_section_vars
+8> sdk/components/libraries/strerror
+8> sdk/components/libraries/fifo
+8> sdk/components/libraries/uart
+8> sdk/components/libraries/bsp
+8> sdk/components/libraries/button
+8> sdk/modules/nrfx
+8> sdk/modules/nrfx/hal
+8> sdk/modules/nrfx/mdk
+8> sdk/modules/nrfx/drivers/include
+8> sdk/integration/nrfx
+8> sdk/integration/nrfx/legacy
+8> sdk/external/fprintf
+8> ../Src
+8> ../Src/examples/examples_info
+8> ../Src/examples/shared_data
+8> ../Src/decadriver
+8> ../Src/MAC_802_15_4
+8> ../Src/MAC_802_15_8
+8> ../Src/Shared_jang
+8> .
+8> C:/Program Files/SEGGER/SEGGER Embedded Studio 8.28/include
+8>End of search list.
+4>Build failed, exit status 0x1
+There were 1 build errors

@@ -1,0 +1,92 @@
+{
+  "source_type": "CODE_INSPECTION_AND_BUILD",
+  "hardware_verified": false,
+  "flash_executed": false,
+  "status": "BASELINE_FRESH_BUILD_NOT_READY",
+  "sdk_commit": "3fdc9e93970bdad62549ab1fe48e33c5e8a13136",
+  "project": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline_attempt03\\API\\nRF52840-DK\\dw3000_api.emProject",
+  "target_device": "nRF52840_xxAA",
+  "configuration": "Debug",
+  "command": [
+    "C:\\Program Files\\SEGGER\\SEGGER Embedded Studio 8.28\\bin\\emBuild.exe",
+    "-rebuild",
+    "-echo",
+    "-verbose",
+    "-config",
+    "Debug",
+    "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline_attempt03\\API\\nRF52840-DK\\dw3000_api.emProject"
+  ],
+  "exit_code": 1,
+  "started_utc": "2026-07-13T06:15:05.494594+00:00",
+  "ended_utc": "2026-07-13T06:15:05.896482+00:00",
+  "output_before": [],
+  "output_after": [
+    {
+      "path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline_attempt03\\API\\nRF52840-DK\\Output\\Debug\\Obj\\dw3000_api\\deca_mutex.asm",
+      "size": 0,
+      "mtime_utc": "2026-07-13T06:15:05.692327+00:00",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline_attempt03\\API\\nRF52840-DK\\Output\\Debug\\Obj\\dw3000_api\\deca_sleep.asm",
+      "size": 0,
+      "mtime_utc": "2026-07-13T06:15:05.754930+00:00",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline_attempt03\\API\\nRF52840-DK\\Output\\Debug\\Obj\\dw3000_api\\deca_spi.asm",
+      "size": 0,
+      "mtime_utc": "2026-07-13T06:15:05.804813+00:00",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline_attempt03\\API\\nRF52840-DK\\Output\\Debug\\Obj\\dw3000_api\\main.asm",
+      "size": 0,
+      "mtime_utc": "2026-07-13T06:15:05.804813+00:00",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline_attempt03\\API\\nRF52840-DK\\Output\\Debug\\Obj\\dw3000_api\\port.asm",
+      "size": 0,
+      "mtime_utc": "2026-07-13T06:15:05.846869+00:00",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline_attempt03\\API\\nRF52840-DK\\Output\\Debug\\Obj\\dw3000_api\\shared_function_jang.asm",
+      "size": 0,
+      "mtime_utc": "2026-07-13T06:15:05.809811+00:00",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "stdout_bytes": 23630,
+  "stderr_bytes": 13664,
+  "build_log": "C:\\Users\\User\\Documents\\학부연구생\\UWB-Ranging-Phase-DS-TWR\\artifacts\\phase6_build_recovery_attempt03\\build_logs\\baseline_initiator.log",
+  "removed_optional_references": [
+    {
+      "reference": "../Src/urop_2/custom_ds_twr_initiator.c",
+      "selection_macro": "CUSTOM_DS_TWR_INITIATOR"
+    },
+    {
+      "reference": "../Src/urop_2/custom_ds_twr_responder.c",
+      "selection_macro": "CUSTOM_DS_TWR_RESPONDER"
+    },
+    {
+      "reference": "../Src/custom_code/switching.c",
+      "selection_macro": "UNRESOLVED_NO_SELECTION_MACRO"
+    },
+    {
+      "reference": "../Src/custom_code/localization_ds_twr_initiatior.c",
+      "selection_macro": "LOCALIZATION_DS_TWR_INIT"
+    },
+    {
+      "reference": "../Src/custom_code/localization_ds_twr_responder.c",
+      "selection_macro": "LOCALIZATION_DS_TWR_RESP"
+    }
+  ],
+  "errors": [
+    "missing required artifact .hex",
+    "missing required artifact .elf",
+    "emBuild exit code 1"
+  ],
+  "manifest_sha256": "8568ec43d4139e643326d703549565082630210631a8af0c1a6e3d12d483f508"
+}

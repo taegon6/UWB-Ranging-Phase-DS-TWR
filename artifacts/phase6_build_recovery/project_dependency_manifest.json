@@ -1,0 +1,634 @@
+{
+  "project": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\nRF52840-DK\\dw3000_api.emProject",
+  "sdk_root": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline",
+  "configurations": [
+    "Common",
+    "Debug",
+    "Release"
+  ],
+  "target_device": "nRF52840_xxAA",
+  "linker_script": "Setup/SEGGER_Flash.icf",
+  "linker_output_format": "hex",
+  "include_paths": [
+    ".",
+    "..\\\\platform_nRF52840-DK"
+  ],
+  "preprocessor_defines": [
+    "BOARD_PCA10056 ",
+    "CONFIG_GPIO_AS_PINRESET",
+    "FLOAT_ABI_HARD",
+    "INITIALIZE_USER_SECTIONS",
+    "NO_VTOR_CONFIG",
+    "NRF52840_XXAA",
+    "DEBUG"
+  ],
+  "files": [
+    {
+      "reference": "SEGGER/SEGGER_RTT.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\nRF52840-DK\\SEGGER\\SEGGER_RTT.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "SEGGER/SEGGER_RTT.h",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\nRF52840-DK\\SEGGER\\SEGGER_RTT.h",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "SEGGER/SEGGER_RTT_Conf.h",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\nRF52840-DK\\SEGGER\\SEGGER_RTT_Conf.h",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "SEGGER/SEGGER_RTT_Syscalls_SES.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\nRF52840-DK\\SEGGER\\SEGGER_RTT_Syscalls_SES.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "Setup/SEGGER_Flash.icf",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\nRF52840-DK\\Setup\\SEGGER_Flash.icf",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "Source/platform_nRF52840-DK/deca_mutex.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\nRF52840-DK\\Source\\platform_nRF52840-DK\\deca_mutex.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "Source/platform_nRF52840-DK/deca_sleep.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\nRF52840-DK\\Source\\platform_nRF52840-DK\\deca_sleep.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "Source/platform_nRF52840-DK/deca_spi.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\nRF52840-DK\\Source\\platform_nRF52840-DK\\deca_spi.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "Source/platform_nRF52840-DK/deca_spi.h",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\nRF52840-DK\\Source\\platform_nRF52840-DK\\deca_spi.h",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "Source/platform_nRF52840-DK/port.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\nRF52840-DK\\Source\\platform_nRF52840-DK\\port.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "Source/platform_nRF52840-DK/port.h",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\nRF52840-DK\\Source\\platform_nRF52840-DK\\port.h",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "Source/main.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\nRF52840-DK\\Source\\main.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/Shared_jang/shared_function_jang.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\Shared_jang\\shared_function_jang.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/Shared_jang/shared_function_jang.h",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\Shared_jang\\shared_function_jang.h",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/decadriver/deca_device.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\decadriver\\deca_device.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/custom_code/AoA_rtls_tx.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\custom_code\\AoA_rtls_tx.c",
+      "state": "MISSING"
+    },
+    {
+      "reference": "../Src/custom_code/AoA_rtls_rx.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\custom_code\\AoA_rtls_rx.c",
+      "state": "MISSING"
+    },
+    {
+      "reference": "../Src/custom_code/AoA_rtls_tx_AI.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\custom_code\\AoA_rtls_tx_AI.c",
+      "state": "MISSING"
+    },
+    {
+      "reference": "../Src/custom_code/AoA_rtls_rx_AI.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\custom_code\\AoA_rtls_rx_AI.c",
+      "state": "MISSING"
+    },
+    {
+      "reference": "../Src/custom_code/UART_test.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\custom_code\\UART_test.c",
+      "state": "MISSING"
+    },
+    {
+      "reference": "../Src/custom_code/rx_diagnostics_cp.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\custom_code\\rx_diagnostics_cp.c",
+      "state": "MISSING"
+    },
+    {
+      "reference": "../Src/custom_code/AoA_rtls_tx_txt.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\custom_code\\AoA_rtls_tx_txt.c",
+      "state": "MISSING"
+    },
+    {
+      "reference": "../Src/custom_code/AoA_rtls_rx_txt.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\custom_code\\AoA_rtls_rx_txt.c",
+      "state": "MISSING"
+    },
+    {
+      "reference": "../Src/custom_code/AoA_rtls_rx_two.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\custom_code\\AoA_rtls_rx_two.c",
+      "state": "MISSING"
+    },
+    {
+      "reference": "../Src/custom_code/AoA_rtls_tx_two.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\custom_code\\AoA_rtls_tx_two.c",
+      "state": "MISSING"
+    },
+    {
+      "reference": "../Src/custom_code/ds_twr_initiator_final.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\custom_code\\ds_twr_initiator_final.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/custom_code/ds_twr_responder_final.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\custom_code\\ds_twr_responder_final.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/custom_code/ds_twr_responder_origin.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\custom_code\\ds_twr_responder_origin.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/custom_code/ds_twr_responder_packet_simulation.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\custom_code\\ds_twr_responder_packet_simulation.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/custom_code/ds_twr_initiator_packet_simulation.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\custom_code\\ds_twr_initiator_packet_simulation.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/custom_code/ds_twr_initiator_origin.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\custom_code\\ds_twr_initiator_origin.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_00a_reading_dev_id/read_dev_id.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_00a_reading_dev_id\\read_dev_id.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_01a_simple_tx/simple_tx.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_01a_simple_tx\\simple_tx.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_01a_simple_tx/simple_tx_cp.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_01a_simple_tx\\simple_tx_cp.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_02a_simple_rx/simple_rx.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_02a_simple_rx\\simple_rx.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_02a_simple_rx/simple_rx_cp.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_02a_simple_rx\\simple_rx_cp.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_06a_ss_twr_initiator/ss_twr_initiator.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_06a_ss_twr_initiator\\ss_twr_initiator.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_06a_ss_twr_initiator/ss_twr_initiator_sts.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_06a_ss_twr_initiator\\ss_twr_initiator_sts.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_06a_ss_twr_initiator/ss_twr_initiator_sts_no_data.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_06a_ss_twr_initiator\\ss_twr_initiator_sts_no_data.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_06b_ss_twr_responder/ss_twr_responder.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_06b_ss_twr_responder\\ss_twr_responder.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_06b_ss_twr_responder/ss_twr_responder_sts.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_06b_ss_twr_responder\\ss_twr_responder_sts.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_06b_ss_twr_responder/ss_twr_responder_sts_no_data.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_06b_ss_twr_responder\\ss_twr_responder_sts_no_data.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/examples_info/example_info.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\examples_info\\example_info.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/shared_data/shared_functions.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\shared_data\\shared_functions.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_01h_simple_tx_pdoa/simple_tx_pdoa.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_01h_simple_tx_pdoa\\simple_tx_pdoa.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_02h_simple_rx_pdoa/simple_rx_pdoa.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_02h_simple_rx_pdoa\\simple_rx_pdoa.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_04a_cont_wave/continuous_wave.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_04a_cont_wave\\continuous_wave.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_04b_cont_frame/continuous_frame.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_04b_cont_frame\\continuous_frame.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_07a_ack_data_tx/ack_data_tx.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_07a_ack_data_tx\\ack_data_tx.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_07b_ack_data_rx/ack_data_rx.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_07b_ack_data_rx\\ack_data_rx.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_13a_gpio/gpio_example.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_13a_gpio\\gpio_example.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_01d_tx_timed_sleep/tx_timed_sleep.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_01d_tx_timed_sleep\\tx_timed_sleep.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_03d_tx_wait_resp_interrupts/tx_wait_resp_int.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_03d_tx_wait_resp_interrupts\\tx_wait_resp_int.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_03a_tx_wait_resp/tx_wait_resp.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_03a_tx_wait_resp\\tx_wait_resp.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_03b_rx_send_resp/rx_send_resp.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_03b_rx_send_resp\\rx_send_resp.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_01b_tx_sleep/tx_sleep.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_01b_tx_sleep\\tx_sleep.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_01b_tx_sleep/tx_sleep_idleRC.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_01b_tx_sleep\\tx_sleep_idleRC.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_01c_tx_sleep_auto/tx_sleep_auto.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_01c_tx_sleep_auto\\tx_sleep_auto.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_01e_tx_with_cca/tx_with_cca.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_01e_tx_with_cca\\tx_with_cca.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_01g_simple_tx_sts_sdc/simple_tx_sts_sdc.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_01g_simple_tx_sts_sdc\\simple_tx_sts_sdc.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_01i_simple_tx_aes/simple_tx_aes.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_01i_simple_tx_aes\\simple_tx_aes.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_02c_rx_diagnostics/rx_diagnostics.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_02c_rx_diagnostics\\rx_diagnostics.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_02d_rx_sniff/rx_sniff.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_02d_rx_sniff\\rx_sniff.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_02f_rx_with_crystal_trim/rx_with_xtal_trim.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_02f_rx_with_crystal_trim\\rx_with_xtal_trim.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_02g_simple_rx_sts_sdc/simple_rx_sts_sdc.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_02g_simple_rx_sts_sdc\\simple_rx_sts_sdc.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_02i_simple_rx_aes/simple_rx_aes.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_02i_simple_rx_aes\\simple_rx_aes.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_05a_ds_twr_init/ds_twr_initiator.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_05a_ds_twr_init\\ds_twr_initiator.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_05a_ds_twr_init/ds_twr_initiator_cp.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_05a_ds_twr_init\\ds_twr_initiator_cp.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_05a_ds_twr_init/ds_twr_initiator_sts.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_05a_ds_twr_init\\ds_twr_initiator_sts.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_05b_ds_twr_resp/ds_twr_responder.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_05b_ds_twr_resp\\ds_twr_responder.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_05b_ds_twr_resp/ds_twr_responder_cp.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_05b_ds_twr_resp\\ds_twr_responder_cp.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_05b_ds_twr_resp/ds_twr_responder_sts.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_05b_ds_twr_resp\\ds_twr_responder_sts.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_05c_ds_twr_init_sts_sdc/ds_twr_sts_sdc_initiator.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_05c_ds_twr_init_sts_sdc\\ds_twr_sts_sdc_initiator.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_05d_ds_twr_resp_sts_sdc/ds_twr_sts_sdc_responder.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_05d_ds_twr_resp_sts_sdc\\ds_twr_sts_sdc_responder.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_06e_AES_ss_twr_initiator/ss_aes_twr_initiator.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_06e_AES_ss_twr_initiator\\ss_aes_twr_initiator.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_06f_AES_ss_twr_responder/ss_aes_twr_responder.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_06f_AES_ss_twr_responder\\ss_aes_twr_responder.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_07c_ack_data_rx_dbl_buff/ack_data_rx_dbl_buff.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_07c_ack_data_rx_dbl_buff\\ack_data_rx_dbl_buff.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_11a_spi_crc/spi_crc.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_11a_spi_crc\\spi_crc.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_14_otp_write/otp_write.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_14_otp_write\\otp_write.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_15_le_pend/le_pend_rx.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_15_le_pend\\le_pend_rx.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/examples/ex_15_le_pend/le_pend_tx.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\examples\\ex_15_le_pend\\le_pend_tx.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/MAC_802_15_4/mac_802_15_4.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\MAC_802_15_4\\mac_802_15_4.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/MAC_802_15_8/mac_802_15_8.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\MAC_802_15_8\\mac_802_15_8.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "../Src/config_options.c",
+      "resolved_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_ses_recovery_baseline\\API\\Src\\config_options.c",
+      "state": "PRESENT"
+    },
+    {
+      "reference": "$(NordicSDKDir)/components/libraries/util/app_error_handler_gcc.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/components/libraries/util/app_error_weak.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/components/libraries/log/src/nrf_log_frontend.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/components/libraries/strerror/nrf_strerror.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/components/libraries/util/app_error.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/components/libraries/atomic/nrf_atomic.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/components/libraries/util/app_util_platform.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/components/libraries/memobj/nrf_memobj.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/components/libraries/balloc/nrf_balloc.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/components/libraries/util/nrf_assert.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/external/fprintf/nrf_fprintf.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/external/fprintf/nrf_fprintf_format.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/components/libraries/ringbuf/nrf_ringbuf.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/components/libraries/uart/retarget.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/components/libraries/uart/app_uart_fifo.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/components/libraries/fifo/app_fifo.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/modules/nrfx/mdk/system_nrf52840.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/components/boards/boards.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/modules/nrfx/drivers/src/nrfx_spi.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/integration/nrfx/legacy/nrf_drv_spi.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/modules/nrfx/drivers/src/prs/nrfx_prs.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/modules/nrfx/drivers/src/nrfx_spim.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/modules/nrfx/drivers/src/nrfx_gpiote.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/integration/nrfx/legacy/nrf_drv_clock.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/modules/nrfx/drivers/src/nrfx_clock.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/integration/nrfx/legacy/nrf_drv_uart.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/modules/nrfx/soc/nrfx_atomic.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/modules/nrfx/drivers/src/nrfx_uart.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/modules/nrfx/drivers/src/nrfx_uarte.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/components/libraries/log/src/nrf_log_backend_rtt.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/components/libraries/log/src/nrf_log_backend_serial.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/components/libraries/log/src/nrf_log_backend_uart.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/components/libraries/log/src/nrf_log_default_backends.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/components/libraries/log/src/nrf_log_str_formatter.c",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(StudioDir)/source/thumb_crt0.s",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/modules/nrfx/mdk/ses_startup_nrf52840.s",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    },
+    {
+      "reference": "$(NordicSDKDir)/modules/nrfx/mdk/ses_startup_nrf_common.s",
+      "resolved_path": null,
+      "state": "MACRO_RESOLVED_BY_SES"
+    }
+  ],
+  "pre_build_command": null,
+  "post_build_command": null
+}

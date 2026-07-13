@@ -32,6 +32,10 @@ def test_selector_emits_exactly_one_phase6_role_set(
             for name in (
                 "DS_TWR_INITIATOR_FINAL",
                 "DS_TWR_RESPONDER_FINAL",
+                "LOCALIZATION_DS_TWR_INIT",
+                "LOCALIZATION_DS_TWR_RESP",
+                "CUSTOM_DS_TWR_INITIATOR",
+                "CUSTOM_DS_TWR_RESPONDER",
                 "DS_TWR_2A2T_TAG",
                 "DS_TWR_2A2T_ANCHOR",
                 "UWB_NODE_A1",
@@ -61,6 +65,7 @@ def test_selector_emits_exactly_one_phase6_role_set(
     assert set(expected).issubset(active)
     assert "DS_TWR_INITIATOR_FINAL" not in active
     assert "DS_TWR_RESPONDER_FINAL" not in active
+    assert not {"LOCALIZATION_DS_TWR_INIT", "LOCALIZATION_DS_TWR_RESP", "CUSTOM_DS_TWR_INITIATOR", "CUSTOM_DS_TWR_RESPONDER"} & active
 
 
 def test_execute_build_requires_empty_output_and_role_marker(tmp_path: Path) -> None:
