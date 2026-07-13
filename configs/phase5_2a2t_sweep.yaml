@@ -1,0 +1,64 @@
+schema_version: 1
+config_kind: phase5_2a2t_sweep
+source_type: SYNTHETIC
+hardware_verified: false
+model_role: CURRENT_FIRMWARE_INDEPENDENT_PHY
+slot_order: [A1-T1, A2-T1, A1-T2, A2-T2]
+sequence: [Poll, Response, Final, PostFinal, Report]
+
+smoke_candidate: &smoke
+  scenario: PAPER_BASELINE
+  preamble_symbols: 128
+  reply1_processing_us: "522"
+  reply1_guard_us: "100"
+  reply2_processing_us: "522"
+  reply2_guard_us: "100"
+  final_postfinal_delay_uus: "1650"
+  report_processing_us: "522"
+  report_guard_us: "100"
+  timeout_margin_us: "200"
+  inter_slot_guard_us: "100"
+  superframe_guard_us: "100"
+  cir_phase_processing: false
+  uart_record_octets: 96
+  uart_sustainable_bps: 921600
+
+scenarios:
+  PAPER_BASELINE:
+    report_processing_us: ["522"]
+    evidence_class: PAPER
+    source: jkiees-36-3-274 Figure 4 p.279
+    rationale: sensitivity baseline only; not current firmware measurement
+  CODE_BASELINE:
+    report_processing_us: ["2000"]
+    evidence_class: ASSUMED_CODE_PROXY
+    source: firmware code inspection (Sleep(2) plus immediate TX path)
+    rationale: code proxy; PostFinal-to-Report Rmarker duration is unresolved
+  SENSITIVITY:
+    report_processing_us: ["800", "1500", "3000"]
+    evidence_class: ASSUMED
+    source: Phase 5 sensitivity design
+    rationale: brackets unmeasured CIR/phase/report processing
+
+coarse_sweep:
+  preamble_symbols: [128, 1024]
+  reply1_processing_us: ["522"]
+  reply1_guard_us: ["0", "200"]
+  reply2_processing_us: ["522"]
+  reply2_guard_us: ["0", "200"]
+  final_postfinal_delay_uus: ["1650"]
+  report_guard_us: ["0", "200"]
+  timeout_margin_us: ["100", "300"]
+  inter_slot_guard_us: ["0", "200"]
+  superframe_guard_us: ["0", "200"]
+  cir_phase_processing: [false, true]
+  uart_profiles:
+    - {name: compact, record_octets: 64, sustainable_bps: 921600}
+    - {name: verbose, record_octets: 256, sustainable_bps: 921600}
+
+provenance:
+  remote_reply_processing: {evidence_class: PAPER, source: jkiees-36-3-274, rationale: sensitivity reference for remote reply only, hardware_verified: false}
+  final_postfinal_delay: {evidence_class: CODE_BASELINE, source: ds_twr_initiator_final.c FINAL_TX_TO_POST_FINAL_TX_DLY_UUS, rationale: repository delayed-TX constant, hardware_verified: false}
+  timeout_guard_sweep: {evidence_class: ASSUMED, source: Phase 5 sweep design, rationale: conservative synthetic bounds pending HIL, hardware_verified: false}
+  uart_profiles: {evidence_class: ASSUMED, source: Phase 5 logging scenarios, rationale: payload and sustainable throughput are not measured, hardware_verified: false}
+

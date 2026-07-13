@@ -101,6 +101,21 @@ CSV. Real logs, plots, and CSV outputs stay ignored by git.
 
 ## Notes
 
+## Phase 5 synthetic 2A2T timing simulation
+
+Run the independent-DW3000-PHY, five-packet, four-link sequential sweep and
+export conditional Phase 6 HIL candidate manifests with one command:
+
+```powershell
+python tools\run_phase5_simulation.py
+```
+
+The run creates a new dated directory under `results/` and never overwrites an
+existing run. See `docs/2A2T_PHASE5_SIMULATION_RESULTS_KO.md` and
+`docs/2A2T_PHASE6_HARDWARE_EXPERIMENT_PLAN_KO.md`. All outputs are synthetic
+(`hardware_verified=false`); the command does not patch firmware or access
+boards.
+
 - Real experiment logs are intentionally not committed.
 - A pre-existing project note says the responder overlay's `RNG_DELAY_MS = 5`
   changed a past local two-anchor UART observation from about 18 Hz to about

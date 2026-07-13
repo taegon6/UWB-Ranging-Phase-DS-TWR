@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Phase 6 predicted versus measured comparison",
+  "type": "object",
+  "required": ["candidate_id", "source_type", "hardware_verified", "predicted", "measured_runs"],
+  "properties": {
+    "candidate_id": {"type": "string", "minLength": 1},
+    "source_type": {"enum": ["MEASURED", "MIXED"]},
+    "hardware_verified": {"type": "boolean"},
+    "predicted": {"type": "object", "required": ["superframe_period_us", "complete_superframe_rate_hz", "link_update_rate_hz"], "additionalProperties": {"type": "number"}},
+    "measured_runs": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["run_id", "superframe_period_us", "complete_superframe_rate_hz", "link_update_rate_hz", "timeout_count", "late_tx_count", "uart_drop_count"], "properties": {"run_id":{"type":"string"},"superframe_period_us":{"type":"number"},"complete_superframe_rate_hz":{"type":"number"},"link_update_rate_hz":{"type":"number"},"timeout_count":{"type":"integer","minimum":0},"late_tx_count":{"type":"integer","minimum":0},"uart_drop_count":{"type":"integer","minimum":0}},"additionalProperties":false}}
+  },
+  "additionalProperties": false
+}
+
