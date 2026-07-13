@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "source_type": "CODE_INSPECTION_AND_BUILD",
+  "hardware_verified": false,
+  "flash_executed": false,
+  "execution_allowed": false,
+  "status": "FLASH_PLAN_BLOCKED_BUILD_FAILURE",
+  "operations": [
+    {
+      "node": "A1",
+      "image_id": "anchor_a1",
+      "image_sha256": null,
+      "hex_path": null,
+      "jlink_serial": "UNRESOLVED",
+      "device": "nRF52840_xxAA",
+      "interface": "SWD",
+      "speed_khz": 4000,
+      "verify_required": true,
+      "reset_policy": "reset_after_verify_only",
+      "execution_allowed": false,
+      "command": "# UNRESOLVED inventory: no executable J-Link command"
+    },
+    {
+      "node": "A2",
+      "image_id": "anchor_a2",
+      "image_sha256": null,
+      "hex_path": null,
+      "jlink_serial": "UNRESOLVED",
+      "device": "nRF52840_xxAA",
+      "interface": "SWD",
+      "speed_khz": 4000,
+      "verify_required": true,
+      "reset_policy": "reset_after_verify_only",
+      "execution_allowed": false,
+      "command": "# UNRESOLVED inventory: no executable J-Link command"
+    },
+    {
+      "node": "T2",
+      "image_id": "tag_t2",
+      "image_sha256": null,
+      "hex_path": null,
+      "jlink_serial": "UNRESOLVED",
+      "device": "nRF52840_xxAA",
+      "interface": "SWD",
+      "speed_khz": 4000,
+      "verify_required": true,
+      "reset_policy": "reset_after_verify_only",
+      "execution_allowed": false,
+      "command": "# UNRESOLVED inventory: no executable J-Link command"
+    },
+    {
+      "node": "T1",
+      "image_id": "tag_t1",
+      "image_sha256": null,
+      "hex_path": null,
+      "jlink_serial": "UNRESOLVED",
+      "device": "nRF52840_xxAA",
+      "interface": "SWD",
+      "speed_khz": 4000,
+      "verify_required": true,
+      "reset_policy": "reset_after_verify_only",
+      "execution_allowed": false,
+      "command": "# UNRESOLVED inventory: no executable J-Link command"
+    }
+  ],
+  "reset_order": [
+    "A1",
+    "A2",
+    "T2",
+    "T1"
+  ],
+  "failure_policy": "stop_on_first_failure",
+  "plan_sha256": "637ff5501ea80f2da5ad4aa2a971062b4ad7e28a849f7d285bcbb88890d27140"
+}

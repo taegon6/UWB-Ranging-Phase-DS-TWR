@@ -1,0 +1,4 @@
+# UNRESOLVED inventory: no executable J-Link command
+# UNRESOLVED inventory: no executable J-Link command
+# UNRESOLVED inventory: no executable J-Link command
+# UNRESOLVED inventory: no executable J-Link command

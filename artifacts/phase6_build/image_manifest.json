@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "source_type": "CODE_INSPECTION_AND_BUILD",
+  "hardware_verified": false,
+  "flash_executed": false,
+  "matrix": [
+    {
+      "image_id": "anchor_a1",
+      "node_id": "A1",
+      "role": "ANCHOR",
+      "build_status": "BUILD_FAILED",
+      "reason": "stale SDK output detected before build; sandbox artifact rejected",
+      "build_log": "C:\\Users\\User\\Documents\\학부연구생\\UWB-Ranging-Phase-DS-TWR\\artifacts\\phase6_build\\build_logs\\anchor_a1.log",
+      "source_type": "CODE_INSPECTION_AND_BUILD",
+      "hardware_verified": false,
+      "flash_executed": false
+    },
+    {
+      "image_id": "anchor_a2",
+      "node_id": "A2",
+      "role": "ANCHOR",
+      "build_status": "BUILD_FAILED",
+      "reason": "stale SDK output detected before build; sandbox artifact rejected",
+      "build_log": "C:\\Users\\User\\Documents\\학부연구생\\UWB-Ranging-Phase-DS-TWR\\artifacts\\phase6_build\\build_logs\\anchor_a2.log",
+      "source_type": "CODE_INSPECTION_AND_BUILD",
+      "hardware_verified": false,
+      "flash_executed": false
+    },
+    {
+      "image_id": "tag_t1",
+      "node_id": "T1",
+      "role": "TAG_COORDINATOR",
+      "build_status": "BUILD_FAILED",
+      "reason": "stale SDK output detected before build; sandbox artifact rejected",
+      "build_log": "C:\\Users\\User\\Documents\\학부연구생\\UWB-Ranging-Phase-DS-TWR\\artifacts\\phase6_build\\build_logs\\tag_t1.log",
+      "source_type": "CODE_INSPECTION_AND_BUILD",
+      "hardware_verified": false,
+      "flash_executed": false
+    },
+    {
+      "image_id": "tag_t2",
+      "node_id": "T2",
+      "role": "TAG_FOLLOWER",
+      "build_status": "BUILD_FAILED",
+      "reason": "stale SDK output detected before build; sandbox artifact rejected",
+      "build_log": "C:\\Users\\User\\Documents\\학부연구생\\UWB-Ranging-Phase-DS-TWR\\artifacts\\phase6_build\\build_logs\\tag_t2.log",
+      "source_type": "CODE_INSPECTION_AND_BUILD",
+      "hardware_verified": false,
+      "flash_executed": false
+    }
+  ],
+  "manifest_sha256": "e1b5ab57f663cf60ffc49aed577365396a03dbdbb13a4689d5bd7c22972e0776"
+}

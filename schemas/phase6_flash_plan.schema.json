@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["operations", "reset_order", "execution_allowed", "source_type", "hardware_verified", "flash_executed", "plan_sha256"],
+  "properties": {
+    "operations": {"type": "array", "minItems": 4, "maxItems": 4},
+    "reset_order": {"const": ["A1", "A2", "T2", "T1"]},
+    "execution_allowed": {"const": false},
+    "source_type": {"const": "CODE_INSPECTION_AND_BUILD"},
+    "hardware_verified": {"const": false},
+    "flash_executed": {"const": false},
+    "plan_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

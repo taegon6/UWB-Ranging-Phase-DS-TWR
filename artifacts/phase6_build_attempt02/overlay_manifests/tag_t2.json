@@ -1,0 +1,52 @@
+{
+  "source_type": "CODE_INSPECTION_AND_BUILD",
+  "hardware_verified": false,
+  "flash_executed": false,
+  "role": "tag_t2",
+  "node_id": "T2",
+  "role_name": "TAG_FOLLOWER",
+  "selection": "ds-2a2t-tag-t2",
+  "sdk_root": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_2a2t_3fdc9e9_attempt02\\tag_t2",
+  "sdk_commit": "3fdc9e93970bdad62549ab1fe48e33c5e8a13136",
+  "source_commit": "590ec11f75c681e9cffe54adc4a0db8ddacea697",
+  "overlay_sha256": "bdd6d2436def38b32d8e0a7171b2c2b0d58340c909e866f6f43a3c3497b6ba41",
+  "overlay_files": {
+    "ds_twr_2a2t_tag.c": "48df7c1f089cc22dfb482a936414ffd298d6d7b0e6c2d6cd2ae4f9b8e6048e8d",
+    "ds_twr_2a2t_anchor.c": "0344bf128d91902997d33701abb472e6d2ec355af3bd287e51aaace618c547d5",
+    "uwb_2a2t_config.h": "7bbedbc49d638f63b59ff6c249f12222525244dcaac8ac0f228f1c019266ce42",
+    "uwb_2a2t_build_identity.h": "e3e3b0719528fd91aff7cf85fd0545853eeb32228cb74fd1f160f313be8efa4d",
+    "uwb_2a2t_protocol.h": "6625220a5ce8b0f7fba49ec3be958be6ef74d223500f7370cce4ee995ea7a9bc",
+    "uwb_2a2t_trace.h": "0c7063feae08cbc3bfc9baff1979ec735bd5b88431350bbfcf4b060eda7c64e0",
+    "uwb_2a2t_trace.c": "2cfb86a4c9ec76685441306cd12a8591e5b9b64d8172e4ae89629f09d758bdb0"
+  },
+  "config_sha256": "c9bbe8d10e17129b1017791a87153c60541003208076354d408d723dbf3b6cc4",
+  "build_timestamp": "2026-07-13T05:38:39.791479+00:00",
+  "fwid": "FWID|node=T2|role=TAG_FOLLOWER|source_git=590ec11f75c681e9cffe54adc4a0db8ddacea697|overlay_sha256=bdd6d2436def38b32d8e0a7171b2c2b0d58340c909e866f6f43a3c3497b6ba41|config_sha256=c9bbe8d10e17129b1017791a87153c60541003208076354d408d723dbf3b6cc4|build_timestamp=2026-07-13T05:38:39.791479+00:00",
+  "baseline_before": {
+    "ds_twr_initiator_final.c": "f5c6bd2d464d3bbb172281136ca24eadc723f0b4decaa4efee645081ee91b486",
+    "ds_twr_responder_final.c": "27f72cb4b1fcc0c1fbf0c07c57a07b1893fbaa76fbddd60cda80fa06eb37b15a"
+  },
+  "baseline_after": {
+    "ds_twr_initiator_final.c": "f5c6bd2d464d3bbb172281136ca24eadc723f0b4decaa4efee645081ee91b486",
+    "ds_twr_responder_final.c": "27f72cb4b1fcc0c1fbf0c07c57a07b1893fbaa76fbddd60cda80fa06eb37b15a"
+  },
+  "project_change": {
+    "before_sha256": "8449fec23f72e1d087b4ac363f1558b3bf6a57f56a743204cbcc9cf4f966a901",
+    "after_sha256": "7fd4e74034463bdeb93f3a8aae1626c07ccdeb2b72c2f26eef450b9ed998830f"
+  },
+  "registration_change": {
+    "before_sha256": "c80c524f234ef392aed0615adebf48333ea570fe2de38c91fa1b677e7baa59fd",
+    "after_sha256": "561f7b82ad9aa497129e0af29b7c39ae7cf8b0ef5062f26f7c7f4e76a50872fb"
+  },
+  "post_overlay_git_status": [
+    "M API/Src/examples/examples_info/example_info.c",
+    " M API/nRF52840-DK/dw3000_api.emProject",
+    "?? API/Src/custom_code/ds_twr_2a2t_anchor.c",
+    "?? API/Src/custom_code/ds_twr_2a2t_tag.c",
+    "?? API/Src/custom_code/uwb_2a2t_build_identity.h",
+    "?? API/Src/custom_code/uwb_2a2t_config.h",
+    "?? API/Src/custom_code/uwb_2a2t_protocol.h",
+    "?? API/Src/custom_code/uwb_2a2t_trace.c",
+    "?? API/Src/custom_code/uwb_2a2t_trace.h"
+  ]
+}

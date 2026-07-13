@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schema_version", "source_type", "hardware_verified", "flash_executed", "status", "images", "manifest_sha256"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "source_type": {"const": "CODE_INSPECTION_AND_BUILD"},
+    "hardware_verified": {"const": false},
+    "flash_executed": {"const": false},
+    "status": {"enum": ["BUILD_PASS_UNVERIFIED_HW", "BUILD_FAILED"]},
+    "images": {"type": "array", "minItems": 4, "maxItems": 4},
+    "manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "source_type": "CODE_INSPECTION_AND_BUILD",
+  "hardware_verified": false,
+  "flash_executed": false,
+  "matrix": [
+    {
+      "image_id": "anchor_a1",
+      "node_id": "A1",
+      "role": "ANCHOR",
+      "build_status": "BUILD_FAILED",
+      "reason": "SDK output was not clean after emBuild -clean; stale artifact rejected",
+      "build_log": "C:\\Users\\User\\Documents\\학부연구생\\UWB-Ranging-Phase-DS-TWR\\artifacts\\phase6_build_attempt02\\build_logs\\anchor_a1.log",
+      "source_type": "CODE_INSPECTION_AND_BUILD",
+      "hardware_verified": false,
+      "flash_executed": false
+    },
+    {
+      "image_id": "anchor_a2",
+      "node_id": "A2",
+      "role": "ANCHOR",
+      "build_status": "BUILD_FAILED",
+      "reason": "SDK output was not clean after emBuild -clean; stale artifact rejected",
+      "build_log": "C:\\Users\\User\\Documents\\학부연구생\\UWB-Ranging-Phase-DS-TWR\\artifacts\\phase6_build_attempt02\\build_logs\\anchor_a2.log",
+      "source_type": "CODE_INSPECTION_AND_BUILD",
+      "hardware_verified": false,
+      "flash_executed": false
+    },
+    {
+      "image_id": "tag_t1",
+      "node_id": "T1",
+      "role": "TAG_COORDINATOR",
+      "build_status": "BUILD_FAILED",
+      "reason": "SDK output was not clean after emBuild -clean; stale artifact rejected",
+      "build_log": "C:\\Users\\User\\Documents\\학부연구생\\UWB-Ranging-Phase-DS-TWR\\artifacts\\phase6_build_attempt02\\build_logs\\tag_t1.log",
+      "source_type": "CODE_INSPECTION_AND_BUILD",
+      "hardware_verified": false,
+      "flash_executed": false
+    },
+    {
+      "image_id": "tag_t2",
+      "node_id": "T2",
+      "role": "TAG_FOLLOWER",
+      "build_status": "BUILD_FAILED",
+      "reason": "SDK output was not clean after emBuild -clean; stale artifact rejected",
+      "build_log": "C:\\Users\\User\\Documents\\학부연구생\\UWB-Ranging-Phase-DS-TWR\\artifacts\\phase6_build_attempt02\\build_logs\\tag_t2.log",
+      "source_type": "CODE_INSPECTION_AND_BUILD",
+      "hardware_verified": false,
+      "flash_executed": false
+    }
+  ],
+  "manifest_sha256": "6c9e7c6e52732df1d60a3c5c5d5fa9042fefd11eec9ddf2ffe688682a74a01c3"
+}

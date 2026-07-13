@@ -9,6 +9,7 @@
 #include <example_selection.h>
 
 #include "uwb_2a2t_config.h"
+#include "uwb_2a2t_build_identity.h"
 #include "uwb_2a2t_protocol.h"
 #include "uwb_2a2t_trace.h"
 
@@ -19,10 +20,10 @@ extern dwt_txconfig_t txconfig_options_ch9;
 
 #if defined(UWB_NODE_A1)
 static const uint8_t local_anchor[2] = {'A', '1'};
-static const unsigned char boot_message[] = "FWID:A1 2A2T";
+static const unsigned char boot_message[] = UWB_2A2T_FWID;
 #elif defined(UWB_NODE_A2)
 static const uint8_t local_anchor[2] = {'A', '2'};
-static const unsigned char boot_message[] = "FWID:A2 2A2T";
+static const unsigned char boot_message[] = UWB_2A2T_FWID;
 #else
 #error "DS_TWR_2A2T_ANCHOR requires UWB_NODE_A1 or UWB_NODE_A2"
 #endif

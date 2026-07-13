@@ -1,0 +1,18 @@
+schema_version: 1
+config_kind: phase6_hardware_inventory_template
+source_type: CODE_INSPECTION_AND_BUILD
+hardware_verified: false
+flash_executed: false
+
+jlink:
+  executable: JLinkExe
+  device: nRF52840_xxAA
+  interface: SWD
+  speed_khz: 4000
+  allow_execute: false
+
+boards:
+  A1: {jlink_serial: UNRESOLVED, uart_port: UNRESOLVED, image_id: anchor_a1, firmware_target: anchor_a1, device: nRF52840_xxAA}
+  A2: {jlink_serial: UNRESOLVED, uart_port: UNRESOLVED, image_id: anchor_a2, firmware_target: anchor_a2, device: nRF52840_xxAA}
+  T1: {jlink_serial: UNRESOLVED, uart_port: UNRESOLVED, image_id: tag_t1, firmware_target: tag_t1, device: nRF52840_xxAA}
+  T2: {jlink_serial: UNRESOLVED, uart_port: UNRESOLVED, image_id: tag_t2, firmware_target: tag_t2, device: nRF52840_xxAA}
