@@ -95,7 +95,7 @@ experiments:
 build:
   repository: .
   stop_on_failure: true
-  reset_order: [A1, A2, T1, T2]
+  reset_order: [A1, A2, T2, T1]
   targets:
     A1: anchor_a1
     A2: anchor_a2

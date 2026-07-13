@@ -15,11 +15,19 @@ EXAMPLES = {
     "ds-responder": "DS_TWR_RESPONDER_FINAL",
     "ds-anchor-a": "DS_TWR_RESPONDER_FINAL",
     "ds-anchor-b": "DS_TWR_RESPONDER_FINAL",
+    "ds-2a2t-anchor-a1": "DS_TWR_2A2T_ANCHOR",
+    "ds-2a2t-anchor-a2": "DS_TWR_2A2T_ANCHOR",
+    "ds-2a2t-tag-t1": "DS_TWR_2A2T_TAG",
+    "ds-2a2t-tag-t2": "DS_TWR_2A2T_TAG",
 }
 
 EXTRA_DEFINES = {
     "ds-anchor-a": ["UWB_ANCHOR_A"],
     "ds-anchor-b": ["UWB_ANCHOR_B"],
+    "ds-2a2t-anchor-a1": ["UWB_NODE_A1"],
+    "ds-2a2t-anchor-a2": ["UWB_NODE_A2"],
+    "ds-2a2t-tag-t1": ["UWB_NODE_T1", "UWB_2A2T_COORDINATOR"],
+    "ds-2a2t-tag-t2": ["UWB_NODE_T2", "UWB_2A2T_FOLLOWER"],
 }
 
 KNOWN_DEFINES = [
@@ -40,6 +48,14 @@ KNOWN_DEFINES = [
     "DW3000_CIR_SERIAL_RX",
     "UWB_ANCHOR_A",
     "UWB_ANCHOR_B",
+    "DS_TWR_2A2T_TAG",
+    "DS_TWR_2A2T_ANCHOR",
+    "UWB_NODE_A1",
+    "UWB_NODE_A2",
+    "UWB_NODE_T1",
+    "UWB_NODE_T2",
+    "UWB_2A2T_COORDINATOR",
+    "UWB_2A2T_FOLLOWER",
 ]
 
 

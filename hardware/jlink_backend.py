@@ -109,7 +109,7 @@ class JLinkFlashBackend:
         self, device: Mapping[str, Any], command_file: Path
     ) -> list[str]:
         device_name = _safe_token(
-            device.get("device") or self.jlink_config.get("device", "STM32F429ZI"),
+            device.get("device") or self.jlink_config.get("device", "nRF52840_xxAA"),
             "J-Link device",
         )
         interface = _safe_token(

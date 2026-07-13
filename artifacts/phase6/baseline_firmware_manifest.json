@@ -1,0 +1,10 @@
+{
+  "baseline_commit": "641f768a837a731866c5c41a85a7e7e37ce29b7c",
+  "baseline_files": {
+    "firmware_overlay/API/Src/custom_code/ds_twr_initiator_final.c": "bb0dafc5f5a478a2481eeb6445e47629b91fd3be96054f50d60b34433d0ab389",
+    "firmware_overlay/API/Src/custom_code/ds_twr_responder_final.c": "d0a63c4849720f898db54be71cc85a6a4280904f9934120c3d51e437f8a417d4"
+  },
+  "purpose": "Phase 6 derived 2A2T sources must not overwrite these baseline files.",
+  "source_type": "SOURCE_INSPECTION",
+  "hardware_verified": false
+}

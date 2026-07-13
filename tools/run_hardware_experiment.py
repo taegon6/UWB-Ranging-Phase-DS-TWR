@@ -32,7 +32,7 @@ from experiments.definitions import (
 from experiments.timing_characterization import analyze_logic
 from hardware import ConfigError, build_inventory, create_backend, load_yaml, validate_config
 from tools.build_firmware import build_firmware
-from tools.flash_all import plan_flash
+from tools.flash_all import NODE_ORDER, execute_flash_plan, plan_flash
 
 
 def _combine_csv(inputs: list[Path], output: Path) -> None:
@@ -58,7 +58,8 @@ def _write_unresolved(run_dir: Path, *, source_type: str = "SYNTHETIC") -> None:
         "- `TODO(HW_VERIFY)`: real trace pins, analyzer channel mapping, sample rate, and voltage threshold.\n"
         "- `TODO(HW_VERIFY)`: actual SPI, IRQ, UART, CIR and phase-processing durations.\n"
         "- `TODO(HW_VERIFY)`: reference geometry and antenna-delay constraints.\n"
-        "- `TODO(IMPLEMENT_2A2T_FW)`: baseline supports A1/B2 with one TG only.\n\n"
+        "- `TODO(HW_VERIFY)`: Phase 6 A1/A2/T1/T2 firmware has not been flashed or RF-verified.\n"
+        "- `TODO(HW_VERIFY)`: Report-token overhear and frame-filter policy require four-board evidence.\n\n"
         f"`source_type = {source_type}`  \n`hardware_verified = false`\n",
         encoding="utf-8",
     )
@@ -203,22 +204,14 @@ class ExperimentRunner:
             }
             if invalid:
                 raise ConfigError(f"unsupported real backend mapping: {invalid}")
-            unsupported_flags = [
-                flag
-                for flag, enabled in {
-                    "--build": self.args.build,
-                    "--flash": self.args.flash,
-                    "--capture-logic": self.args.capture_logic,
-                    "--analyze": self.args.analyze,
-                    "--report": self.args.report,
-                }.items()
-                if enabled
-            ]
-            if self.args.experiment != "connection_smoke_test" or unsupported_flags:
-                raise ConfigError(
-                    "pre-hardware real runner is limited to UART-only connection_smoke_test; "
-                    "unsupported options: " + (", ".join(unsupported_flags) or self.args.experiment)
-                )
+            if self.args.flash and not self.args.build:
+                raise ConfigError("real --flash requires --build in the same guarded run")
+            if self.args.flash and not self.args.approve_flash_plan_sha256:
+                raise ConfigError("real --flash requires --approve-flash-plan-sha256 from the reviewed plan")
+            if self.args.flash:
+                jlink = self.config.get("jlink", {})
+                if not isinstance(jlink, dict) or jlink.get("device") != "nRF52840_xxAA":
+                    raise ConfigError("real --flash requires jlink.device=nRF52840_xxAA")
         return "dry-run placeholders allowed" if self.args.dry_run else "real placeholders resolved"
 
     def check_environment(self) -> str:
@@ -311,7 +304,17 @@ class ExperimentRunner:
             return "four-node flash plan simulated; J-Link not invoked"
         if not self.args.flash:
             return "SKIP: --flash not requested"
-        raise RuntimeError("real flash must use verified image paths and backend-specific plan")
+        if build_manifest is None:
+            raise RuntimeError("real flash requires the current run build manifest")
+        plan = plan_flash(self.config, build_manifest)
+        write_json(self.run_dir / "firmware" / "flash_plan.json", plan)
+        results = execute_flash_plan(
+            self.config,
+            plan,
+            approval_hash=self.args.approve_flash_plan_sha256,
+        )
+        write_json(self.run_dir / "firmware" / "flash_manifest.json", {**plan, "results": results})
+        return "four verified image flash commands completed; RF operation remains unverified"
 
     def reset(self) -> str:
         if self.args.backend == "mock":
@@ -320,9 +323,11 @@ class ExperimentRunner:
             return "synthetic reset order A1/A2/T1/T2"
         if not self.args.flash:
             return "SKIP: reset skipped because --flash was not requested"
-        for device in self.devices:
-            self.backend["flash"].reset(device, execute=True)
-        return "real reset requested; result remains unverified until smoke data"
+        for node in NODE_ORDER:
+            board = dict(self.config["boards"][node])
+            board["node_id"] = node
+            self.backend["flash"].reset(board, execute=True)
+        return "real reset order A1/A2/T2/T1 requested; result remains unverified until smoke data"
 
     def start_logic(self) -> str:
         if self.args.backend != "mock" and not self.args.capture_logic:
@@ -570,6 +575,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--capture-logic", action="store_true")
     parser.add_argument("--analyze", action="store_true")
     parser.add_argument("--report", action="store_true")
+    parser.add_argument(
+        "--approve-flash-plan-sha256",
+        help="Exact plan_sha256 reviewed by the operator; required with real --flash.",
+    )
     parser.add_argument("--resume", help="Resume a retained run directory")
     parser.add_argument("--output-root")
     return parser.parse_args()

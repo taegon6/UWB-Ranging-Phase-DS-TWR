@@ -6,13 +6,26 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import shutil
 import subprocess
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from _common import ROOT, root_relative
+try:  # Supports both ``python tools/build_firmware.py`` and test imports.
+    from ._common import ROOT, root_relative
+except ImportError:  # pragma: no cover - exercised by direct CLI invocation
+    from _common import ROOT, root_relative
 
 from experiments.definitions import git_snapshot, write_json
+
+
+EXPECTED_TARGETS = {
+    "A1": "anchor_a1",
+    "A2": "anchor_a2",
+    "T1": "tag_t1",
+    "T2": "tag_t2",
+}
 
 
 def load_config(path: Path) -> dict[str, Any]:
@@ -40,6 +53,12 @@ def plan_build_matrix(config: dict[str, Any]) -> list[dict[str, Any]]:
     actual = {row["node"] for row in rows}
     if actual != expected:
         raise ValueError(f"build matrix must map exactly {sorted(expected)}, got {sorted(actual)}")
+    for row in rows:
+        expected_target = EXPECTED_TARGETS[row["node"]]
+        if row["firmware_target"] != expected_target:
+            raise ValueError(
+                f"{row['node']} firmware_target must be {expected_target}, got {row['firmware_target']}"
+            )
     return rows
 
 
@@ -53,6 +72,20 @@ def _has_placeholder(value: Any) -> bool:
     return False
 
 
+def _resolve_from_working_directory(value: str | Path, working_directory: Path) -> Path:
+    path = Path(value)
+    return path if path.is_absolute() else working_directory / path
+
+
+def _require_empty_execute_output(output_dir: Path) -> None:
+    """Never delete stale outputs: execution requires a fresh directory."""
+
+    if output_dir.exists() and any(output_dir.iterdir()):
+        raise ValueError(
+            f"execute build requires an empty output directory; refusing stale output: {output_dir}"
+        )
+
+
 def build_firmware(
     config: dict[str, Any],
     output_dir: Path,
@@ -61,6 +94,10 @@ def build_firmware(
     execute: bool,
     clean: bool = False,
 ) -> dict[str, Any]:
+    if execute and dry_run:
+        raise ValueError("execute and dry_run cannot both be true")
+    if execute:
+        _require_empty_execute_output(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     matrix = plan_build_matrix(config)
     firmware = config.get("firmware", {})
@@ -91,22 +128,63 @@ def build_firmware(
     commands = firmware.get("role_build_commands")
     if not isinstance(commands, dict) or _has_placeholder(commands):
         raise ValueError("firmware.role_build_commands must be fully configured before --execute")
+    role_markers = firmware.get("role_markers")
+    working_directory = root_relative(firmware.get("working_directory", "."))
+    if not working_directory.is_dir():
+        raise FileNotFoundError(f"firmware working_directory does not exist: {working_directory}")
+    images_dir = output_dir / "images"
+    logs_dir = output_dir / "build_logs"
+    images_dir.mkdir()
+    logs_dir.mkdir()
     for row in matrix:
         node = row["node"]
         command = commands.get(node)
         if not isinstance(command, list) or not command:
             raise ValueError(f"missing list command for {node}")
-        completed = subprocess.run([str(part) for part in command], cwd=root_relative(firmware.get("working_directory", ".")))
+        completed = subprocess.run(
+            [str(part) for part in command],
+            cwd=working_directory,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        (logs_dir / f"{node}.log").write_text(
+            "# source_type = BUILD_ARTIFACT\n"
+            "# hardware_verified = false\n"
+            f"# command = {json.dumps([str(part) for part in command])}\n"
+            f"# returncode = {completed.returncode}\n\n"
+            "[stdout]\n"
+            + completed.stdout
+            + "\n[stderr]\n"
+            + completed.stderr,
+            encoding="utf-8",
+        )
         if completed.returncode != 0:
             raise RuntimeError(f"build failed for {node} with exit code {completed.returncode}")
-        image = root_relative(config["boards"][node]["firmware_image"])
-        if not image.is_file():
-            raise FileNotFoundError(f"configured image not produced for {node}: {image}")
+        if not isinstance(role_markers, dict) or set(role_markers) != set(EXPECTED_TARGETS):
+            raise ValueError("firmware.role_markers must map exactly A1/A2/T1/T2 before --execute")
+        source_image = _resolve_from_working_directory(
+            config["boards"][node]["firmware_image"], working_directory
+        )
+        if not source_image.is_file():
+            raise FileNotFoundError(f"configured image not produced for {node}: {source_image}")
+        marker = role_markers[node]
+        if not isinstance(marker, str) or not marker:
+            raise ValueError(f"firmware.role_markers.{node} must be a non-empty string")
+        if marker.encode("utf-8") not in source_image.read_bytes():
+            raise ValueError(f"role marker is absent from {node} image: {marker}")
+        image = images_dir / f"{node}{source_image.suffix.lower()}"
+        shutil.copy2(source_image, image)
         row.update(
             status="BUILT_UNVERIFIED_HW",
             image=str(image),
             sha256=hashlib.sha256(image.read_bytes()).hexdigest(),
             source_type="BUILD_ARTIFACT",
+            source_image=str(source_image),
+            role_marker=marker,
+            role_marker_verified=True,
+            build_log=str(logs_dir / f"{node}.log"),
+            built_at=datetime.now(timezone.utc).isoformat(),
         )
     result["status"] = "BUILD_PASS_UNVERIFIED_HW"
     result["source_type"] = "BUILD_ARTIFACT"
