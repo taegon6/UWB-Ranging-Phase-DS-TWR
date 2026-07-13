@@ -51,10 +51,10 @@ def run_parameter_sweep(
             raise ValueError(f"unknown CODE_BASELINE profile: {profile_name}")
         profile = profiles[profile_name]
         airtimes = calculate_profile_airtimes(profile)
-        processing = parameter_value(processing_p, "processing_time_us")
-        guard = parameter_value(guard_p, "reply_guard_us")
-        timeout = parameter_value(timeout_p, "timeout_margin_us")
-        slot_guard = parameter_value(slot_p, "slot_guard_us")
+        processing = parameter_value(processing_p, "processing_time_us", expected_unit="us")
+        guard = parameter_value(guard_p, "reply_guard_us", expected_unit="us")
+        timeout = parameter_value(timeout_p, "timeout_margin_us", expected_unit="us")
+        slot_guard = parameter_value(slot_p, "slot_guard_us", expected_unit="us")
         reply_delays = {
             transition: minimum_reply_us(processing, airtimes[outgoing]) + guard
             for transition, outgoing in zip(transitions, sequence[1:])

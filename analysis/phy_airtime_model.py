@@ -32,7 +32,9 @@ class PacketAirtime:
         return asdict(self)
 
 
-def parameter_value(parameter: Mapping[str, Any], name: str) -> float:
+def parameter_value(
+    parameter: Mapping[str, Any], name: str, *, expected_unit: str | None = None
+) -> float:
     """Read one numeric parameter while enforcing provenance and HW status."""
 
     required = {"value", "unit", "evidence_class", "source", "locator", "hardware_verified"}
@@ -41,14 +43,20 @@ def parameter_value(parameter: Mapping[str, Any], name: str) -> float:
         raise AirtimeModelError(f"{name} is missing provenance fields: {missing}")
     if parameter.get("hardware_verified") is not False:
         raise AirtimeModelError(f"{name}.hardware_verified must remain false for simulation input")
+    if expected_unit is not None and parameter.get("unit") != expected_unit:
+        raise AirtimeModelError(
+            f"{name}.unit must be {expected_unit!r}, got {parameter.get('unit')!r}"
+        )
     value = parameter.get("value")
     if not isinstance(value, (int, float)) or isinstance(value, bool):
         raise AirtimeModelError(f"{name}.value must be numeric")
     return float(value)
 
 
-def _integer_parameter(parameter: Mapping[str, Any], name: str) -> int:
-    value = parameter_value(parameter, name)
+def _integer_parameter(
+    parameter: Mapping[str, Any], name: str, *, expected_unit: str
+) -> int:
+    value = parameter_value(parameter, name, expected_unit=expected_unit)
     if value < 0 or not value.is_integer():
         raise AirtimeModelError(f"{name} must be a non-negative integer")
     return int(value)
@@ -63,18 +71,34 @@ def calculate_packet_airtime(
 ) -> PacketAirtime:
     """Calculate SHR/STS/PHR/PSDU time without mutating source profiles."""
 
-    preamble_symbols = _integer_parameter(phy["preamble_symbols"], "phy.preamble_symbols")
-    sfd_symbols = _integer_parameter(phy["sfd_symbols"], "phy.sfd_symbols")
-    sts_symbols = _integer_parameter(phy["sts_symbols"], "phy.sts_symbols")
-    psdu_octets = _integer_parameter(packet["psdu_octets"], f"packets.{packet_name}.psdu_octets")
+    preamble_symbols = _integer_parameter(
+        phy["preamble_symbols"], "phy.preamble_symbols", expected_unit="symbol"
+    )
+    sfd_symbols = _integer_parameter(
+        phy["sfd_symbols"], "phy.sfd_symbols", expected_unit="symbol"
+    )
+    sts_symbols = _integer_parameter(
+        phy["sts_symbols"], "phy.sts_symbols", expected_unit="symbol"
+    )
+    psdu_octets = _integer_parameter(
+        packet["psdu_octets"],
+        f"packets.{packet_name}.psdu_octets",
+        expected_unit="octet",
+    )
     preamble_symbol_time_us = parameter_value(
-        phy["preamble_symbol_time_us"], "phy.preamble_symbol_time_us"
+        phy["preamble_symbol_time_us"],
+        "phy.preamble_symbol_time_us",
+        expected_unit="us/symbol",
     )
-    phr_time_us = parameter_value(phy["phr_time_us"], "phy.phr_time_us")
+    phr_time_us = parameter_value(
+        phy["phr_time_us"], "phy.phr_time_us", expected_unit="us"
+    )
     coded_bit_time_us = parameter_value(
-        phy["coded_bit_time_us"], "phy.coded_bit_time_us"
+        phy["coded_bit_time_us"], "phy.coded_bit_time_us", expected_unit="us/bit"
     )
-    rs_parity_bits = _integer_parameter(phy["rs_parity_bits"], "phy.rs_parity_bits")
+    rs_parity_bits = _integer_parameter(
+        phy["rs_parity_bits"], "phy.rs_parity_bits", expected_unit="bit"
+    )
     if min(preamble_symbol_time_us, phr_time_us, coded_bit_time_us) < 0:
         raise AirtimeModelError("PHY time parameters must be non-negative")
 
