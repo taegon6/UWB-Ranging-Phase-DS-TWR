@@ -1,0 +1,45 @@
+schema_version: 1
+config_kind: simulation_2a2t_sweep
+source_type: SYNTHETIC
+hardware_verified: false
+model_basis: PAPER_GROUNDED
+baseline_config: configs/simulation_2a2t_paper_baseline.yaml
+
+protocol:
+  links: [A1-T1, A2-T1, A1-T2, A2-T2]
+  slot_order: [A1-T1, A2-T1, A1-T2, A2-T2]
+  sequence: [Poll, Response, Final, PostFinal, Report]
+  transitions:
+    - {from: Poll, to: Response, sender: ANCHOR, receiver: TAG}
+    - {from: Response, to: Final, sender: TAG, receiver: ANCHOR}
+    - {from: Final, to: PostFinal, sender: TAG, receiver: ANCHOR}
+    - {from: PostFinal, to: Report, sender: ANCHOR, receiver: TAG}
+
+sweep:
+  profile_names: [code_baseline_plen128]
+  processing_time_us:
+    - {value: 522, unit: us, evidence_class: PAPER, source: jkiees-36-3-274, locator: Figure 4 p.279, hardware_verified: false}
+    - {value: 800, unit: us, evidence_class: SWEEP, source: simulation design, locator: conservative processing candidate, hardware_verified: false}
+  reply_guard_us:
+    - {value: 0, unit: us, evidence_class: SWEEP, source: simulation design, locator: lower-bound candidate, hardware_verified: false}
+    - {value: 100, unit: us, evidence_class: SWEEP, source: simulation design, locator: paper timeout-margin scale, hardware_verified: false}
+    - {value: 200, unit: us, evidence_class: SWEEP, source: simulation design, locator: Table 3 step size, hardware_verified: false}
+    - {value: 400, unit: us, evidence_class: SWEEP, source: simulation design, locator: conservative guard candidate, hardware_verified: false}
+    - {value: 800, unit: us, evidence_class: SWEEP, source: simulation design, locator: conservative guard candidate, hardware_verified: false}
+  timeout_margin_us:
+    - {value: 100, unit: us, evidence_class: PAPER, source: jkiees-36-3-274, locator: Section 3 p.278, hardware_verified: false}
+    - {value: 200, unit: us, evidence_class: SWEEP, source: simulation design, locator: conservative timeout candidate, hardware_verified: false}
+  slot_guard_us:
+    - {value: 100, unit: us, evidence_class: ASSUMED, source: simulation design, locator: initial collision-free guard, hardware_verified: false}
+    - {value: 300, unit: us, evidence_class: SWEEP, source: simulation design, locator: conservative slot guard, hardware_verified: false}
+
+outputs:
+  results_root: results
+  platform: python
+  configuration: 2A2T-paper-baseline
+  topic: parameter-sweep
+
+phase_gate:
+  implemented_through: 4
+  phase_5_enabled: false
+  phase_6_enabled: false

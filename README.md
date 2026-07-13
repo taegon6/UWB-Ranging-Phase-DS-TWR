@@ -20,6 +20,9 @@ python tools\calibrate_antenna_delay.py --config configs\antenna_calibration.exa
 ```
 
 Start with [docs/PRE_HARDWARE_SETUP.md](docs/PRE_HARDWARE_SETUP.md) and
+[docs/CODE_EXPERIMENT_GUIDE_KO.md](docs/CODE_EXPERIMENT_GUIDE_KO.md), then
+[docs/2A2T_PARAMETER_TUNING_SIMULATION_PLAN_KO.md](docs/2A2T_PARAMETER_TUNING_SIMULATION_PLAN_KO.md) for the paper-grounded simulation/HIL plan, and
+[docs/2A2T_PHASE0_4_IMPLEMENTATION_AND_EXPERIMENT_GUIDE_KO.md](docs/2A2T_PHASE0_4_IMPLEMENTATION_AND_EXPERIMENT_GUIDE_KO.md) for the implemented Phase 0-4 workflow, and
 [HANDOFF.md](HANDOFF.md). Real wiring and input fields are listed in
 [docs/HARDWARE_CONNECTION_CHECKLIST.md](docs/HARDWARE_CONNECTION_CHECKLIST.md).
 
