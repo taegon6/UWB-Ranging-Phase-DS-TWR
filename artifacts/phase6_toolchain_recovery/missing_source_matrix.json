@@ -1,0 +1,424 @@
+{
+  "source_type": "CODE_INSPECTION",
+  "hardware_verified": false,
+  "missing_source_count": 15,
+  "sources": [
+    {
+      "filename": "custom_ds_twr_initiator.c",
+      "project_reference": "../Src/urop_2/custom_ds_twr_initiator.c",
+      "project_reference_state": "PROJECT_REFERENCE_PRESENT",
+      "expected_relative_path": "../Src/urop_2/custom_ds_twr_initiator.c",
+      "expected_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_2a2t_3fdc9e9\\anchor_a1\\API\\Src\\urop_2\\custom_ds_twr_initiator.c",
+      "expected_path_exists": false,
+      "referenced_symbols": [
+        "custom_ds_twr_initiator"
+      ],
+      "expected_responsibility": "custom DS-TWR initiator application",
+      "classification": "custom",
+      "reference_usage": "INACTIVE_REFERENCE_PROVEN",
+      "git_history_exists": false,
+      "sibling_exact_source_exists": false,
+      "archive_exact_source_matches": [],
+      "historical_map_object_present": false,
+      "candidate_origin": [],
+      "candidate_sha256": [],
+      "candidate_decision": "NO_CANDIDATE",
+      "confidence": "UNRESOLVED",
+      "blocking": true
+    },
+    {
+      "filename": "custom_ds_twr_responder.c",
+      "project_reference": "../Src/urop_2/custom_ds_twr_responder.c",
+      "project_reference_state": "PROJECT_REFERENCE_PRESENT",
+      "expected_relative_path": "../Src/urop_2/custom_ds_twr_responder.c",
+      "expected_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_2a2t_3fdc9e9\\anchor_a1\\API\\Src\\urop_2\\custom_ds_twr_responder.c",
+      "expected_path_exists": false,
+      "referenced_symbols": [
+        "custom_ds_twr_responder"
+      ],
+      "expected_responsibility": "custom DS-TWR responder application",
+      "classification": "custom",
+      "reference_usage": "ACTIVE_OR_UNRESOLVED_REFERENCE",
+      "git_history_exists": false,
+      "sibling_exact_source_exists": false,
+      "archive_exact_source_matches": [],
+      "historical_map_object_present": false,
+      "candidate_origin": [],
+      "candidate_sha256": [],
+      "candidate_decision": "NO_CANDIDATE",
+      "confidence": "UNRESOLVED",
+      "blocking": true
+    },
+    {
+      "filename": "switching.c",
+      "project_reference": "../Src/custom_code/switching.c",
+      "project_reference_state": "PROJECT_REFERENCE_PRESENT",
+      "expected_relative_path": "../Src/custom_code/switching.c",
+      "expected_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_2a2t_3fdc9e9\\anchor_a1\\API\\Src\\custom_code\\switching.c",
+      "expected_path_exists": false,
+      "referenced_symbols": [
+        "switching"
+      ],
+      "expected_responsibility": "custom switching experiment application",
+      "classification": "custom",
+      "reference_usage": "ACTIVE_OR_UNRESOLVED_REFERENCE",
+      "git_history_exists": false,
+      "sibling_exact_source_exists": false,
+      "archive_exact_source_matches": [],
+      "historical_map_object_present": true,
+      "candidate_origin": [],
+      "candidate_sha256": [],
+      "candidate_decision": "NO_CANDIDATE",
+      "confidence": "UNRESOLVED",
+      "blocking": true
+    },
+    {
+      "filename": "localization_ds_twr_initiatior.c",
+      "project_reference": "../Src/custom_code/localization_ds_twr_initiatior.c",
+      "project_reference_state": "PROJECT_REFERENCE_PRESENT",
+      "expected_relative_path": "../Src/custom_code/localization_ds_twr_initiatior.c",
+      "expected_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_2a2t_3fdc9e9\\anchor_a1\\API\\Src\\custom_code\\localization_ds_twr_initiatior.c",
+      "expected_path_exists": false,
+      "referenced_symbols": [
+        "localization_ds_twr_initiatior"
+      ],
+      "expected_responsibility": "custom localization DS-TWR initiator application",
+      "classification": "custom",
+      "reference_usage": "INACTIVE_REFERENCE_PROVEN",
+      "git_history_exists": false,
+      "sibling_exact_source_exists": false,
+      "archive_exact_source_matches": [],
+      "historical_map_object_present": true,
+      "candidate_origin": [],
+      "candidate_sha256": [],
+      "candidate_decision": "NO_CANDIDATE",
+      "confidence": "UNRESOLVED",
+      "blocking": true
+    },
+    {
+      "filename": "localization_ds_twr_responder.c",
+      "project_reference": "../Src/custom_code/localization_ds_twr_responder.c",
+      "project_reference_state": "PROJECT_REFERENCE_PRESENT",
+      "expected_relative_path": "../Src/custom_code/localization_ds_twr_responder.c",
+      "expected_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_2a2t_3fdc9e9\\anchor_a1\\API\\Src\\custom_code\\localization_ds_twr_responder.c",
+      "expected_path_exists": false,
+      "referenced_symbols": [
+        "localization_ds_twr_responder"
+      ],
+      "expected_responsibility": "custom localization DS-TWR responder application",
+      "classification": "custom",
+      "reference_usage": "INACTIVE_REFERENCE_PROVEN",
+      "git_history_exists": false,
+      "sibling_exact_source_exists": false,
+      "archive_exact_source_matches": [],
+      "historical_map_object_present": true,
+      "candidate_origin": [],
+      "candidate_sha256": [],
+      "candidate_decision": "NO_CANDIDATE",
+      "confidence": "UNRESOLVED",
+      "blocking": true
+    },
+    {
+      "filename": "AoA_rtls_tx.c",
+      "project_reference": "../Src/custom_code/AoA_rtls_tx.c",
+      "project_reference_state": "PROJECT_REFERENCE_PRESENT",
+      "expected_relative_path": "../Src/custom_code/AoA_rtls_tx.c",
+      "expected_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_2a2t_3fdc9e9\\anchor_a1\\API\\Src\\custom_code\\AoA_rtls_tx.c",
+      "expected_path_exists": false,
+      "referenced_symbols": [
+        "AoA_rtls_tx"
+      ],
+      "expected_responsibility": "custom AoA/RTLS experiment application",
+      "classification": "custom",
+      "reference_usage": "ACTIVE_OR_UNRESOLVED_REFERENCE",
+      "git_history_exists": false,
+      "sibling_exact_source_exists": true,
+      "archive_exact_source_matches": [
+        {
+          "archive": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\original_repos\\UWB_AoA_Project.zip",
+          "member": "UWB_AoA_Project/API/Src/custom_code/AoA_rtls_tx.c"
+        }
+      ],
+      "historical_map_object_present": true,
+      "candidate_origin": [
+        "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\original_repos\\UWB_AoA_Project\\API\\Src\\custom_code\\AoA_rtls_tx.c"
+      ],
+      "candidate_sha256": [
+        "a3f047418cd27f49cf10886cfa644ce6974d30880f6952ee67a0ce8ad4d37d72"
+      ],
+      "candidate_decision": "CANDIDATE_PRESENT_PROVENANCE_UNRESOLVED",
+      "confidence": "UNRESOLVED",
+      "blocking": true
+    },
+    {
+      "filename": "AoA_rtls_rx.c",
+      "project_reference": "../Src/custom_code/AoA_rtls_rx.c",
+      "project_reference_state": "PROJECT_REFERENCE_PRESENT",
+      "expected_relative_path": "../Src/custom_code/AoA_rtls_rx.c",
+      "expected_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_2a2t_3fdc9e9\\anchor_a1\\API\\Src\\custom_code\\AoA_rtls_rx.c",
+      "expected_path_exists": false,
+      "referenced_symbols": [
+        "AoA_rtls_rx"
+      ],
+      "expected_responsibility": "custom AoA/RTLS experiment application",
+      "classification": "custom",
+      "reference_usage": "ACTIVE_OR_UNRESOLVED_REFERENCE",
+      "git_history_exists": false,
+      "sibling_exact_source_exists": true,
+      "archive_exact_source_matches": [
+        {
+          "archive": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\original_repos\\UWB_AoA_Project.zip",
+          "member": "UWB_AoA_Project/API/Src/custom_code/AoA_rtls_rx.c"
+        }
+      ],
+      "historical_map_object_present": true,
+      "candidate_origin": [
+        "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\original_repos\\UWB_AoA_Project\\API\\Src\\custom_code\\AoA_rtls_rx.c"
+      ],
+      "candidate_sha256": [
+        "c2b3a01f3a530f6c577f805f3f4769e6b6126a97156a00ec2729e40d3038768f"
+      ],
+      "candidate_decision": "CANDIDATE_PRESENT_PROVENANCE_UNRESOLVED",
+      "confidence": "UNRESOLVED",
+      "blocking": true
+    },
+    {
+      "filename": "AoA_rtls_tx_AI.c",
+      "project_reference": "../Src/custom_code/AoA_rtls_tx_AI.c",
+      "project_reference_state": "PROJECT_REFERENCE_PRESENT",
+      "expected_relative_path": "../Src/custom_code/AoA_rtls_tx_AI.c",
+      "expected_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_2a2t_3fdc9e9\\anchor_a1\\API\\Src\\custom_code\\AoA_rtls_tx_AI.c",
+      "expected_path_exists": false,
+      "referenced_symbols": [
+        "AoA_rtls_tx_AI"
+      ],
+      "expected_responsibility": "custom AoA/RTLS experiment application",
+      "classification": "custom",
+      "reference_usage": "ACTIVE_OR_UNRESOLVED_REFERENCE",
+      "git_history_exists": false,
+      "sibling_exact_source_exists": true,
+      "archive_exact_source_matches": [
+        {
+          "archive": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\original_repos\\UWB_AoA_Project.zip",
+          "member": "UWB_AoA_Project/API/Src/custom_code/AoA_rtls_tx_AI.c"
+        }
+      ],
+      "historical_map_object_present": true,
+      "candidate_origin": [
+        "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\original_repos\\UWB_AoA_Project\\API\\Src\\custom_code\\AoA_rtls_tx_AI.c"
+      ],
+      "candidate_sha256": [
+        "7cdb9b37f0257742e24f464f1c241f785f60f2c6d35a637f421f2440ea174d69"
+      ],
+      "candidate_decision": "CANDIDATE_PRESENT_PROVENANCE_UNRESOLVED",
+      "confidence": "UNRESOLVED",
+      "blocking": true
+    },
+    {
+      "filename": "AoA_rtls_rx_AI.c",
+      "project_reference": "../Src/custom_code/AoA_rtls_rx_AI.c",
+      "project_reference_state": "PROJECT_REFERENCE_PRESENT",
+      "expected_relative_path": "../Src/custom_code/AoA_rtls_rx_AI.c",
+      "expected_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_2a2t_3fdc9e9\\anchor_a1\\API\\Src\\custom_code\\AoA_rtls_rx_AI.c",
+      "expected_path_exists": false,
+      "referenced_symbols": [
+        "AoA_rtls_rx_AI"
+      ],
+      "expected_responsibility": "custom AoA/RTLS experiment application",
+      "classification": "custom",
+      "reference_usage": "ACTIVE_OR_UNRESOLVED_REFERENCE",
+      "git_history_exists": false,
+      "sibling_exact_source_exists": true,
+      "archive_exact_source_matches": [
+        {
+          "archive": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\original_repos\\UWB_AoA_Project.zip",
+          "member": "UWB_AoA_Project/API/Src/custom_code/AoA_rtls_rx_AI.c"
+        }
+      ],
+      "historical_map_object_present": true,
+      "candidate_origin": [
+        "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\original_repos\\UWB_AoA_Project\\API\\Src\\custom_code\\AoA_rtls_rx_AI.c"
+      ],
+      "candidate_sha256": [
+        "e10588b4fcad6c80da134754f75c784f547a5c809c35f79be3f1fbd36ca175dd"
+      ],
+      "candidate_decision": "CANDIDATE_PRESENT_PROVENANCE_UNRESOLVED",
+      "confidence": "UNRESOLVED",
+      "blocking": true
+    },
+    {
+      "filename": "UART_test.c",
+      "project_reference": "../Src/custom_code/UART_test.c",
+      "project_reference_state": "PROJECT_REFERENCE_PRESENT",
+      "expected_relative_path": "../Src/custom_code/UART_test.c",
+      "expected_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_2a2t_3fdc9e9\\anchor_a1\\API\\Src\\custom_code\\UART_test.c",
+      "expected_path_exists": false,
+      "referenced_symbols": [
+        "UART_test"
+      ],
+      "expected_responsibility": "custom UART experiment application",
+      "classification": "custom",
+      "reference_usage": "ACTIVE_OR_UNRESOLVED_REFERENCE",
+      "git_history_exists": false,
+      "sibling_exact_source_exists": false,
+      "archive_exact_source_matches": [],
+      "historical_map_object_present": true,
+      "candidate_origin": [],
+      "candidate_sha256": [],
+      "candidate_decision": "NO_CANDIDATE",
+      "confidence": "UNRESOLVED",
+      "blocking": true
+    },
+    {
+      "filename": "rx_diagnostics_cp.c",
+      "project_reference": "../Src/custom_code/rx_diagnostics_cp.c",
+      "project_reference_state": "PROJECT_REFERENCE_PRESENT",
+      "expected_relative_path": "../Src/custom_code/rx_diagnostics_cp.c",
+      "expected_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_2a2t_3fdc9e9\\anchor_a1\\API\\Src\\custom_code\\rx_diagnostics_cp.c",
+      "expected_path_exists": false,
+      "referenced_symbols": [
+        "rx_diagnostics_cp"
+      ],
+      "expected_responsibility": "custom RX diagnostics experiment application",
+      "classification": "custom",
+      "reference_usage": "ACTIVE_OR_UNRESOLVED_REFERENCE",
+      "git_history_exists": false,
+      "sibling_exact_source_exists": false,
+      "archive_exact_source_matches": [],
+      "historical_map_object_present": true,
+      "candidate_origin": [],
+      "candidate_sha256": [],
+      "candidate_decision": "NO_CANDIDATE",
+      "confidence": "UNRESOLVED",
+      "blocking": true
+    },
+    {
+      "filename": "AoA_rtls_tx_txt.c",
+      "project_reference": "../Src/custom_code/AoA_rtls_tx_txt.c",
+      "project_reference_state": "PROJECT_REFERENCE_PRESENT",
+      "expected_relative_path": "../Src/custom_code/AoA_rtls_tx_txt.c",
+      "expected_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_2a2t_3fdc9e9\\anchor_a1\\API\\Src\\custom_code\\AoA_rtls_tx_txt.c",
+      "expected_path_exists": false,
+      "referenced_symbols": [
+        "AoA_rtls_tx_txt"
+      ],
+      "expected_responsibility": "custom AoA/RTLS experiment application",
+      "classification": "custom",
+      "reference_usage": "ACTIVE_OR_UNRESOLVED_REFERENCE",
+      "git_history_exists": false,
+      "sibling_exact_source_exists": true,
+      "archive_exact_source_matches": [
+        {
+          "archive": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\original_repos\\UWB_AoA_Project.zip",
+          "member": "UWB_AoA_Project/API/Src/custom_code/AoA_rtls_tx_txt.c"
+        }
+      ],
+      "historical_map_object_present": true,
+      "candidate_origin": [
+        "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\original_repos\\UWB_AoA_Project\\API\\Src\\custom_code\\AoA_rtls_tx_txt.c"
+      ],
+      "candidate_sha256": [
+        "d0a9fc3f6cc37dda04772b8422ea9b81a8e740efa8efb1f92e924cc5c524ce80"
+      ],
+      "candidate_decision": "CANDIDATE_PRESENT_PROVENANCE_UNRESOLVED",
+      "confidence": "UNRESOLVED",
+      "blocking": true
+    },
+    {
+      "filename": "AoA_rtls_rx_txt.c",
+      "project_reference": "../Src/custom_code/AoA_rtls_rx_txt.c",
+      "project_reference_state": "PROJECT_REFERENCE_PRESENT",
+      "expected_relative_path": "../Src/custom_code/AoA_rtls_rx_txt.c",
+      "expected_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_2a2t_3fdc9e9\\anchor_a1\\API\\Src\\custom_code\\AoA_rtls_rx_txt.c",
+      "expected_path_exists": false,
+      "referenced_symbols": [
+        "AoA_rtls_rx_txt"
+      ],
+      "expected_responsibility": "custom AoA/RTLS experiment application",
+      "classification": "custom",
+      "reference_usage": "ACTIVE_OR_UNRESOLVED_REFERENCE",
+      "git_history_exists": false,
+      "sibling_exact_source_exists": true,
+      "archive_exact_source_matches": [
+        {
+          "archive": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\original_repos\\UWB_AoA_Project.zip",
+          "member": "UWB_AoA_Project/API/Src/custom_code/AoA_rtls_rx_txt.c"
+        }
+      ],
+      "historical_map_object_present": true,
+      "candidate_origin": [
+        "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\original_repos\\UWB_AoA_Project\\API\\Src\\custom_code\\AoA_rtls_rx_txt.c"
+      ],
+      "candidate_sha256": [
+        "3437d4b2b4bbf49cb0bf55402f6a586081c10b1c485e098b1c89fe98a553249a"
+      ],
+      "candidate_decision": "CANDIDATE_PRESENT_PROVENANCE_UNRESOLVED",
+      "confidence": "UNRESOLVED",
+      "blocking": true
+    },
+    {
+      "filename": "AoA_rtls_rx_two.c",
+      "project_reference": "../Src/custom_code/AoA_rtls_rx_two.c",
+      "project_reference_state": "PROJECT_REFERENCE_PRESENT",
+      "expected_relative_path": "../Src/custom_code/AoA_rtls_rx_two.c",
+      "expected_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_2a2t_3fdc9e9\\anchor_a1\\API\\Src\\custom_code\\AoA_rtls_rx_two.c",
+      "expected_path_exists": false,
+      "referenced_symbols": [
+        "AoA_rtls_rx_two"
+      ],
+      "expected_responsibility": "custom AoA/RTLS experiment application",
+      "classification": "custom",
+      "reference_usage": "ACTIVE_OR_UNRESOLVED_REFERENCE",
+      "git_history_exists": false,
+      "sibling_exact_source_exists": true,
+      "archive_exact_source_matches": [
+        {
+          "archive": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\original_repos\\UWB_AoA_Project.zip",
+          "member": "UWB_AoA_Project/API/Src/custom_code/AoA_rtls_rx_two.c"
+        }
+      ],
+      "historical_map_object_present": true,
+      "candidate_origin": [
+        "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\original_repos\\UWB_AoA_Project\\API\\Src\\custom_code\\AoA_rtls_rx_two.c"
+      ],
+      "candidate_sha256": [
+        "34b907baee5e206a3fa12db0d6bf99457b9d0d4a29e1ec87b9bc181f5c0e2d9e"
+      ],
+      "candidate_decision": "CANDIDATE_PRESENT_PROVENANCE_UNRESOLVED",
+      "confidence": "UNRESOLVED",
+      "blocking": true
+    },
+    {
+      "filename": "AoA_rtls_tx_two.c",
+      "project_reference": "../Src/custom_code/AoA_rtls_tx_two.c",
+      "project_reference_state": "PROJECT_REFERENCE_PRESENT",
+      "expected_relative_path": "../Src/custom_code/AoA_rtls_tx_two.c",
+      "expected_path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_2a2t_3fdc9e9\\anchor_a1\\API\\Src\\custom_code\\AoA_rtls_tx_two.c",
+      "expected_path_exists": false,
+      "referenced_symbols": [
+        "AoA_rtls_tx_two"
+      ],
+      "expected_responsibility": "custom AoA/RTLS experiment application",
+      "classification": "custom",
+      "reference_usage": "ACTIVE_OR_UNRESOLVED_REFERENCE",
+      "git_history_exists": false,
+      "sibling_exact_source_exists": true,
+      "archive_exact_source_matches": [
+        {
+          "archive": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\original_repos\\UWB_AoA_Project.zip",
+          "member": "UWB_AoA_Project/API/Src/custom_code/AoA_rtls_tx_two.c"
+        }
+      ],
+      "historical_map_object_present": true,
+      "candidate_origin": [
+        "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\original_repos\\UWB_AoA_Project\\API\\Src\\custom_code\\AoA_rtls_tx_two.c"
+      ],
+      "candidate_sha256": [
+        "03ee663769856a73841cc10a4a2c7babb5d385d73fa826e580e8e454d22196b5"
+      ],
+      "candidate_decision": "CANDIDATE_PRESENT_PROVENANCE_UNRESOLVED",
+      "confidence": "UNRESOLVED",
+      "blocking": true
+    }
+  ]
+}

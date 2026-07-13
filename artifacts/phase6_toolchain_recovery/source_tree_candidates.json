@@ -1,0 +1,17 @@
+{
+  "source_type": "CODE_INSPECTION",
+  "hardware_verified": false,
+  "classification": "MIXED_INCOMPLETE_OVERLAY_OR_SNAPSHOT",
+  "alternatives_not_proven": [
+    "missing Git submodule",
+    "generated source",
+    "stale project reference"
+  ],
+  "evidence": [
+    "15 recorded custom source references have no exact provenance-approved source candidate.",
+    "Historical MAP/object records may be stale and are not accepted as fresh-build evidence.",
+    "No .gitmodules file was found in the inspected SDK sandbox."
+  ],
+  "inactive_reference_rule": "Only an absent selection macro proves INACTIVE_REFERENCE_PROVEN; it never authorizes project-reference deletion or source substitution.",
+  "source_copy_performed": false
+}

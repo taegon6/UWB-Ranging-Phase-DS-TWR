@@ -1,0 +1,40 @@
+{
+  "outcome": "LEGACY_BUILD_ENVIRONMENT_NOT_READY",
+  "allow_baseline_build": false,
+  "allow_four_image_build": false,
+  "allow_flash_execute": false,
+  "allow_execute": false,
+  "hardware_verified": false,
+  "source_type": "CODE_INSPECTION",
+  "blocking_sources": [
+    "custom_ds_twr_initiator.c",
+    "custom_ds_twr_responder.c",
+    "switching.c",
+    "localization_ds_twr_initiatior.c",
+    "localization_ds_twr_responder.c",
+    "AoA_rtls_tx.c",
+    "AoA_rtls_rx.c",
+    "AoA_rtls_tx_AI.c",
+    "AoA_rtls_rx_AI.c",
+    "UART_test.c",
+    "rx_diagnostics_cp.c",
+    "AoA_rtls_tx_txt.c",
+    "AoA_rtls_rx_txt.c",
+    "AoA_rtls_rx_two.c",
+    "AoA_rtls_tx_two.c"
+  ],
+  "blocked_actions": [
+    "baseline_build",
+    "four_image_build",
+    "flash",
+    "erase",
+    "reset",
+    "RF",
+    "UART",
+    "logic_analyzer"
+  ],
+  "route_A": "Acquire/hash-verify SES 5.68 executable plus complete, origin-proven source tree; then perform one isolated baseline fresh build.",
+  "route_B": "Only consider a compatible legacy SES after its runtime/header contract is hash-verified against the recovered source tree.",
+  "route_C": "Planning only: analyze newer SES syscall/runtime headers and project schema; do not modify vendor or firmware source.",
+  "toolchain_installation": "NOT_PERFORMED; required exact installer/version must be obtained separately and installed side-by-side, outside SES 8.28."
+}

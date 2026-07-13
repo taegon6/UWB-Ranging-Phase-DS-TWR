@@ -1,0 +1,33 @@
+{
+  "source_type": "HISTORICAL_ARTIFACT_INSPECTION",
+  "hardware_verified": false,
+  "map": {
+    "path": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\original_repos\\UWB_AoA_Project\\API\\nRF52840-DK\\Output\\Debug\\Exe\\dw3000_api.map",
+    "sha256": "7cac549a92fd922b76d5b43ff98475da61d26de25cc3136726f535fb55a2abf7",
+    "ses_versions": [
+      "5.68"
+    ],
+    "target_device": "nRF52840_xxAA",
+    "configuration": "Debug",
+    "linker_script": "Setup/SEGGER_Flash.icf"
+  },
+  "provenance_limit": "MAP library/object paths establish historical clues only; build timestamp, compiler executable hash, complete source hash, and fresh artifact interval are absent.",
+  "prior_fresh_build_failure": "SES 8.28 compilation stopped at SEGGER_RTT_Syscalls_SES.c because __vfprintf.h was absent.",
+  "baseline_and_2a2t_hash_invariant": {
+    "unchanged": true,
+    "files": [
+      {
+        "path": "firmware_overlay/API/Src/custom_code/ds_twr_initiator_final.c",
+        "expected_sha256": "bb0dafc5f5a478a2481eeb6445e47629b91fd3be96054f50d60b34433d0ab389",
+        "observed_sha256": "bb0dafc5f5a478a2481eeb6445e47629b91fd3be96054f50d60b34433d0ab389",
+        "unchanged": true
+      },
+      {
+        "path": "firmware_overlay/API/Src/custom_code/ds_twr_responder_final.c",
+        "expected_sha256": "d0a63c4849720f898db54be71cc85a6a4280904f9934120c3d51e437f8a417d4",
+        "observed_sha256": "d0a63c4849720f898db54be71cc85a6a4280904f9934120c3d51e437f8a417d4",
+        "unchanged": true
+      }
+    ]
+  }
+}

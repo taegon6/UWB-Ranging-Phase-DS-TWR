@@ -1,0 +1,21 @@
+{
+  "performed": [
+    "project/MAP/session provenance inspection",
+    "exact-filename source search",
+    "ZIP member-name search",
+    "installed SES executable inventory"
+  ],
+  "not_performed": [
+    "toolchain install",
+    "source copy",
+    "SDK edit",
+    "build",
+    "flash",
+    "erase",
+    "reset",
+    "RF",
+    "UART",
+    "logic analyzer"
+  ],
+  "timestamp_utc": "2026-07-13T06:46:44.150549+00:00"
+}

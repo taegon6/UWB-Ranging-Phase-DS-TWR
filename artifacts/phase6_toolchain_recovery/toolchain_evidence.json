@@ -1,0 +1,41 @@
+{
+  "source_type": "CODE_INSPECTION",
+  "hardware_verified": false,
+  "map_reported_versions": [
+    "5.68"
+  ],
+  "map_reported_version": "5.68",
+  "installed_versions": [
+    "8.28"
+  ],
+  "classification": "TOOLCHAIN_FAMILY_IDENTIFIED",
+  "exact_installed": false,
+  "reason": "MAP library path is historical provenance, not an installed executable hash.",
+  "installed": [
+    {
+      "path": "C:\\Program Files\\SEGGER\\SEGGER Embedded Studio 8.28",
+      "version": "8.28",
+      "emBuild": "C:\\Program Files\\SEGGER\\SEGGER Embedded Studio 8.28\\bin\\emBuild.exe",
+      "executable_exists": true,
+      "executable_sha256": "c299b3d03890a1b2359b6536ef04802e269c5a64b8e57080b8139499c130c613"
+    }
+  ],
+  "runtime_header_contract": {
+    "required_headers": [
+      "SEGGER_RTT.h",
+      "__libc.h",
+      "__vfprintf.h",
+      "limits.h"
+    ],
+    "available_headers": [
+      "SEGGER_RTT.h",
+      "__libc.h",
+      "limits.h"
+    ],
+    "missing_headers": [
+      "__vfprintf.h"
+    ],
+    "status": "RUNTIME_HEADER_MISMATCH"
+  },
+  "syscalls_source": "C:\\Users\\User\\Documents\\학부연구생\\research\\uwb_followup\\build_sandboxes\\phase6_2a2t_3fdc9e9\\anchor_a1\\API\\nRF52840-DK\\SEGGER\\SEGGER_RTT_Syscalls_SES.c"
+}
