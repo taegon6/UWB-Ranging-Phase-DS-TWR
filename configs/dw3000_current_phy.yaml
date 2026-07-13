@@ -1,0 +1,134 @@
+schema_version: 1
+config_kind: dw3000_independent_phy
+model_role: CURRENT_FIRMWARE_INDEPENDENT_PHY
+paper_table_2_role: REGRESSION_COMPARISON_ONLY
+canonical_time_unit: ps
+source_type: CODE_INSPECTION
+hardware_verified: false
+
+sources:
+  dw3000_datasheet:
+    title: DW3000 Datasheet Version 1.3
+    url: https://www.qorvo.com/products/d/da008142
+    locator: Table 18 and Figure 12, pp.22-23
+  dw3xxx_api_guide:
+    title: DW3xxx Device Driver API Guide 4.1
+    url: https://forum.qorvo.com/uploads/short-url/xD3TlXKvkujjdUaJWXv2b4E7GQN.pdf
+    locator: dwt_configure pp.31-37; dwt_writetxdata/dwt_writetxfctrl pp.74-76
+  firmware:
+    commit: b8b911f6d437af9cb70c09f1b4f4562feb0239ac
+    initiator: firmware_overlay/API/Src/custom_code/ds_twr_initiator_final.c
+    responder: firmware_overlay/API/Src/custom_code/ds_twr_responder_final.c
+
+phy:
+  channel: 9
+  preamble_symbols: 128
+  pac_symbols: 8
+  tx_preamble_code: 9
+  rx_preamble_code: 9
+  prf_mhz: 64
+  sfd_type: DWT_SFD_DW_8
+  sfd_symbols: 8
+  data_rate: DWT_BR_6M8
+  phr_mode: DWT_PHRMODE_STD
+  phr_rate: DWT_PHRRATE_STD
+  sts_mode: DWT_STS_MODE_OFF
+  inactive_sts_length_field: DWT_STS_LEN_64
+
+parameter_provenance:
+  channel: {evidence_class: CODE_BASELINE, source: ds_twr_initiator_final.c, locator: line 43, status: RESOLVED, hardware_verified: false}
+  preamble_symbols: {evidence_class: CODE_BASELINE, source: ds_twr_initiator_final.c, locator: line 44 DWT_PLEN_128, status: RESOLVED, hardware_verified: false}
+  pac_symbols: {evidence_class: CODE_BASELINE, source: ds_twr_initiator_final.c, locator: line 45 DWT_PAC8, status: RESOLVED, hardware_verified: false}
+  tx_preamble_code: {evidence_class: CODE_BASELINE, source: ds_twr_initiator_final.c, locator: line 46, status: RESOLVED, hardware_verified: false}
+  rx_preamble_code: {evidence_class: CODE_BASELINE, source: ds_twr_initiator_final.c, locator: line 47, status: RESOLVED, hardware_verified: false}
+  prf_mhz: {evidence_class: QORVO_API_GUIDE, source: DW3xxx API Guide, locator: Table 2 p.35 code 9 => 64 MHz PRF, status: RESOLVED, hardware_verified: false}
+  sfd_type: {evidence_class: CODE_BASELINE, source: ds_twr_initiator_final.c, locator: line 48 value 1, status: RESOLVED, hardware_verified: false}
+  sfd_symbols: {evidence_class: QORVO_API_GUIDE, source: DW3xxx API Guide, locator: dwt_sfd_type_e p.32 DW 8, status: RESOLVED, hardware_verified: false}
+  data_rate: {evidence_class: CODE_BASELINE, source: ds_twr_initiator_final.c, locator: line 49 DWT_BR_6M8, status: RESOLVED, hardware_verified: false}
+  phr_mode: {evidence_class: CODE_BASELINE, source: ds_twr_initiator_final.c, locator: line 50 DWT_PHRMODE_STD, status: RESOLVED, hardware_verified: false}
+  phr_rate: {evidence_class: CODE_BASELINE, source: ds_twr_initiator_final.c, locator: line 51 DWT_PHRRATE_STD, status: RESOLVED, hardware_verified: false}
+  sts_mode: {evidence_class: CODE_BASELINE, source: ds_twr_initiator_final.c, locator: line 53 DWT_STS_MODE_OFF, status: RESOLVED, hardware_verified: false}
+
+timing_constants:
+  shr_symbol_time: {value: "1017.63", unit: ns, evidence_class: QORVO_DATASHEET, source: DW3000 Datasheet v1.3, locator: Table 18 p.22 PRF64 SHR, status: RESOLVED, hardware_verified: false}
+  phr_symbol_time: {value: "1025.64", unit: ns, evidence_class: QORVO_DATASHEET, source: DW3000 Datasheet v1.3, locator: Table 18 p.22 standard 0.85 Mbps PHR, status: RESOLVED, hardware_verified: false}
+  data_symbol_time: {value: "128.21", unit: ns, evidence_class: QORVO_DATASHEET, source: DW3000 Datasheet v1.3, locator: Table 18 p.22 6.81 Mbps data, status: RESOLVED, hardware_verified: false}
+  phr_symbols: 21
+  rs_data_block_bits: 330
+  rs_parity_bits_per_block: 48
+  sts_duration: {value: null, unit: ps, evidence_class: UNRESOLVED, source: DW3000 current config, locator: inactive because STS mode is off; exact enabled duration not asserted, status: UNRESOLVED, hardware_verified: false}
+
+packets:
+  Poll:
+    mac_header_octets: 9
+    function_code_octets: 1
+    body_octets: 0
+    meaningful_buffer_octets: 10
+    driver_buffer_octets: 10
+    buffer_includes_fcs_placeholders: false
+    fcs_octets: 2
+    driver_tx_frame_control_octets: 12
+    on_air_psdu_octets: 12
+    provenance: {source: ds_twr_initiator_final.c, locator: lines 67 and 261-263, status: RESOLVED}
+  Response:
+    mac_header_octets: 9
+    function_code_octets: 1
+    body_octets: 1
+    meaningful_buffer_octets: 11
+    driver_buffer_octets: 13
+    buffer_includes_fcs_placeholders: true
+    fcs_octets: 2
+    driver_tx_frame_control_octets: 13
+    on_air_psdu_octets: 13
+    provenance: {source: ds_twr_responder_final.c, locator: lines 80 and 333-337; last two buffer bytes are overwritten by generated FCS, status: RESOLVED}
+  Final:
+    mac_header_octets: 9
+    function_code_octets: 1
+    body_octets: 22
+    meaningful_buffer_octets: 32
+    driver_buffer_octets: 32
+    buffer_includes_fcs_placeholders: false
+    fcs_octets: 2
+    driver_tx_frame_control_octets: 34
+    on_air_psdu_octets: 34
+    provenance: {source: ds_twr_initiator_final.c, locator: lines 69 and 318-332, status: RESOLVED}
+  PostFinal:
+    mac_header_octets: 9
+    function_code_octets: 1
+    body_octets: 0
+    meaningful_buffer_octets: 10
+    driver_buffer_octets: 10
+    buffer_includes_fcs_placeholders: false
+    fcs_octets: 2
+    driver_tx_frame_control_octets: 12
+    on_air_psdu_octets: 12
+    provenance: {source: ds_twr_initiator_final.c, locator: lines 70 and 348-355, status: RESOLVED}
+  Report:
+    mac_header_octets: 9
+    function_code_octets: 1
+    body_octets: 4
+    meaningful_buffer_octets: 14
+    driver_buffer_octets: 14
+    buffer_includes_fcs_placeholders: false
+    fcs_octets: 2
+    driver_tx_frame_control_octets: 16
+    on_air_psdu_octets: 16
+    provenance: {source: ds_twr_responder_final.c, locator: lines 83 and 497-503, status: RESOLVED}
+
+transition_timing:
+  Poll->Response:
+    kind: REMOTE_RX_TO_TX_REPLY
+    outgoing_packet: Response
+    provenance: {source: paper method used as an explicit remote reply model, status: ASSUMED, hardware_verified: false}
+  Response->Final:
+    kind: REMOTE_RX_TO_TX_REPLY
+    outgoing_packet: Final
+    provenance: {source: paper method used as an explicit remote reply model, status: ASSUMED, hardware_verified: false}
+  Final->PostFinal:
+    kind: SAME_NODE_DELAYED_TX
+    outgoing_packet: PostFinal
+    delay: {value: "1650", unit: UUS, evidence_class: CODE_BASELINE, source: ds_twr_initiator_final.c, locator: FINAL_TX_TO_POST_FINAL_TX_DLY_UUS lines 138 and 348, status: RESOLVED, hardware_verified: false}
+  PostFinal->Report:
+    kind: POST_PROCESS_REPORT
+    outgoing_packet: Report
+    delay: {value: null, unit: us, evidence_class: UNRESOLVED, source: ds_twr_responder_final.c, locator: processing/CIR/filter plus Sleep(2) and immediate TX lines 445-503; no measured Rmarker delay, status: UNRESOLVED, hardware_verified: false}

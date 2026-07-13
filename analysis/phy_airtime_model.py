@@ -1,4 +1,9 @@
-"""Paper-grounded IEEE 802.15.4z HRP packet-airtime calculations."""
+"""Legacy paper-regression airtime calculations.
+
+This module is retained so the published Table 2 reproduction assertions remain
+stable.  Current firmware PHY calculation must use ``dw3000_phy_model`` and its
+Qorvo-derived symbol timings instead of this reverse-derived regression fixture.
+"""
 
 from __future__ import annotations
 

@@ -5,6 +5,8 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass, field, replace
 from typing import Any, Mapping, Sequence
 
+from decimal import Decimal
+
 from analysis.phy_airtime_model import (
     PacketAirtime,
     calculate_profile_airtimes,
@@ -15,6 +17,60 @@ from analysis.phy_airtime_model import (
 
 class TimingConstraintError(ValueError):
     """Raised when delayed-TX or RX-window constraints cannot be satisfied."""
+
+
+def resolve_current_five_packet_delays(
+    airtimes: Mapping[str, Any],
+    transition_timing: Mapping[str, Mapping[str, Any]],
+    *,
+    remote_processing_us: Decimal,
+    remote_reply_guard_us: Decimal,
+) -> dict[str, Decimal]:
+    """Resolve current 5-packet Rmarker delays in canonical picoseconds.
+
+    Only the two true remote receive-to-transmit transitions use the paper-style
+    processing + outgoing-airtime + guard expression.  Same-node delayed TX and
+    post-processing Report timing require their own explicit policies.
+    """
+
+    from analysis.dw3000_phy_model import canonical_ps
+
+    required = (
+        "Poll->Response",
+        "Response->Final",
+        "Final->PostFinal",
+        "PostFinal->Report",
+    )
+    if len(transition_timing) != len(required) or set(transition_timing) != set(required):
+        raise TimingConstraintError(
+            f"current five-packet transitions must be exactly {required}"
+        )
+    processing_ps = canonical_ps(remote_processing_us, "us")
+    guard_ps = canonical_ps(remote_reply_guard_us, "us")
+    if processing_ps < 0 or guard_ps < 0:
+        raise TimingConstraintError("remote processing and reply guard must be non-negative")
+    result: dict[str, Decimal] = {}
+    for transition in required:
+        spec = transition_timing[transition]
+        kind = spec.get("kind")
+        outgoing = str(spec.get("outgoing_packet", ""))
+        if outgoing not in airtimes:
+            raise TimingConstraintError(f"{transition} missing outgoing packet airtime")
+        if kind == "REMOTE_RX_TO_TX_REPLY":
+            result[transition] = processing_ps + airtimes[outgoing].total_ps + guard_ps
+            continue
+        if kind not in {"SAME_NODE_DELAYED_TX", "POST_PROCESS_REPORT"}:
+            raise TimingConstraintError(f"{transition} has unsupported timing kind {kind!r}")
+        delay = spec.get("delay")
+        if not isinstance(delay, Mapping) or delay.get("status") == "UNRESOLVED" or delay.get("value") is None:
+            raise TimingConstraintError(f"{transition} timing is UNRESOLVED")
+        if delay.get("hardware_verified") is not False:
+            raise TimingConstraintError(f"{transition} delay must remain hardware_verified=false")
+        try:
+            result[transition] = canonical_ps(delay["value"], str(delay["unit"]))
+        except (KeyError, ValueError) as exc:
+            raise TimingConstraintError(f"{transition} delay is invalid: {exc}") from exc
+    return result
 
 
 @dataclass(frozen=True)

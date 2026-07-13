@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "source_type": "CODE_INSPECTION",
+  "hardware_verified": false,
+  "model_role": "CURRENT_FIRMWARE_INDEPENDENT_PHY",
+  "sources": {
+    "dw3000_datasheet": {
+      "url": "https://www.qorvo.com/products/d/da008142",
+      "version": "1.3",
+      "sha256": "33759927D036B1728A10E60A1ABACB1D75A52D3092D3456F8A576CD365C9E216",
+      "locators": ["Table 18 p.22", "Figure 12 p.23", "Figure 7 p.23"]
+    },
+    "dw3xxx_api_guide": {
+      "url": "https://forum.qorvo.com/uploads/short-url/xD3TlXKvkujjdUaJWXv2b4E7GQN.pdf",
+      "version": "4.1",
+      "sha256": "1EC42876E00070E677A5A9EF0B8ACD2860C7C7FE06B6B8A1911CD16D21898F36",
+      "locators": ["dwt_configure pp.31-37", "dwt_writetxdata pp.74-75", "dwt_writetxfctrl pp.75-76"]
+    },
+    "firmware": {
+      "commit": "b8b911f6d437af9cb70c09f1b4f4562feb0239ac",
+      "manifest": "artifacts/simulation_2a2t_source_manifest.json"
+    }
+  },
+  "separation_rule": "Paper Table 2 is regression comparison only and is not an input to the current firmware PHY calculation."
+}

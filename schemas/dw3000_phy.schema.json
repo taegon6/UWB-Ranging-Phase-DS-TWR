@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://uwb.local/schemas/dw3000_phy.schema.json",
+  "type": "object",
+  "required": ["schema_version", "config_kind", "model_role", "paper_table_2_role", "canonical_time_unit", "source_type", "hardware_verified", "sources", "phy", "parameter_provenance", "timing_constants", "packets", "transition_timing"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "config_kind": {"const": "dw3000_independent_phy"},
+    "model_role": {"const": "CURRENT_FIRMWARE_INDEPENDENT_PHY"},
+    "paper_table_2_role": {"const": "REGRESSION_COMPARISON_ONLY"},
+    "canonical_time_unit": {"const": "ps"},
+    "source_type": {"enum": ["CODE_INSPECTION", "SYNTHETIC"]},
+    "hardware_verified": {"const": false},
+    "sources": {"type": "object", "minProperties": 3},
+    "phy": {
+      "type": "object",
+      "required": ["channel", "preamble_symbols", "pac_symbols", "tx_preamble_code", "rx_preamble_code", "prf_mhz", "sfd_type", "sfd_symbols", "data_rate", "phr_mode", "phr_rate", "sts_mode", "inactive_sts_length_field"],
+      "properties": {
+        "channel": {"enum": [5, 9]},
+        "preamble_symbols": {"enum": [128, 1024]},
+        "pac_symbols": {"enum": [4, 8, 16, 32]},
+        "tx_preamble_code": {"type": "integer", "minimum": 1},
+        "rx_preamble_code": {"type": "integer", "minimum": 1},
+        "prf_mhz": {"enum": [16, 64]},
+        "sfd_type": {"enum": ["DWT_SFD_IEEE_4A", "DWT_SFD_DW_8", "DWT_SFD_DW_16", "DWT_SFD_IEEE_4Z"]},
+        "sfd_symbols": {"enum": [8, 16]},
+        "data_rate": {"enum": ["DWT_BR_850K", "DWT_BR_6M8"]},
+        "phr_mode": {"enum": ["DWT_PHRMODE_STD", "DWT_PHRMODE_EXT"]},
+        "phr_rate": {"enum": ["DWT_PHRRATE_STD", "DWT_PHRRATE_DTA"]},
+        "sts_mode": {"enum": ["DWT_STS_MODE_OFF", "DWT_STS_MODE_1", "DWT_STS_MODE_2"]},
+        "inactive_sts_length_field": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "parameter_provenance": {"type": "object", "minProperties": 12},
+    "timing_constants": {
+      "type": "object",
+      "required": ["shr_symbol_time", "phr_symbol_time", "data_symbol_time", "phr_symbols", "rs_data_block_bits", "rs_parity_bits_per_block", "sts_duration"],
+      "properties": {
+        "shr_symbol_time": {"$ref": "#/$defs/timeParameter"},
+        "phr_symbol_time": {"$ref": "#/$defs/timeParameter"},
+        "data_symbol_time": {"$ref": "#/$defs/timeParameter"},
+        "phr_symbols": {"const": 21},
+        "rs_data_block_bits": {"const": 330},
+        "rs_parity_bits_per_block": {"const": 48},
+        "sts_duration": {"$ref": "#/$defs/timeParameter"}
+      },
+      "additionalProperties": false
+    },
+    "packets": {
+      "type": "object",
+      "required": ["Poll", "Response", "Final", "PostFinal", "Report"],
+      "properties": {
+        "Poll": {"$ref": "#/$defs/packet"},
+        "Response": {"$ref": "#/$defs/packet"},
+        "Final": {"$ref": "#/$defs/packet"},
+        "PostFinal": {"$ref": "#/$defs/packet"},
+        "Report": {"$ref": "#/$defs/packet"}
+      },
+      "additionalProperties": false
+    },
+    "transition_timing": {
+      "type": "object",
+      "required": ["Poll->Response", "Response->Final", "Final->PostFinal", "PostFinal->Report"],
+      "properties": {
+        "Poll->Response": {"$ref": "#/$defs/remoteTransition"},
+        "Response->Final": {"$ref": "#/$defs/remoteTransition"},
+        "Final->PostFinal": {"$ref": "#/$defs/fixedTransition"},
+        "PostFinal->Report": {"$ref": "#/$defs/fixedTransition"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "timeParameter": {
+      "type": "object",
+      "required": ["value", "unit", "evidence_class", "source", "locator", "status", "hardware_verified"],
+      "properties": {
+        "value": {"type": ["string", "number", "null"]},
+        "unit": {"enum": ["ps", "ns", "us", "dtu", "UUS"]},
+        "evidence_class": {"enum": ["QORVO_DATASHEET", "QORVO_API_GUIDE", "CODE_BASELINE", "ASSUMED", "UNRESOLVED"]},
+        "source": {"type": "string", "minLength": 1},
+        "locator": {"type": "string", "minLength": 1},
+        "status": {"enum": ["RESOLVED", "ASSUMED", "UNRESOLVED"]},
+        "hardware_verified": {"const": false}
+      },
+      "additionalProperties": false
+    },
+    "remoteTransition": {
+      "type": "object",
+      "required": ["kind", "outgoing_packet", "provenance"],
+      "properties": {
+        "kind": {"const": "REMOTE_RX_TO_TX_REPLY"},
+        "outgoing_packet": {"enum": ["Response", "Final"]},
+        "provenance": {"type": "object", "minProperties": 3}
+      },
+      "additionalProperties": false
+    },
+    "fixedTransition": {
+      "type": "object",
+      "required": ["kind", "outgoing_packet", "delay"],
+      "properties": {
+        "kind": {"enum": ["SAME_NODE_DELAYED_TX", "POST_PROCESS_REPORT"]},
+        "outgoing_packet": {"enum": ["PostFinal", "Report"]},
+        "delay": {"$ref": "#/$defs/timeParameter"}
+      },
+      "additionalProperties": false
+    },
+    "packet": {
+      "type": "object",
+      "required": ["mac_header_octets", "function_code_octets", "body_octets", "meaningful_buffer_octets", "driver_buffer_octets", "buffer_includes_fcs_placeholders", "fcs_octets", "driver_tx_frame_control_octets", "on_air_psdu_octets", "provenance"],
+      "properties": {
+        "mac_header_octets": {"type": "integer", "minimum": 0},
+        "function_code_octets": {"type": "integer", "minimum": 0},
+        "body_octets": {"type": "integer", "minimum": 0},
+        "meaningful_buffer_octets": {"type": "integer", "minimum": 0},
+        "driver_buffer_octets": {"type": "integer", "minimum": 0},
+        "buffer_includes_fcs_placeholders": {"type": "boolean"},
+        "fcs_octets": {"const": 2},
+        "driver_tx_frame_control_octets": {"type": "integer", "minimum": 5, "maximum": 127},
+        "on_air_psdu_octets": {"type": "integer", "minimum": 5, "maximum": 127},
+        "provenance": {"type": "object", "minProperties": 3}
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -74,6 +74,8 @@ def find_placeholders(config: Mapping[str, Any]) -> list[str]:
 
 def _default_schema(config: Mapping[str, Any]) -> Path:
     kind = str(config.get("config_kind", "")).lower()
+    if kind == "dw3000_independent_phy":
+        return SCHEMA_ROOT / "dw3000_phy.schema.json"
     if kind.startswith("simulation_2a2t"):
         return SCHEMA_ROOT / "simulation_2a2t.schema.json"
     if "calibration" in config or "calibration" in kind:
