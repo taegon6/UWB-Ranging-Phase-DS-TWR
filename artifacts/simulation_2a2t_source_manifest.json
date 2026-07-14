@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "source_type": "CODE_INSPECTION",
+  "hardware_verified": false,
+  "model_basis": "PAPER_GROUNDED",
+  "paper": {
+    "title": "IEEE 802.15.4z UWB의 거리측정 정확도와 측정시간 최적화",
+    "doi": "https://doi.org/10.5515/KJKIEES.2025.36.3.274",
+    "original_path": "C:/Users/User/Documents/카카오톡 받은 파일/jkiees-36-3-274.pdf",
+    "sha256": "63FC732A71DDD911D8737C5384483310406305EED9CAE351CD98DB24AD3C9F75",
+    "pages_used": [276, 277, 278, 279, 280],
+    "evidence": ["Equation 3", "Equations 4-6", "Table 2", "Figure 4", "Table 3", "Figure 6"]
+  },
+  "firmware_baseline": {
+    "git_branch": "ekf",
+    "git_commit": "b8b911f6d437af9cb70c09f1b4f4562feb0239ac",
+    "files": {
+      "firmware_overlay/API/Src/custom_code/ds_twr_initiator_final.c": "bb0dafc5f5a478a2481eeb6445e47629b91fd3be96054f50d60b34433d0ab389",
+      "firmware_overlay/API/Src/custom_code/ds_twr_responder_final.c": "d0a63c4849720f898db54be71cc85a6a4280904f9934120c3d51e437f8a417d4",
+      "firmware_overlay/API/Src/Shared_jang/shared_function_jang.c": "e9773891fb26401f8d27017ed4b6d56dcca646c61ead298ae391d808860a9943",
+      "firmware_overlay/API/Src/Shared_jang/shared_function_jang.h": "8b665b3b0d35e5d234a0c837ddde950209524379755117253bba19978e736894"
+    }
+  },
+  "separation_rule": "PAPER and CODE_BASELINE profiles are immutable inputs and must never overwrite each other.",
+  "phase_gate": {
+    "implemented_through": 4,
+    "phase_5_enabled": false,
+    "phase_6_enabled": false
+  }
+}

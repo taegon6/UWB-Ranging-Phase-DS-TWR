@@ -7,6 +7,9 @@ venv/
 
 # Local UWB experiment outputs
 logs/
+results/
+configs/local_hardware.yaml
+configs/antenna_calibration.yaml
 *.raw.txt
 *.position.csv
 *.meta.json

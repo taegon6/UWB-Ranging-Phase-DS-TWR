@@ -1,0 +1,59 @@
+{
+  "snapshot_type": "STATIC_CODE_BASELINE",
+  "hardware_verified": false,
+  "source_commit": "b8b911f6d437af9cb70c09f1b4f4562feb0239ac",
+  "protocol": "Poll -> Response -> Final -> Post-Final -> Report",
+  "addresses": {
+    "tag_ascii": "TG",
+    "anchors_ascii": ["A1", "B2"],
+    "pan_id_bytes": [202, 222]
+  },
+  "function_codes": {
+    "poll": 33,
+    "response": 16,
+    "final": 35,
+    "post_final": 18,
+    "report": 49
+  },
+  "programmed_buffer_bytes": {
+    "poll": 10,
+    "response": 13,
+    "final": 32,
+    "post_final": 10,
+    "report": 14
+  },
+  "tx_frame_control_policy": "mixed_current_code; initiator and report add FCS_LEN while response passes sizeof directly",
+  "timing_uus": {
+    "initiator_poll_tx_to_response_rx": 1500,
+    "initiator_response_rx_to_final_tx": 1650,
+    "initiator_response_rx_timeout": 281,
+    "initiator_final_to_post_final_tx": 1650,
+    "initiator_report_rx_timeout": 50000,
+    "responder_poll_rx_to_response_tx": 1650,
+    "responder_response_tx_to_final_rx": 1500,
+    "responder_final_rx_timeout": 298,
+    "responder_final_to_post_final_rx": 1500,
+    "responder_post_final_rx_timeout": 279
+  },
+  "sleep_ms": {
+    "startup_both": 2,
+    "initiator_inter_ranging": 1,
+    "responder_pre_report_tx": 2,
+    "responder_inter_ranging": 5
+  },
+  "antenna_delay_constants": {
+    "tx": 16385,
+    "rx": 16385,
+    "status": "UNCALIBRATED_CODE_CONSTANT"
+  },
+  "cir": {
+    "accumulator_bytes": 7,
+    "layout": "one dummy byte plus one 18-bit complex sample",
+    "sample_index": "ipatovFpIndex >> 6"
+  },
+  "phase": {
+    "combination": "normalize(phi0 + phi1 - phi2 + phi3)",
+    "median_window": 20,
+    "warmup_fallback": "raw DS distance while cnt < WINDOW_SIZE"
+  }
+}

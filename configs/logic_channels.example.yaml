@@ -1,0 +1,20 @@
+schema_version: 1
+device_id: TODO_USER_INPUT
+# sigrok driver connection selector (for example usb/1-2.3), verified by discovery.
+connection: TODO_USER_INPUT
+driver: TODO_USER_INPUT
+sample_rate_hz: TODO_HW_VERIFY
+channels:
+  IRQ_PIN: TODO_USER_INPUT
+  ISR_ACTIVE: TODO_USER_INPUT
+  SPI_ACTIVE: TODO_USER_INPUT
+  # Optional dedicated routes; omit when SPI_ACTIVE is reused per capture profile.
+  SPI_STATUS: TODO_USER_INPUT
+  SPI_FRAME: TODO_USER_INPUT
+  UART_ENQUEUE: TODO_USER_INPUT
+  UART_TX: TODO_USER_INPUT
+  CIR_READ: TODO_USER_INPUT
+  PHASE_PROCESS: TODO_USER_INPUT
+
+# Each channel number is a placeholder until the board schematic, firmware pin
+# mapping, and physical probe connection are checked together.

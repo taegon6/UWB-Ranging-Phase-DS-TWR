@@ -1,0 +1,19 @@
+schema_version: 1
+config_kind: experiment
+experiment_id: timing_characterization
+protocol_mode: INDEPENDENT
+ranging_mode: DS_ONLY
+operation_mode: APPROACH
+repetitions: 1000
+warmup_frames: 50
+capture_duration_s: 60
+metrics:
+  - irq_latency
+  - isr_duration
+  - spi_status_duration
+  - spi_frame_duration
+  - cir_read_duration
+  - phase_processing_duration
+  - uart_enqueue_duration
+  - uart_physical_tx_duration
+  - frame_period

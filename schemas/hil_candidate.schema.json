@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Synthetic Phase 6 HIL candidate manifest",
+  "type": "object",
+  "required": ["schema_version", "candidate_id", "label", "source_commit", "config_hash", "source_type", "hardware_verified", "phy_profile", "packet_definitions", "reply_delay", "rx_after_tx_delay", "rx_timeout_margin_us", "final_postfinal_delay_uus", "postfinal_report_assumed_delay_ps", "inter_slot_guard_us", "superframe_period_us", "expected_synthetic_rate_hz", "assumptions_and_provenance", "unresolved", "firmware_application_targets", "pre_apply_checks", "rollback_values"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "candidate_id": {"type": "string", "minLength": 1},
+    "label": {"type": "string", "minLength": 1},
+    "source_commit": {"type": "string", "minLength": 1},
+    "config_hash": {"type": "string", "minLength": 64},
+    "source_type": {"const": "SYNTHETIC"},
+    "hardware_verified": {"const": false},
+    "phy_profile": {"type": "object"},
+    "packet_definitions": {"type": "object", "minProperties": 5},
+    "node_timing_parameters": {"type": "object"},
+    "reply_delay": {"type": "object"},
+    "rx_after_tx_delay": {"type": "object"},
+    "rx_timeout_margin_us": {},
+    "final_postfinal_delay_uus": {},
+    "postfinal_report_assumed_delay_ps": {},
+    "inter_slot_guard_us": {},
+    "superframe_period_us": {},
+    "expected_synthetic_rate_hz": {},
+    "assumptions_and_provenance": {"type": "object"},
+    "unresolved": {"type": "array", "minItems": 1},
+    "firmware_application_targets": {"type": "array", "minItems": 1},
+    "pre_apply_checks": {"type": "array", "minItems": 1},
+    "rollback_values": {"type": "object"}
+  },
+  "additionalProperties": false
+}

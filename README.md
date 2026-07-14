@@ -1,5 +1,33 @@
 # UWB Ranging Optimization Follow-up
 
+## Pre-hardware 2A2T environment
+
+The repository now includes a hardware-free experiment foundation for future
+A1/A2/T1/T2 work. It preserves the existing A1/B2/TG firmware overlay and does
+not claim real 2A2T operation.
+
+```text
+source_type = SYNTHETIC
+hardware_verified = false
+```
+
+Run from this repository root:
+
+```powershell
+python tools\check_environment.py
+python tools\run_hardware_experiment.py --config configs\mock_hardware.yaml --experiment timing_characterization --backend mock --dry-run --analyze --report
+python tools\calibrate_antenna_delay.py --config configs\antenna_calibration.example.yaml --backend mock --dry-run
+```
+
+Start with [docs/PRE_HARDWARE_SETUP.md](docs/PRE_HARDWARE_SETUP.md) and
+[docs/CODE_EXPERIMENT_GUIDE_KO.md](docs/CODE_EXPERIMENT_GUIDE_KO.md), then
+[docs/2A2T_PARAMETER_TUNING_SIMULATION_PLAN_KO.md](docs/2A2T_PARAMETER_TUNING_SIMULATION_PLAN_KO.md) for the paper-grounded simulation/HIL plan, and
+[docs/2A2T_PHASE0_4_IMPLEMENTATION_AND_EXPERIMENT_GUIDE_KO.md](docs/2A2T_PHASE0_4_IMPLEMENTATION_AND_EXPERIMENT_GUIDE_KO.md) for the implemented Phase 0-4 workflow, and
+[docs/2A2T_PHASE0_4_INDEPENDENT_AUDIT_KO.md](docs/2A2T_PHASE0_4_INDEPENDENT_AUDIT_KO.md) for the adversarial Phase 0-4 audit and Phase 5 gate, and
+[docs/2A2T_PHY_TIMELINE_MODEL_CORRECTION_KO.md](docs/2A2T_PHY_TIMELINE_MODEL_CORRECTION_KO.md) for the Phase 0-4.5 independent DW3000 PHY/timeline correction, and
+[HANDOFF.md](HANDOFF.md). Real wiring and input fields are listed in
+[docs/HARDWARE_CONNECTION_CHECKLIST.md](docs/HARDWARE_CONNECTION_CHECKLIST.md).
+
 This folder preserves the local two-anchor DS-TWR ranging work prepared from
 `FastTurtle7892/UWB-Ranging-Optimization`.
 
@@ -34,6 +62,7 @@ python tools\collect_tag_two_anchor_position.py `
   --tag-port COM8 `
   --baseline-m 2.5 `
   --duration 60 `
+  --height-diff-m 0.37 `
   --tag phase_ds_twr_run `
   --out-dir logs\phase_distance_run
 ```
@@ -45,15 +74,52 @@ powershell -ExecutionPolicy Bypass -File tools\run_phase_distance_experiment.ps1
   -TagPort COM8 `
   -BaselineM 2.5 `
   -DurationS 60 `
+  -HeightDiffM 0.37 `
   -MedianWindow 1 `
   -Tag phase_ds_twr_run
 ```
 
+## TurtleBot UWB + cmd_vel Postprocess
+
+Collect UWB first, then fuse the saved position CSV with a TurtleBot
+`cmd_vel` CSV after the run:
+
+```powershell
+python tools\apply_cmd_vel_range_ekf.py `
+  logs\phase_distance_run\run.position.csv `
+  logs\cmd_vel\straight_01_cmd_vel.csv `
+  --time-align auto `
+  --auto-calibrate-endpoints `
+  --known-start-x-m 0 `
+  --known-start-y-m 4 `
+  --known-end-x-m 1.03 `
+  --known-end-y-m 2.06
+```
+
+The postprocess writes `*.cmd_ekf.csv` and `*.cmd_ekf.png` next to the UWB
+CSV. Real logs, plots, and CSV outputs stay ignored by git.
+
 ## Notes
 
+## Phase 5 synthetic 2A2T timing simulation
+
+Run the independent-DW3000-PHY, five-packet, four-link sequential sweep and
+export conditional Phase 6 HIL candidate manifests with one command:
+
+```powershell
+python tools\run_phase5_simulation.py
+```
+
+The run creates a new dated directory under `results/` and never overwrites an
+existing run. See `docs/2A2T_PHASE5_SIMULATION_RESULTS_KO.md` and
+`docs/2A2T_PHASE6_HARDWARE_EXPERIMENT_PLAN_KO.md`. All outputs are synthetic
+(`hardware_verified=false`); the command does not patch firmware or access
+boards.
+
 - Real experiment logs are intentionally not committed.
-- The responder overlay uses `RNG_DELAY_MS = 5`, which improved the observed
-  two-anchor tag UART rate from about 18 Hz to about 90 Hz in the local lab
-  test.
+- A pre-existing project note says the responder overlay's `RNG_DELAY_MS = 5`
+  changed a past local two-anchor UART observation from about 18 Hz to about
+  90 Hz. That log is not present here, was not reproduced in this task, and is
+  not a verified timing result for the current environment.
 - If the 2D map has no valid positive-y points, check that the physical anchor
   spacing matches `--baseline-m`.

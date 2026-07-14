@@ -1,0 +1,5 @@
+# Reproducible software-only environment (verified with Python 3.14.4).
+PyYAML==6.0.3
+jsonschema==4.26.0
+numpy==2.4.4
+matplotlib==3.10.8

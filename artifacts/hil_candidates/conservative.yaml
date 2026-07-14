@@ -1,0 +1,73 @@
+schema_version: 1
+candidate_id: P5-00029
+label: conservative
+source_commit: 2b2b6ed73b3fd0dd49023208904449a6725784b4
+config_hash: 32a0ff60bbaabbbe993ef46deb4cb0c76f970c2ae68e604820748c7430876c7b
+source_type: SYNTHETIC
+hardware_verified: false
+phy_profile:
+  preamble_symbols: 128
+  sts_mode: DWT_STS_MODE_OFF
+packet_definitions:
+  Poll: '178.39836'
+  Response: '179.42404'
+  Final: '200.96332'
+  PostFinal: '178.39836'
+  Report: '182.50108'
+node_timing_parameters:
+  all_links: sequential identical timing
+reply_delay:
+  Poll->Response_ps: '701424040.00'
+  Response->Final_ps: '722963320.00'
+rx_after_tx_delay:
+  status: UNRESOLVED
+  hardware_verified: false
+rx_timeout_margin_us: '300'
+final_postfinal_delay_uus: '1650'
+postfinal_report_assumed_delay_ps: '704501080.00'
+inter_slot_guard_us: '200'
+superframe_period_us: '16814.78884923076923076923077'
+expected_synthetic_rate_hz: '59.471457475111099892334044514577717516413288752706'
+assumptions_and_provenance:
+  report_processing_us:
+    hardware_verified: false
+    value: '522'
+    unit: us
+    evidence_class: PAPER
+    source: jkiees-36-3-274 Figure 4 p.279 (sensitivity only)
+    rationale: unmeasured PostFinal-to-Report processing assumption; not a current-firmware
+      measurement
+  final_postfinal_delay_uus:
+    hardware_verified: false
+    value: '1650'
+    unit: UUS
+    evidence_class: CODE_BASELINE
+    source: FINAL_TX_TO_POST_FINAL_TX_DLY_UUS
+    rationale: repository delayed-TX constant
+  guards_and_timeout:
+    hardware_verified: false
+    evidence_class: ASSUMED
+    source: Phase 5 sweep
+    rationale: synthetic robustness variables pending HIL
+  uart:
+    hardware_verified: false
+    evidence_class: ASSUMED
+    source: Phase 5 UART scenario
+    rationale: record size and sustainable throughput are unmeasured
+unresolved:
+- measured PostFinal-to-Report processing
+- RX enable/startup timing
+- UART sustainable throughput
+- Response FCS on-air confirmation
+firmware_application_targets:
+- dwt_setdelayedtrxtime
+- dwt_setrxaftertxdelay
+- dwt_setrxtimeout
+- FINAL_TX_TO_POST_FINAL_TX_DLY_UUS
+pre_apply_checks:
+- confirm units UUS vs dtu
+- confirm Rmarker reference
+- confirm 4 board role mapping
+- capture baseline constants
+rollback_values:
+  action: restore recorded pre-apply constants; no automatic patch is provided

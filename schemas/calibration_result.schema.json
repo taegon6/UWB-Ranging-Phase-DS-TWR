@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://uwb.local/schemas/calibration_result.schema.json",
+  "title": "Antenna-delay calibration result",
+  "type": "object",
+  "required": ["source_type", "hardware_verified", "status"],
+  "properties": {
+    "source_type": {"enum": ["SYNTHETIC", "MEASURED"]},
+    "hardware_verified": {"type": "boolean"},
+    "backend": {"enum": ["mock", "real"]},
+    "status": {"enum": ["DRY_RUN", "DRY_RUN_PASS", "PASS", "FAIL"]},
+    "selected_candidate": {"type": "number"},
+    "selected_mock_candidate": {"type": "number"},
+    "objective": {"type": "number"},
+    "candidates": {"type": "array", "items": {"type": "object"}}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"source_type": {"const": "SYNTHETIC"}}},
+      "then": {"properties": {"hardware_verified": {"const": false}}}
+    }
+  ],
+  "anyOf": [
+    {"required": ["selected_candidate"]},
+    {"required": ["selected_mock_candidate"]}
+  ],
+  "additionalProperties": true
+}

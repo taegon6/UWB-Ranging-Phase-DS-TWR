@@ -1,0 +1,48 @@
+schema_version: 1
+config_kind: antenna_calibration
+backend: mock
+hardware_config: configs/local_hardware.yaml
+
+calibration:
+  mode: COMBINED_SINGLE_LINK
+  reference_node: TODO_USER_INPUT
+  measurement_metadata:
+    target_nodes: [TODO_USER_INPUT]
+    target_links: [TODO_USER_INPUT]
+    distance_reference_description: TODO_USER_INPUT
+    distance_uncertainty_m: TODO_HW_VERIFY
+    antenna_reference_point: TODO_USER_INPUT
+    antenna_height_m: TODO_USER_INPUT
+    antenna_orientation: TODO_USER_INPUT
+    environment_description: TODO_USER_INPUT
+  reference_distances_m: [0.5, 1.0, 2.0, 3.0]
+  samples_per_point: 1000
+  warmup_samples: 100
+  search:
+    method: coarse_to_fine
+    # These values must remain unresolved until an actual board/code baseline is
+    # inspected. They are never substituted from the synthetic profile below.
+    hardware:
+      initial_min: TODO_HW_VERIFY
+      initial_max: TODO_HW_VERIFY
+      coarse_step: TODO_HW_VERIFY
+      fine_step: TODO_HW_VERIFY
+    # Deterministic software-only search values for --backend mock --dry-run.
+    synthetic_mock:
+      initial_min: 16200
+      initial_max: 16600
+      coarse_step: 20
+      fine_step: 2
+  objective:
+    metric: weighted_absolute_bias
+    include_repeatability_penalty: true
+    repeatability_weight: 0.25
+  synthetic_truth:
+    combined_delay_dtu: 16436
+    noise_std_m: 0.015
+    random_seed: 20260710
+
+outputs:
+  results_root: results
+  source_type: SYNTHETIC
+  hardware_verified: false

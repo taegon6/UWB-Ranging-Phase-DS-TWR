@@ -1,0 +1,3 @@
+# source_type = SYNTHETIC
+# hardware_verified = false
+# No firmware hashes: dry-run did not build images.

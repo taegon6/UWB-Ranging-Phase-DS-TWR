@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://uwb.local/schemas/experiment_config.schema.json",
+  "title": "2A2T UWB timing experiment",
+  "type": "object",
+  "required": ["experiment_id", "protocol_mode", "ranging_mode", "operation_mode", "repetitions", "warmup_frames", "capture_duration_s", "metrics"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "config_kind": {"const": "experiment"},
+    "experiment_id": {"type": "string", "minLength": 1},
+    "protocol_mode": {"enum": ["INDEPENDENT", "ONE_TO_MANY", "INTERLEAVED", "ALTERNATING", "HYBRID"]},
+    "ranging_mode": {"enum": ["DS_ONLY", "DS_CIR_CAPTURE", "DS_PHASE_CORRECT"]},
+    "operation_mode": {"enum": ["APPROACH", "FINE_ALIGNMENT", "FINAL_CONFIRMATION"]},
+    "repetitions": {"type": "integer", "minimum": 1},
+    "warmup_frames": {"type": "integer", "minimum": 0},
+    "capture_duration_s": {"type": "number", "exclusiveMinimum": 0},
+    "metrics": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

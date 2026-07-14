@@ -1,0 +1,73 @@
+schema_version: 1
+candidate_id: P5-02557
+label: uart_safe
+source_commit: 2b2b6ed73b3fd0dd49023208904449a6725784b4
+config_hash: 32a0ff60bbaabbbe993ef46deb4cb0c76f970c2ae68e604820748c7430876c7b
+source_type: SYNTHETIC
+hardware_verified: false
+phy_profile:
+  preamble_symbols: 1024
+  sts_mode: DWT_STS_MODE_OFF
+packet_definitions:
+  Poll: '1090.19484'
+  Response: '1091.22052'
+  Final: '1112.7598'
+  PostFinal: '1090.19484'
+  Report: '1094.29756'
+node_timing_parameters:
+  all_links: sequential identical timing
+reply_delay:
+  Poll->Response_ps: '1813220520.00'
+  Response->Final_ps: '1834759800.00'
+rx_after_tx_delay:
+  status: UNRESOLVED
+  hardware_verified: false
+rx_timeout_margin_us: '300'
+final_postfinal_delay_uus: '1650'
+postfinal_report_assumed_delay_ps: '4294297560.00'
+inter_slot_guard_us: '200'
+superframe_period_us: '43715.53252923076923076923076'
+expected_synthetic_rate_hz: '22.875164550067904215077147484074723857827092675082'
+assumptions_and_provenance:
+  report_processing_us:
+    hardware_verified: false
+    value: '3000'
+    unit: us
+    evidence_class: ASSUMED
+    source: Phase 5 sensitivity design
+    rationale: unmeasured PostFinal-to-Report processing assumption; not a current-firmware
+      measurement
+  final_postfinal_delay_uus:
+    hardware_verified: false
+    value: '1650'
+    unit: UUS
+    evidence_class: CODE_BASELINE
+    source: FINAL_TX_TO_POST_FINAL_TX_DLY_UUS
+    rationale: repository delayed-TX constant
+  guards_and_timeout:
+    hardware_verified: false
+    evidence_class: ASSUMED
+    source: Phase 5 sweep
+    rationale: synthetic robustness variables pending HIL
+  uart:
+    hardware_verified: false
+    evidence_class: ASSUMED
+    source: Phase 5 UART scenario
+    rationale: record size and sustainable throughput are unmeasured
+unresolved:
+- measured PostFinal-to-Report processing
+- RX enable/startup timing
+- UART sustainable throughput
+- Response FCS on-air confirmation
+firmware_application_targets:
+- dwt_setdelayedtrxtime
+- dwt_setrxaftertxdelay
+- dwt_setrxtimeout
+- FINAL_TX_TO_POST_FINAL_TX_DLY_UUS
+pre_apply_checks:
+- confirm units UUS vs dtu
+- confirm Rmarker reference
+- confirm 4 board role mapping
+- capture baseline constants
+rollback_values:
+  action: restore recorded pre-apply constants; no automatic patch is provided

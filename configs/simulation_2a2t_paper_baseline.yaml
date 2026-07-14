@@ -1,0 +1,95 @@
+schema_version: 1
+config_kind: simulation_2a2t_baseline
+source_type: SYNTHETIC
+hardware_verified: false
+model_basis: PAPER_GROUNDED
+
+sources:
+  paper:
+    title: IEEE 802.15.4z UWB의 거리측정 정확도와 측정시간 최적화
+    doi: https://doi.org/10.5515/KJKIEES.2025.36.3.274
+    original_path: C:/Users/User/Documents/카카오톡 받은 파일/jkiees-36-3-274.pdf
+    sha256: 63FC732A71DDD911D8737C5384483310406305EED9CAE351CD98DB24AD3C9F75
+  firmware:
+    git_commit: b8b911f6d437af9cb70c09f1b4f4562feb0239ac
+    branch: ekf
+    repository_kind: overlay-only
+
+paper_profiles:
+  paper_plen128:
+    profile_type: PAPER
+    phy:
+      preamble_symbols: {value: 128, unit: symbol, evidence_class: PAPER, source: jkiees-36-3-274, locator: Table 3 p.280, hardware_verified: false}
+      sfd_symbols: {value: 8, unit: symbol, evidence_class: PAPER, source: jkiees-36-3-274, locator: Section 2-1 p.276, hardware_verified: false}
+      preamble_symbol_time_us: {value: 1.0176470588235293, unit: us/symbol, evidence_class: PAPER_DERIVED, source: jkiees-36-3-274, locator: Table 2 T_SHR=138.4 us / 136 symbols, hardware_verified: false}
+      phr_time_us: {value: 21.5, unit: us, evidence_class: PAPER, source: jkiees-36-3-274, locator: Table 2 p.279, hardware_verified: false}
+      coded_bit_time_us: {value: 0.1282051282051282, unit: us/bit, evidence_class: PAPER_DERIVED, source: jkiees-36-3-274, locator: Table 2 PSDU times rounded to 0.1 us, hardware_verified: false}
+      rs_parity_bits: {value: 48, unit: bit, evidence_class: PAPER_DERIVED, source: IEEE802.15.4z HRP coding model, locator: Table 2 reproduction parameter, hardware_verified: false}
+      sts_symbols: {value: 0, unit: symbol, evidence_class: PAPER, source: jkiees-36-3-274, locator: Section 2-1 excludes STS p.276, hardware_verified: false}
+    packets:
+      Poll:
+        psdu_octets: {value: 14, unit: octet, evidence_class: PAPER_DERIVED, source: jkiees-36-3-274, locator: Table 2 T_PSDU=20.5 us reproduction, hardware_verified: false}
+      Response:
+        psdu_octets: {value: 17, unit: octet, evidence_class: PAPER_DERIVED, source: jkiees-36-3-274, locator: Table 2 T_PSDU=23.6 us reproduction, hardware_verified: false}
+      Final:
+        psdu_octets: {value: 28, unit: octet, evidence_class: PAPER_DERIVED, source: jkiees-36-3-274, locator: Table 2 T_PSDU=34.9 us reproduction, hardware_verified: false}
+    timing:
+      processing_time_us: {value: 522, unit: us, evidence_class: PAPER, source: jkiees-36-3-274, locator: Figure 4 p.279, hardware_verified: false}
+      reply1_us: {value: 706, unit: us, evidence_class: PAPER, source: jkiees-36-3-274, locator: Figure 4 and Table 3 pp.279-280, hardware_verified: false}
+      reply2_us: {value: 717, unit: us, evidence_class: PAPER, source: jkiees-36-3-274, locator: Figure 4 and Table 3 pp.279-280, hardware_verified: false}
+      timeout_margin_us: {value: 100, unit: us, evidence_class: PAPER, source: jkiees-36-3-274, locator: Section 3 p.278, hardware_verified: false}
+
+  paper_plen1024:
+    profile_type: PAPER
+    phy:
+      preamble_symbols: {value: 1024, unit: symbol, evidence_class: PAPER, source: jkiees-36-3-274, locator: Table 3 p.280, hardware_verified: false}
+      sfd_symbols: {value: 8, unit: symbol, evidence_class: PAPER, source: jkiees-36-3-274, locator: Section 2-1 p.276, hardware_verified: false}
+      preamble_symbol_time_us: {value: 1.0176470588235293, unit: us/symbol, evidence_class: PAPER_DERIVED, source: jkiees-36-3-274, locator: Table 2/3 shared PHY model, hardware_verified: false}
+      phr_time_us: {value: 21.5, unit: us, evidence_class: PAPER, source: jkiees-36-3-274, locator: Table 2 p.279, hardware_verified: false}
+      coded_bit_time_us: {value: 0.1282051282051282, unit: us/bit, evidence_class: PAPER_DERIVED, source: jkiees-36-3-274, locator: Table 2 PSDU model, hardware_verified: false}
+      rs_parity_bits: {value: 48, unit: bit, evidence_class: PAPER_DERIVED, source: IEEE802.15.4z HRP coding model, locator: Table 2 reproduction parameter, hardware_verified: false}
+      sts_symbols: {value: 0, unit: symbol, evidence_class: PAPER, source: jkiees-36-3-274, locator: Section 2-1 excludes STS p.276, hardware_verified: false}
+    packets:
+      Poll:
+        psdu_octets: {value: 14, unit: octet, evidence_class: PAPER_DERIVED, source: jkiees-36-3-274, locator: Table 2 packet definition, hardware_verified: false}
+      Response:
+        psdu_octets: {value: 17, unit: octet, evidence_class: PAPER_DERIVED, source: jkiees-36-3-274, locator: Table 2 packet definition, hardware_verified: false}
+      Final:
+        psdu_octets: {value: 28, unit: octet, evidence_class: PAPER_DERIVED, source: jkiees-36-3-274, locator: Table 2 packet definition, hardware_verified: false}
+    timing:
+      processing_time_us: {value: 522, unit: us, evidence_class: PAPER, source: jkiees-36-3-274, locator: Figure 4 p.279, hardware_verified: false}
+      reply1_us: {value: 1618, unit: us, evidence_class: PAPER, source: jkiees-36-3-274, locator: Table 3 p.280, hardware_verified: false}
+      reply2_us: {value: 1629, unit: us, evidence_class: PAPER, source: jkiees-36-3-274, locator: Table 3 p.280, hardware_verified: false}
+      timeout_margin_us: {value: 100, unit: us, evidence_class: PAPER, source: jkiees-36-3-274, locator: Section 3 p.278, hardware_verified: false}
+
+code_baseline_profiles:
+  code_baseline_plen128:
+    profile_type: CODE_BASELINE
+    phy:
+      preamble_symbols: {value: 128, unit: symbol, evidence_class: CODE_BASELINE, source: ds_twr_initiator_final.c, locator: dwt_config_t lines 41-55, hardware_verified: false}
+      sfd_symbols: {value: 8, unit: symbol, evidence_class: ASSUMED, source: DW3000 non-standard SFD type mapping, locator: CODE_OR_HW_VERIFY - SFD type mapping unresolved, hardware_verified: false}
+      preamble_symbol_time_us: {value: 1.0176470588235293, unit: us/symbol, evidence_class: PAPER_DERIVED, source: jkiees-36-3-274, locator: Table 2 PHY model, hardware_verified: false}
+      phr_time_us: {value: 21.5, unit: us, evidence_class: PAPER_DERIVED, source: jkiees-36-3-274, locator: Table 2 PHY model, hardware_verified: false}
+      coded_bit_time_us: {value: 0.1282051282051282, unit: us/bit, evidence_class: PAPER_DERIVED, source: jkiees-36-3-274, locator: Table 2 PHY model, hardware_verified: false}
+      rs_parity_bits: {value: 48, unit: bit, evidence_class: PAPER_DERIVED, source: IEEE802.15.4z HRP coding model, locator: Table 2 reproduction parameter, hardware_verified: false}
+      sts_symbols: {value: 0, unit: symbol, evidence_class: CODE_BASELINE, source: ds_twr_initiator_final.c, locator: DWT_STS_MODE_OFF lines 53-54, hardware_verified: false}
+    packets:
+      Poll:
+        psdu_octets: {value: 12, unit: octet, evidence_class: CODE_BASELINE, source: ds_twr_initiator_final.c, locator: TX frame length including FCS lines 260-263, hardware_verified: false}
+      Response:
+        psdu_octets: {value: 13, unit: octet, evidence_class: CODE_BASELINE, source: ds_twr_responder_final.c, locator: sizeof(tx_resp_msg) lines 333-337; FCS convention unresolved, hardware_verified: false}
+      Final:
+        psdu_octets: {value: 34, unit: octet, evidence_class: CODE_BASELINE, source: ds_twr_initiator_final.c, locator: TX frame length including FCS lines 329-332, hardware_verified: false}
+      PostFinal:
+        psdu_octets: {value: 12, unit: octet, evidence_class: CODE_BASELINE, source: ds_twr_initiator_final.c, locator: TX frame length including FCS lines 353-355, hardware_verified: false}
+      Report:
+        psdu_octets: {value: 16, unit: octet, evidence_class: CODE_BASELINE, source: ds_twr_responder_final.c, locator: TX frame length including FCS lines 497-501, hardware_verified: false}
+    timing:
+      poll_to_response_us: {value: 1650, unit: UUS, evidence_class: CODE_BASELINE, source: ds_twr_responder_final.c, locator: POLL_RX_TO_RESP_TX_DLY_UUS line 148, hardware_verified: false}
+      response_to_final_us: {value: 1650, unit: UUS, evidence_class: CODE_BASELINE, source: ds_twr_initiator_final.c, locator: RESP_RX_TO_FINAL_TX_DLY_UUS line 136, hardware_verified: false}
+      final_to_post_final_us: {value: 1650, unit: UUS, evidence_class: CODE_BASELINE, source: ds_twr_initiator_final.c, locator: FINAL_TX_TO_POST_FINAL_TX_DLY_UUS line 138, hardware_verified: false}
+      post_final_to_report_us: {value: 2522, unit: us, evidence_class: ASSUMED, source: responder pre-report sleep plus paper processing model, locator: ds_twr_responder_final.c line 502 + Figure 4 processing, hardware_verified: false}
+      response_rx_timeout_us: {value: 281, unit: UUS, evidence_class: CODE_BASELINE, source: ds_twr_initiator_final.c, locator: RESP_RX_TIMEOUT_UUS line 137, hardware_verified: false}
+      final_rx_timeout_us: {value: 298, unit: UUS, evidence_class: CODE_BASELINE, source: ds_twr_responder_final.c, locator: FINAL_RX_TIMEOUT_UUS line 150, hardware_verified: false}
+      post_final_rx_timeout_us: {value: 279, unit: UUS, evidence_class: CODE_BASELINE, source: ds_twr_responder_final.c, locator: POST_FINAL_RX_TIMEOUT_UUS line 152, hardware_verified: false}
+      report_rx_timeout_us: {value: 50000, unit: UUS, evidence_class: CODE_BASELINE, source: ds_twr_initiator_final.c, locator: REPORT_RX_TIMEOUT_UUS line 139, hardware_verified: false}

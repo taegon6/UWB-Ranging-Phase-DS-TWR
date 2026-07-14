@@ -1,0 +1,33 @@
+{
+  "captured_at": "2026-07-10T13:13:44.2507838+09:00",
+  "repository": "taegon6/UWB-Ranging-Phase-DS-TWR",
+  "git_commit": "b8b911f6d437af9cb70c09f1b4f4562feb0239ac",
+  "branch": "ekf",
+  "working_tree_clean_before_changes": true,
+  "current_protocol": "CURRENT_PHASE_2A1T",
+  "repository_kind": "firmware_overlay_and_host_tools",
+  "source_type": "CODE_INSPECTION",
+  "firmware_build_reproduced": false,
+  "firmware_build_status": "NOT_RUN_OVERLAY_ONLY_AND_TOOLCHAIN_UNAVAILABLE",
+  "hardware_verified": false,
+  "expected_phy": {
+    "channel": 9,
+    "data_rate": "DWT_BR_6M8",
+    "preamble": "DWT_PLEN_128",
+    "pac": "DWT_PAC8",
+    "tx_preamble_code": 9,
+    "rx_preamble_code": 9,
+    "sfd_type": 1,
+    "phr_mode": "DWT_PHRMODE_STD",
+    "phr_rate": "DWT_PHRRATE_STD",
+    "sts": "DWT_STS_MODE_OFF",
+    "pdoa": "DWT_PDOA_M0"
+  },
+  "evidence": {
+    "git_state": "git_status_before.txt",
+    "tracked_files": "tracked_files_before.txt",
+    "sha256": "tracked_files_sha256_before.txt",
+    "packet_snapshot": "static_packet_timing_snapshot.json",
+    "build_assessment": "baseline_build_assessment.md"
+  }
+}
